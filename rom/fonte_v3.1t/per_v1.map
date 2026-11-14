@@ -1,0 +1,12 @@
+00F88000 per_hdr
+00F8801E x_putc
+00F8802A x_getc
+00F88038 x_strobe
+00F88040 x_kbhit
+00F88052 ext_init
+00F8807C per_main
+00F89854 __mulsi3
+00F898C6 __udivsi3
+00F898D2 __umodsi3
+00F898E2 __divsi3
+00F89918 __modsi3

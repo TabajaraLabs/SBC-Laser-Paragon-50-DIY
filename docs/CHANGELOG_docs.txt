@@ -24,3 +24,5 @@
 
 14/Nov/2026 - Adicionado MANUAL_PARAGON50_v3.0.txt (boot v3.0, bancos, gravador, recuperacao SD, teste de E/S).
   MONITOR_V2_MANUAL.txt e banco0_projeto_v1.txt descrevem versoes anteriores.
+
+14/11/2026 - Adicionados MANUAL_PARAGON50_v3.1.txt (comandos ADC/ADL/DAC/RTC, shell SD com gravacao) e Firmware_original_AD_DA_v1.txt (como o laser original comanda o A/D, os D/A e os 8254).

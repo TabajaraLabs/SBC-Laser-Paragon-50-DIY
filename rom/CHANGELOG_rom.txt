@@ -49,3 +49,10 @@ ROM v2.6 (14/11/2026) - Am29F040B (CRC32 do bloco de 128 KB: EB42BECC; HI FF8C95
 - Gravado com o gravador via serial, CRC32 $93CA52A7; antes: banco 0 v2.6.1 conferido igual ao arquivo (0 diferencas) e arquivado em ROM_V2.6.1_AM29F040B. Testado antes como v3.0t4 no banco 4 ([A], [C], [B], [R] ok).
 - Constante RCBANK (banco de retorno das rotinas de troca de banco): 0 no banco 0; 4 na versao de teste v3.0t4.
 - Fonte em fonte_v3.0. Versoes anteriores a v2.6.1 movidas para Arquivo.
+
+== v3.1t4 (14/Nov/2026) - TESTE no BANCO 4 (RCBANK=4); a v3.0 continua no banco 0 ==
+- Novos comandos do monitor (modulo PER1, $F88000, chamado pelo FLCHK do bancos_v4): ADC [canal] (A/D AD7875), ADL canal n [ms] (registra CSV na RAM2 $040000), DAC [A|C [valor|M mV]] (DACs de 12 bits) e RTC [SET|TESTE|RAW] (DS1302; pinos provisorios: CE = bit 10 de $020018, rotulo RTC_CE). Tudo extraido do codigo original do laser (docs/Firmware_original_AD_DA_v1.txt). So o pino OP3 do DUART e tocado.
+- Shell do cartao SD fatsh_v8 = fatsh_v7 (gravacao: W arq endHex lenHex, K apaga, C pasta) + comando F do v5 (grava banco). Usa RAM $3800-$4DFF. Em $F84000-$F86223; gravador v5d movido para $F86400.
+- Modulo estendido v2.7: Q e I descrevem o layout atual (bancos); lista de ajuda traz ADC/ADL/DAC/RTC; handler do '@' removido.
+- Testado no emulador (t_per.py, t_fat8.py) com modelos do AD7875, DACs e DS1302 (presente e ausente). Gravado no banco 4 com o flash_v5d: CRC32 da imagem $FB7EBA92, 0 diferencas. AINDA NAO iniciado na placa (precisa de RESET): comandos, shell com W e F sem teste em hardware.
+- Fonte em rom/fonte_v3.1t.

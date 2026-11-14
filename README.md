@@ -19,7 +19,7 @@ e de um monte de teste de bancada. Os documentos estão em português.
 | Buzzer | ativo, bit 9 do latch |
 | Outros | conversor A/D AD7875, DACs, conectores J1/J2/J7 com E/S do laser (ainda sendo mapeados) |
 
-Mapa de endereços, pinagens e esquemas estão em [`docs/`](docs). O manual atual do banco 0 é `docs/MANUAL_PARAGON50_v3.0.txt`
+Mapa de endereços, pinagens e esquemas estão em [`docs/`](docs). O manual do banco 0 em uso é `docs/MANUAL_PARAGON50_v3.0.txt`; a versão em teste está em `docs/MANUAL_PARAGON50_v3.1.txt`
 (o `MONITOR_V2_MANUAL.txt` descreve o monitor v2.0 e ficou desatualizado nos itens de boot e bancos).
 
 ## Software
@@ -55,6 +55,10 @@ apagar** e só grava depois de digitar `PROSSIGA`. A imagem pode vir:
 
 O banco 0 só é gravado com uma confirmação extra. A versão atual é `flash_v5d` (aceita o banco 0 como origem de cópia,
 usada para o backup do banco 0 no banco 3).
+
+### Em teste: v3.1t4 (banco 4)
+
+Novos comandos do monitor `ADC`, `ADL`, `DAC` (A/D e D/A do laser, extraídos do firmware original - ver `docs/Firmware_original_AD_DA_v1.txt`) e `RTC` (DS1302, código pronto, pinos provisórios), shell do cartão com gravação (`W`, `K`, `C`) e mapa `Q`/comando `I` atualizados. Fontes em `rom/fonte_v3.1t/`.
 
 ### Teste de E/S (J1, J2, J7)
 

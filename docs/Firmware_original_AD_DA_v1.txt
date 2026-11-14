@@ -1,0 +1,65 @@
+PARAGON 50 - O QUE O FIRMWARE ORIGINAL FAZ COM O A/D, OS D/A E OS TIMERS (levantamento de 14/Nov/2026)
+=====================================================================================================
+
+Fonte: ROM original do laser (Paragon_50_HI.BIN + Paragon_50_LO.BIN, 64 KB intercalados, vista em $F80000), desmontada com
+o desassemblador do proprio monitor rodando no emulador (ferramentas: dis_orig.py). Os enderecos abaixo sao deslocamentos
+dentro da ROM original (ex.: "ROM+6000" = $F86000 no laser). O codigo do laser parece compilado de C (prologos link/unlk, chamadas
+de rotinas de biblioteca em $F88xxx-$F8Dxxx) e guarda copias das saidas em RAM ("sombras"), porque os latches sao so de escrita.
+
+Isto e o que se LEU no codigo; o que e dedução esta marcado com (?).
+
+1. CONVERSOR A/D  (AD7875, 12 bits)   -- rotina em ROM+6000 ("le uma amostra")
+-----------------------------------------------------------------------------
+   * Resultado: leitura de PALAVRA em $020000, valor = palavra AND $0FFF (12 bits).
+   * Disparo: pulso no pino OP3 do DUART 68681:
+         move.w #$08,$FA001C     ; SOPR: OP3 vai a nivel BAIXO
+         move.w #$08,$FA001E     ; ROPR: OP3 volta a nivel ALTO
+     seguido de um atraso curtissimo (laco de 5 passos, ~20 us) e da leitura de $020000. (/CONVST do AD7875 (?))
+   * Pronto/ocupado: entrada IP4 do DUART ($FA001B bit 4). Antes de disparar o codigo testa o bit: se for 0 le $020000
+     (leitura "de limpeza"), testa de novo e, se continuar 0, chama a rotina de erro ROM+B612. Nivel 1 = pronto. (BUSY do AD7875 (?))
+   * Selecao do canal: 3 bits mantidos na sombra de $020020. O codigo faz  byte_alto_da_sombra = (byte AND $8F) OR ((canal AND 7) << 4),
+     isto e, bits 14-12 da palavra enviada a $020020 = canal 0..7. O bit 15 da mesma palavra e ligado na inicializacao (ROM+5BFE) e
+     fica ligado sempre (habilita o multiplexador (?)). No netlist os bits 12-15 de $020020 vao ao componente U38 (4 entradas "ctl").
+   * As 8 amostras mais recentes de cada canal sao guardadas num filtro (ROM+5DDC) e as leituras sao repetidas a cada ciclo do laco principal.
+   * Fundo de escala NAO aparece no codigo desta rotina (as conversoes para unidades de engenharia ficam em outras rotinas).
+     Supor 0-5 V (?) e so a escala normal do AD7875; confirmar com tensao conhecida na bancada.
+   * Entradas digitais tambem lidas na mesma rotina: $020030 (porta A) xor $1BD3, $020028 (porta B) xor $FF34, $04019C e $040194 (byte).
+
+2. CONVERSORES D/A  (12 bits, escrita de palavra)  -- rotina em ROM+6496
+------------------------------------------------------------------------
+   * DAC A = $02000A.  O firmware guarda o valor em "mV" (variavel 10..5000, 5000 = fundo de escala) e escreve
+         codigo = (mV * 4095) / 5000      (divisao por $1388)
+     (os limites sao $000A e $1388: abaixo de 10 mV forca 10; acima de 5000 mV forca 5000).
+   * DAC C = $02000C.  O valor do firmware vai de 0 a 125000 (limite $1E848, padrao $1D4C0 = 120000) e escreve
+         codigo = (valor * 4095) / 125000    (divisao por $1E848)
+     A unidade de 125000 nao esta clara (mV? centesimos de mV?). E ligada ao valor calculado em ROM+4EBC (algo * 115 / 100 + 1000) (?).
+   * Nao existe DAC B nem leitura de volta: o firmware guarda o ultimo valor em RAM ($4988/$4998 = DAC A; $498C = DAC C) so para nao reescrever.
+
+3. TIMERS 8254  ($020010-$020017)  -- inicializacao em ROM+5BC0, ajuste de frequencia em ROM+5C9C e ROM+5CF8
+------------------------------------------------------------------------------------------------------------
+   Escritas encontradas (byte em endereco par = lado alto do barramento; palavra = lado baixo):
+         move.b #$32,$020010          move.w #$30,$020016        move.w #$75,$020016
+         move.b #$74,$020010 ; move.w d0,$020014 (2x: LSB, MSB)   -> frequencia = 800000 / n   (constante $C3500 = 800000)
+         move.b #$B0 ou #$B2,$020010 ; move.w d0,$020012 (2x)    -> largura = n * duty / 10000 (constante $2710)
+   Os valores $74/$B0/$B2/$32/$30/$75 sao PALAVRAS DE CONTROLE do 8254 (contador, LSB+MSB, modo). Ha escritas de controle em dois
+   enderecos ($020010 e $020016), o que sugere dois 8254 (ou um com decodificacao pouco usual). Nao testado na placa. O codigo calcula
+   um "periodo = 800000 / valor" para o contador 1 e um "tempo ligado" para o contador 2: parece o gerador de pulsos do laser (?).
+
+4. SAIDAS DO DUART USADAS PELO FIRMWARE  (registrador SOPR = $FA001C "poe OP em nivel baixo", ROPR = $FA001E "poe em nivel alto")
+-------------------------------------------------------------------------------------------------------------------------------
+   OP3 ($08) = disparo do A/D.   Tambem usados na inicializacao e em ROM+5DB8/ROM+5DCA:  OP5 ($20) e OP6 ($40) e OP7 ($80).
+   (ROM+5DB8 poe $80 em ROPR e SOPR; ROM+5DCA faz o mesmo com $20.)  E provavel que OP5/OP6/OP7 comandem partes do laser (obturador,
+   disparo, habilitacao de potencia (?)). POR SEGURANCA O MONITOR (ADC/ADL) SO TOCA EM OP3.
+   Entradas: IP4 = pronto do A/D.   $FA001A (OPCR) e zerado: todos os OP sao saidas comuns.
+
+5. LATCHES  $020018 e $020020  (ja mapeados em docs/Mapa_J1_J2_porta_020018.txt)
+----------------------------------------------------------------------------------
+   O firmware escreve $020020 e $020018 sempre juntos (ROM+6478: sombra de 2 palavras em RAM $45AA/$45AC), depois de comparar
+   alteracoes e iniciar "temporizadores" de 200 contagens (rotina em ROM+63BE, tratamento de ruido nas entradas).
+
+6. COMO O MONITOR v3.1 USA ISTO
+-------------------------------
+   ADC [canal]   le o A/D (canal -> $020020 bits 14-12, bit 15 ligado, pulso em OP3, le $020000); ao fim $020020 = 0.
+   ADL canal n [ms]   registra n amostras como CSV em $040000 (RAM2) para gravar no cartao com  W ARQUIVO.CSV 40000 tamanho  no shell SD.
+   DAC [A|C [valor | M mV]]   escreve em $02000A/$02000C e lembra o ultimo valor (nao ha leitura de volta no hardware).
+   Detalhes e exemplos no MANUAL_PARAGON50_v3.1.txt, item 6.
