@@ -21,3 +21,6 @@
   BYE volta ao banco 0. Pendente: S" em modo interpretacao, 2>R/2R>/2R@, MARKER, entrada de duplos ("1.").
 
 14/11/2026 - ROM v2.4 gravada no banco 0 com flash_v2 (0 diferencas). Menu [A] lista os 8 bancos pelo cabecalho AB, CRC OK e boot do banco 3 (eForth) validados na placa. Banco 2 aparece como "PARAGON TESTE 2.3.1T". Ao terminar, o flash_v2 deu EXCECAO vetor=04 no retorno (esperado: o monitor mudou de lugar sob ele); G F80900 reinicia.
+
+14/Nov/2026 - Adicionado MANUAL_PARAGON50_v3.0.txt (boot v3.0, bancos, gravador, recuperacao SD, teste de E/S).
+  MONITOR_V2_MANUAL.txt e banco0_projeto_v1.txt descrevem versoes anteriores.

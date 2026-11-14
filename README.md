@@ -19,7 +19,8 @@ e de um monte de teste de bancada. Os documentos estão em português.
 | Buzzer | ativo, bit 9 do latch |
 | Outros | conversor A/D AD7875, DACs, conectores J1/J2/J7 com E/S do laser (ainda sendo mapeados) |
 
-Mapa de endereços, pinagens e esquemas estão em [`docs/`](docs).
+Mapa de endereços, pinagens e esquemas estão em [`docs/`](docs). O manual atual do banco 0 é `docs/MANUAL_PARAGON50_v3.0.txt`
+(o `MONITOR_V2_MANUAL.txt` descreve o monitor v2.0 e ficou desatualizado nos itens de boot e bancos).
 
 ## Software
 
@@ -52,7 +53,13 @@ apagar** e só grava depois de digitar `PROSSIGA`. A imagem pode vir:
 * de **outro banco** da própria flash (`FLASH destino origem`, comando COPIAR),
 * de um arquivo de 128 KB no **cartão SD** (`F banco arquivo`, na tecla `R`).
 
-O banco 0 só é gravado com uma confirmação extra.
+O banco 0 só é gravado com uma confirmação extra. A versão atual é `flash_v5d` (aceita o banco 0 como origem de cópia,
+usada para o backup do banco 0 no banco 3).
+
+### Teste de E/S (J1, J2, J7)
+
+`programas/iotest_v1.s19` (fonte `.asm` ao lado): carregue pelo monitor e rode `G 2000`. Escreve bit a bit nos latches
+`$020018` e `$020020` e monitora as entradas, para mapear os pinos dos conectores. Detalhes no manual, item 6.
 
 ## Estrutura do repositório
 
