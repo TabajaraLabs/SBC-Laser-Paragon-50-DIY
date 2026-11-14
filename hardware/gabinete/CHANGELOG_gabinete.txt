@@ -1,0 +1,38 @@
+CHANGELOG - gabinete e placa de teste do PARAGON 50
+Regra: todo arquivo leva versao no nome (_v1, _v2, ...). Nunca sobrescrever; cada alteracao gera um numero novo.
+
+GABINETE
+  v1  (12/11 madrugada)  Bandeja aberta com paredes de topo inclinado + tampa-moldura plana. 281 x 149 x 62 mm.
+      base_v1.stl, tampa_v1.stl, montagem_v1.stl, gabarito_furos_v1.stl, gabinete_v1.py (+ csg.py), previa_3d_v1.png, planta_medidas_v1.png
+      Usada em teste: tampa_v1.stl. Resultado do teste: comprimento da placa (274) encaixou perfeito; largura ficou 3 mm maior.
+      Problema conhecido: malha gerada por CSG com arestas sem par (nao usar base_v1/tampa_v1 para novas impressoes).
+      Observacao: gabinete_v1.py esta com W = 147 (como foi gerado). 
+  v2  (12/11)  Refeito conforme o croqui: DUAS CASCAS (tampa com bisel + base), perfil lateral do croqui (frente 10 graus, topo 15 graus,
+      juncao inclinada, base com paredes 25 e 15 graus), bisel de 9 mm, painel rebaixado 1,2 mm, janela com apoio de 2 mm,
+      largura da placa corrigida para 144,8 mm. Malha = uniao de solidos fechados (sem rasgos).
+      base_v2.stl, tampa_v2.stl (imprimir de cabeca para baixo), montagem_v2.stl (so conferir), gabinete_v2.py,
+      previa_gabinete_v2_*.png, perfil_gabinete_v2_vs_croqui.png
+      Externo: 292,0 x 155,1 mm; altura frente 32,9 / fundo 73,5 mm.
+
+PLACA DE TESTE (calibre do rebaixo e dos furos)
+  v1  chapa maciça 4,5 mm (BSP) - arquivo perdido/sobrescrito; furos saiam como rasgos (malha com defeito).
+  v2  malha fechada + grade vazada no meio. Largura W = 147 (estimada das fotos). placa_teste_v2.stl / placa_teste_v2.py
+  v3  idem, largura W = 144,8 (correcao apos o teste da tampa_v1). placa_teste_v3.stl / placa_teste_v3.py, previa_placa_teste_v3.png
+  v4  (12/11) METADE da espessura (4,5 -> 2,25 mm; apoio da placa 1,05 mm; nervuras 1,05 mm), furo de 4,0 mm (v3 imprimiu 2,4-2,9 com 3,4),
+      furos reposicionados pelas fotos da v3: (31,7;6,0) (32,5;107,1) (137,3;59,0) (240,9;6,8) (241,4;104,0). W ainda 144,8 (aguarda medida com paquimetro).
+      placa_teste_v4.stl / placa_teste_v4.py (0 arestas sem par, ~21 g de PLA)
+  v5  (12/11) Igual a v4, mas W = 142,6 mm (v3 tinha rebaixo de 145,6 e sobravam 3 mm atras com a placa encostada na frente). placa_teste_v5.stl / .py
+      (v4 substituida pela v5; manter v4 apenas como historico)
+
+PASTA obsoletos_sem_versao/: copia dos arquivos antigos que tinham nome sem versao (base.stl, tampa.stl etc).
+  v6  (12/11) Igual a v5, furos corrigidos pelas fotos do teste da v5 (ponto de caneta/PCB vs furo impresso):
+      RESET/JP6 (31,7;6,0)->(32,1;6,2); J1/SW2 (240,9;6,8)->(240,9;6,3); U16 (241,4;104,0)->(241,4;106,0). Os outros 2 furos ficaram iguais.
+      Valores do U16 (~2 mm) sao estimativa grosseira de foto (escala ~100 px/mm). placa_teste_v6.stl / .py
+  v7  (12/11 noite) Igual a v6 (mesmos furos, W = 142,6, furo de 4,0, rebaixo 1,2), mas com 1 cm de espessura (ESP 2,25 -> 10,0 mm;
+      apoio da placa e ressaltos agora com 8,8 mm de altura; nervuras da grade mantidas em 1,05 mm). 0 arestas sem par, ~86 g de PLA.
+      placa_teste_v7.stl / placa_teste_v7.py
+  v8  (12/11 noite) Igual a v7 (1 cm de espessura), mas com as nervuras da grade central com 5 mm de altura (v7: 1,05 mm).
+      0 arestas sem par. placa_teste_v8.stl / placa_teste_v8.py  (v7 mantida como historico)
+  v9  (13/11) Igual a v8 (1 cm, nervuras 5 mm) mas W 142,6 -> 145,6 mm: +3,0 mm SO na borda de cima (face maior, lado do 68000).
+      Motivo: a v5/v6 tirou 3 mm duas vezes (erro do pedido) e o rebaixo ficou 3 mm curto em cima. Furos e frente (y=0) inalterados.
+      0 arestas sem par. placa_teste_v9.stl / placa_teste_v9.py
