@@ -1,0 +1,25 @@
+:CHANnel1:DISPlay ON
+:CHANnel2:DISPlay ON
+:CHANnel1:SCALe 2
+:CHANnel2:SCALe 2
+:CHANnel1:OFFSet 0
+:CHANnel2:OFFSet 0
+:TRIGger:SWEep NORMal
+:TRIGger:EDGE:SOURce CHANnel1
+:TRIGger:EDGE:SLOPe NEGative
+:TRIGger:EDGE:LEVel 1.5
+:TIMebase:SCALe 5E-7
+:TIMebase:POSition 1E-6
+:SINGle
+#wait 12
+:STOP
+#wait 1
+#png we_hl_v1
+:MEASure:VMAX? CHANnel1
+:MEASure:VMIN? CHANnel1
+:MEASure:VMAX? CHANnel2
+:MEASure:VMIN? CHANnel2
+:MEASure:NWIDth? CHANnel1
+:MEASure:NWIDth? CHANnel2
+:TRIGger:SWEep AUTO
+:RUN

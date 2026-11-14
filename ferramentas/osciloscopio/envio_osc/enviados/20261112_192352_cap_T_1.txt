@@ -1,0 +1,6 @@
+#wait 3
+#png durante_T_y6_cs1
+#nivel 1
+#nivel 2
+#wait 3
+#png durante_T_y6_cs1b

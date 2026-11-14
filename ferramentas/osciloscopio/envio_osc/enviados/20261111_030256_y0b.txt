@@ -1,0 +1,7 @@
+:RUN
+#wait 6.5
+#nivel 1
+#wait 2.7
+#nivel 1
+#wait 2.7
+#nivel 1

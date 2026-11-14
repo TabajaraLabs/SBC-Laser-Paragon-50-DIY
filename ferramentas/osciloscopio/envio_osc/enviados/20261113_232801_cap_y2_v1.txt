@@ -1,0 +1,21 @@
+:CHANnel1:DISPlay ON
+:CHANnel2:DISPlay OFF
+:CHANnel1:SCALe 2
+:CHANnel1:OFFSet 0
+:TRIGger:SWEep NORMal
+:TRIGger:EDGE:SOURce CHANnel1
+:TRIGger:EDGE:SLOPe NEGative
+:TRIGger:EDGE:LEVel 1.5
+:TIMebase:SCALe 5E-7
+:TIMebase:POSition 1E-6
+:SINGle
+#wait 12
+:STOP
+#wait 1
+#png y2_v1
+:MEASure:VMAX? CHANnel1
+:MEASure:VMIN? CHANnel1
+:MEASure:NWIDth? CHANnel1
+:MEASure:FREQuency? CHANnel1
+:TRIGger:SWEep AUTO
+:RUN

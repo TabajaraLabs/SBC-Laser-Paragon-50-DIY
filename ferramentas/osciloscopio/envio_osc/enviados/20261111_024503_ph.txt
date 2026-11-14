@@ -1,0 +1,12 @@
+:RUN
+:TIMebase:SCALe 0.00001
+#wait 0.5
+#medir 1
+#wait 2.2
+#medir 1
+#wait 2.2
+#medir 1
+#wait 2.2
+#medir 1
+#wait 2.2
+#medir 1

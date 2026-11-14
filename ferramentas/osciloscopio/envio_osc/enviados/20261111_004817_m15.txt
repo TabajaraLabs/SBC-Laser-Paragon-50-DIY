@@ -1,0 +1,3 @@
+#medir 1
+#medir 2
+#png j1_p15

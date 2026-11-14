@@ -1,0 +1,14 @@
+J4 (IDC 20 pinos, serial da placa CPU) - FECHADO em 2026-11-11
+Pinos usados so pela serial; o conector e grande apenas para nao ser confundido com os demais da placa display.
+J4 pino  Sinal            CI/pino         DE-9 femea (DCE)
+1,2,12,13 GND             -               5
+3        RX canal A       U36 pino 1      3 (A)
+4        RX canal B       U36 pino 13     3 (B)
+5        TX canal A       U43 pino 11     2 (A)
+6        TX canal B       U43 pino 6      2 (B)
+7        CTS canal A      U36 pino 4      7 (A)
+8        CTS canal B      (U36 pino 10)   7 (B)
+9        RTS canal B      U43 pino 3      8 (B)
+11       RTS canal A      U43 pino 8      8 (A)
+15       interligado ao pino 11
+10,14,16-20  sem conexao (medido na placa toda)

@@ -1,0 +1,3 @@
+:TER?
+:TRIGger:SWEep AUTO
+:RUN

@@ -1,0 +1,19 @@
+:RUN
+:TIMebase:SCALe 0.00001
+#wait 1.2
+#nivel 1
+#wait 2.8
+#nivel 1
+#wait 2.8
+#nivel 1
+#wait 2.8
+#nivel 1
+#wait 2.8
+#nivel 1
+#wait 2.8
+#nivel 1
+#wait 2.8
+#nivel 1
+#wait 2.8
+#nivel 1
+#wait 2.8

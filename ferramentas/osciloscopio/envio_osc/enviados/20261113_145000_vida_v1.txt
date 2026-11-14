@@ -1,0 +1,9 @@
+:TRIGger:SWEep AUTO
+:RUN
+#wait 1
+:MEASure:FREQuency? CHANnel1
+:MEASure:VMAX? CHANnel1
+:MEASure:VMIN? CHANnel1
+:MEASure:FREQuency? CHANnel2
+:MEASure:VMAX? CHANnel2
+:MEASure:VMIN? CHANnel2

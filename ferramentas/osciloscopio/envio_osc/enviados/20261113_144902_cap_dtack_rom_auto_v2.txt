@@ -1,0 +1,8 @@
+:TRIGger:SWEep AUTO
+:RUN
+#wait 2
+:MEASure:VMAX? CHANnel1
+:MEASure:VMIN? CHANnel1
+:MEASure:VAVerage? CHANnel1
+:MEASure:FREQuency? CHANnel1
+#png dtack_rom_auto_v2

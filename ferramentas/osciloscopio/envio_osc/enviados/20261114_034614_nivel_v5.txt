@@ -1,0 +1,5 @@
+*IDN?
+#wait 1
+#nivel 1
+#wait 1
+#png sck_run_v5

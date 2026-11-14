@@ -1,0 +1,18 @@
+:TRIGger:SWEep AUTO
+:RUN
+#wait 1
+:MEASure:FREQuency? CHANnel1
+:MEASure:FREQuency? CHANnel2
+:MEASure:VMAX? CHANnel2
+:MEASure:VMIN? CHANnel2
+:TRIGger:SWEep NORMal
+:TRIGger:EDGE:SOURce CHANnel2
+:TRIGger:EDGE:SLOPe NEGative
+:TRIGger:EDGE:LEVel 1.5
+:TIMebase:SCALe 2E-7
+:TIMebase:POSition 4E-7
+:SINGle
+#wait 3
+:STOP
+#wait 1
+#png dtack_vs_romce_v1

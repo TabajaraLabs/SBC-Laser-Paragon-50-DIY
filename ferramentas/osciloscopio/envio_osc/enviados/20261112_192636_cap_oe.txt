@@ -1,0 +1,5 @@
+#wait 4
+#png oe_a
+#wait 3
+#png oe_b
+#nivel 2

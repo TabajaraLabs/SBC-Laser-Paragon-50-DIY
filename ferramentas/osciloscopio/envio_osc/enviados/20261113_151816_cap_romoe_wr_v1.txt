@@ -1,0 +1,22 @@
+:TRIGger:SWEep AUTO
+:RUN
+#wait 1
+:MEASure:VMAX? CHANnel1
+:MEASure:VMIN? CHANnel1
+:MEASure:VAVerage? CHANnel1
+:MEASure:VMAX? CHANnel2
+:MEASure:VMIN? CHANnel2
+:MEASure:FREQuency? CHANnel2
+:TRIGger:SWEep NORMal
+:TRIGger:EDGE:SOURce CHANnel2
+:TRIGger:EDGE:SLOPe NEGative
+:TRIGger:EDGE:LEVel 1.5
+:TIMebase:SCALe 1E-6
+:TIMebase:POSition 3E-6
+:SINGle
+#wait 4
+:STOP
+#wait 1
+#png romoe_wr_v1
+:TRIGger:SWEep AUTO
+:RUN

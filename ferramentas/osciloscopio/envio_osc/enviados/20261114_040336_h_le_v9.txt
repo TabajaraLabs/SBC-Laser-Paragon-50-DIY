@@ -1,0 +1,5 @@
+:TER?
+#png furo1_i
+:TRIGger:SWEep AUTO
+:TRIGger:EDGE:SLOPe POSitive
+:RUN

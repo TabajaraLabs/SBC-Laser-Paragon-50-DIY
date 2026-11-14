@@ -1,0 +1,11 @@
+Projeto Paragon 50 - placa CPU 68000 (Heraeus Surgical), uso standalone
+Pastas:
+  fotos/        fotos da placa (frente, verso, close-ups). foto_01 = frente geral, foto_09..17 = verso/soquetes
+  rom_original/ dumps originais HI (bytes pares) e LO (bytes impares)
+  rom/          imagem linear 64KB em $F80000 (reordenada)
+  fonte/        disassembly comentado (.asm)
+  docs/         manual PDF
+  ferramentas/  (futuro) scripts, monitor, bootloader
+Planilha de medicoes: Sheets "Medicoes Paragon 50 - placa 68000" (claude.ai)
+  fotos_display/ fotos da outra placa: Heraeus Surgical "DISPLAY INTERFACE PCB", ASSY 0606-0173 REV A1 (tem DB9 J111, BNC, jacks, J1/J2/J7)
+Observacoes: serial do CPU board esta no J4 (IDC pequeno, perto do 68681); DB9 fica na placa display (J111).

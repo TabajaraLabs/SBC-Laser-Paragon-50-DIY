@@ -1,0 +1,4 @@
+:TER?
+#png furo2_i
+:TRIGger:SWEep AUTO
+:RUN

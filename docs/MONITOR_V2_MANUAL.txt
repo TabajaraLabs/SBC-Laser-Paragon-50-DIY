@@ -1,0 +1,241 @@
+PARAGON 50 - MONITOR 68000 v2.0 (Tabajara Labs) - MANUAL DE REFERENCIA
+======================================================================
+Transcricao da ajuda embutida na ROM (digite ?, depois ? A, ? ASM, ? DEBUG ...).
+Convencao: [ ] marca argumento opcional; [[ ]] aninhado = cada argumento so
+pode aparecer se o anterior foi dado. Argumentos faltando assumem um valor
+padrao ou o monitor pergunta.
+
+Digite ? para ajuda.
+> ?
+
+Comandos do Monitor PARAGON 50 v2.0 (numeros em hexadecimal)
+
+MEMORIA
+D [inicio [fim]]              dump hexadecimal + ASCII
+P [inicio [byte ...]]         grava bytes (sem bytes: edita)
+E [endereco]                  edita a memoria byte a byte
+F [inicio [fim [byte]]]       preenche a faixa com o byte
+M [inicio [fim [destino]]]    copia um bloco de memoria
+V [inicio [fim [outro]]]      compara dois blocos de memoria
+S [inicio [fim [byte ...]]]   procura ate 8 bytes na faixa
+Z [inicio [fim]]              teste de RAM (padrao: $2000 a $FFFE)
+Y [inicio [fim]]              checksum e CRC-16/CRC-32 (padrao: a ROM)
+= [expressao]                 calculadora hexadecimal
+
+PROGRAMAS
+L                             carrega arquivo S-record (S19/S28/S37)
+W [inicio [fim]]              despeja a faixa em S-records (S2)
+G [endereco]                  executa o programa (JSR)
+
+DESASSEMBLAR E ASSEMBLAR
+U [inicio [fim]]              desassembla instrucoes da memoria
+A [endereco | -]             assembla instrucoes digitadas
+
+DEPURACAO
+R [registrador [valor]]       mostra ou altera os registradores
+N [quantidade]                executa instrucao por instrucao
+O [quantidade]                igual ao N, mas passa por cima de JSR/BSR
+K [endereco | -endereco | -]  lista, poe ou tira breakpoints
+X [endereco]                  executa sob o depurador
+
+SISTEMA
+B                             EhBASIC
+C                             CP/M-68K
+T                             Tetris
+I                             informacoes
+? [comando]                   ajuda detalhada (ex.: ? A, ? ASM, ? DEBUG)
+> ? u
+U [inicio [fim]]  -  DESASSEMBLADOR
+
+  Mostra, em cada linha, o endereco, as palavras hexadecimais da
+  instrucao e o texto dela na sintaxe Motorola.
+
+     U 2000          desassembla 16 instrucoes a partir de $2000
+     U 2000 2040     desassembla tudo de $2000 ate $2040
+     U 2000 8        se o segundo valor for menor ou igual ao primeiro,
+                     ele e a QUANTIDADE (aqui: 8 instrucoes)
+     U               continua de onde o ultimo U ou A parou
+
+  Qualquer tecla interrompe a listagem.
+  Palavras que nao sao instrucao aparecem como  dc.w $XXXX.
+  Funciona tambem na ROM:  U F80900  mostra o inicio do reset do monitor.
+> ? a
+A [endereco | -]  -  ASSEMBLADOR LINHA A LINHA      (A -  apaga os rotulos)
+
+  O prompt mostra o endereco atual. Digite uma instrucao por linha:
+
+     002000> move.l #$1234,d0
+     002006> loop: addq.l #1,d0
+     002008> bra.s loop
+     00200A> .                    <- [.], linha vazia ou [ESC] termina
+
+  Rotulos (nome:) podem ser usados antes de serem definidos: o monitor
+  resolve a referencia quando o rotulo aparecer e avisa no final se
+  alguma ficar pendente. Os rotulos ficam guardados ate o reset.
+  So escreve na RAM de usuario ($2000 a $FFFF).
+  Sintaxe completa e instrucoes aceitas:  ? ASM
+> ? e
+E [endereco]  -  EDITA A MEMORIA BYTE A BYTE
+
+  Sem endereco continua de onde o ultimo E terminou.
+  Mostra  ENDERECO: VALOR >  e espera o novo valor em hexadecimal.
+  Digite o byte e Enter: ele e gravado e o editor avanca um endereco.
+
+     [CR] Enter     avanca um byte sem alterar
+     [~]             volta um byte
+     [.] ou [ESC]    retorna ao monitor
+
+  So grava de $2000 a $FFFF (ROM, vetores e pilha ficam protegidos).
+> ? r
+R [registrador [valor]]  -  REGISTRADORES DO PROGRAMA DEPURADO
+
+     R               mostra D0-D7, A0-A7, PC, SR (T, S, IPL, X N Z V C)
+                     e a proxima instrucao
+     R D3 1234       altera D3
+     R PC 2000       escolhe onde X, N e O continuam
+     R SP FF00       altera a pilha
+     R SR 2700       altera o registrador de status
+
+  Os valores sao os do ultimo ponto em que o programa parou.
+> ? n
+N [quantidade]  e  O [quantidade]  -  PASSO A PASSO (bit Trace do 68000)
+
+     N               executa 1 instrucao e mostra registradores e a proxima
+     N 10            executa 10 instrucoes (lista cada uma; tecla interrompe)
+     O               igual ao N, mas JSR e BSR rodam por inteiro, sem
+                     entrar na subrotina
+
+  Para escolher o ponto de partida use  R PC endereco  ou  X endereco.
+> ? k
+K [endereco | -endereco | -]  -  BREAKPOINTS (ate 8, RAM $2000-$FFFF)
+
+     K               lista os breakpoints
+     K 2010          poe um breakpoint em $2010
+     K -2010         tira o breakpoint de $2010
+     K -             tira todos
+
+  Durante o X a instrucao e trocada por ILLEGAL; ao parar, o monitor
+  restaura o original. O programa na memoria nunca fica alterado.
+> ? x
+X [endereco]  -  EXECUTA SOB O DEPURADOR
+
+     X 2000          comeca em $2000 (pilha nova em $FEFC; o RTS final do
+                     programa volta ao depurador)
+     X               continua de onde parou (apos breakpoint, N, O ou R PC)
+
+  Para em: breakpoint, RTS final do programa ou excecao (erro de barramento
+  ou de endereco, instrucao ilegal, divisao por zero...). Mostra o motivo,
+  os registradores e a proxima instrucao.
+
+  O teclado nao interrompe o programa em execucao: ele precisa terminar ou
+  ter um breakpoint. Se o watchdog da placa estiver ativo, o programa deve
+  chamar  jsr $F8082A  periodicamente.
+> ? debug
+ROTEIRO DE DEPURACAO
+
+  1) A 2000          digite o programa (termine com rts)
+  2) U 2000          confira o desassemblado
+  3) K 2008          breakpoint na instrucao que interessa
+  4) X 2000          executa ate parar; veja os registradores
+  5) N ou O          passo a passo;  R D0 5 altera um registrador
+  6) D 2000          confere a memoria;  X continua;  K - limpa breakpoints
+
+  Programas carregados com L (S-record) funcionam do mesmo jeito:
+  X endereco_de_entrada.
+> ? d
+D [inicio [fim]]  -  DUMP HEXADECIMAL + ASCII
+
+  16 bytes por linha, com cabecalho de colunas. Sem fim, mostra 128 bytes.
+  Se o segundo valor for menor ou igual ao primeiro, ele e a quantidade.
+  Sem argumentos continua de onde o ultimo D, P ou L parou.
+  Qualquer tecla interrompe. Le tambem a ROM e os registradores do 68681.
+> ? p
+P [inicio [byte ...]]  -  GRAVA BYTES
+
+  P 2000 4E 71 4E 75   grava os bytes (hexadecimal) a partir de $2000
+  P 2000               sem bytes, abre o editor interativo (igual ao E)
+  P                    sem argumentos, continua do ultimo endereco usado
+
+  So grava de $2000 a $FFFF.
+> ? f
+F [inicio [fim [byte]]]  -  PREENCHE UMA FAIXA
+
+  F 2000 2FFF AA   preenche $2000 a $2FFF com AA
+  F 2000 2FFF      sem byte, usa 00
+  F 2000           sem fim, vai ate $FFFF
+  F                sem argumentos, apaga toda a RAM de usuario ($2000-$FFFF)
+
+  So grava de $2000 a $FFFF.
+> ? g
+G [endereco]  -  executa o programa com JSR, sem depurador; sem endereco usa a
+  entrada do ultimo L.
+  O programa volta ao monitor com RTS. Para depurar use o comando X.
+> ? l
+L  -  carrega S-records (S1, S2 e S3); o ponto de entrada (S7/S8/S9) fica
+  guardado para G e X.
+  Envie o arquivo pela ponte (ponte.bat) ou pelo terminal (enviar arquivo de
+    texto).
+> ? m
+M [inicio [fim [destino]]]  -  COPIA UM BLOCO DE MEMORIA
+
+  M 2000 20FF 3000   copia $2000-$20FF para $3000 (aceita sobreposicao)
+  Sem inicio usa o ultimo endereco; sem fim copia 128 bytes.
+  Se o destino faltar, o monitor pergunta.
+  O destino precisa estar em $2000-$FFFF.
+> ? s
+S [inicio [fim [byte ...]]]  -  PROCURA BYTES
+
+  S 2000 3000 4E 75   lista os enderecos de $2000-$3000 com 4E 75
+  Sem inicio procura em $2000 a $FFFF; sem fim vai ate $FFFF.
+  Aceita ate 8 bytes; se faltarem, o monitor pergunta.
+  Mostra ate 64 ocorrencias. Qualquer tecla interrompe.
+> ? y
+Y [inicio [fim]]  -  CHECKSUM E CRC
+
+  Sem argumentos calcula sobre a ROM do monitor ($F80000 a $F8FFFF);
+  so com inicio, sobre 256 bytes. Soma de bytes
+  (8 bits), soma de palavras (16 bits), XOR, CRC-16 CCITT e CRC-32.
+  Util para conferir uma ROM ou um programa carregado:
+
+     Y F80000 F8FFFF     CRC-32 da ROM, comparavel com o do arquivo .bin
+
+  O CRC-32 e o mesmo do zlib/zip/Python (zlib.crc32).
+> ? z
+Z [inicio [fim]]  -  TESTE DE RAM (padrao: $2000 a $FFFE)
+
+  Sem argumentos testa toda a RAM de usuario (apaga o que estiver nela).
+
+  Cinco passadas: 0000, FFFF, 5555, AAAA e endereco-como-dado.
+  Mostra ate 10 erros (endereco, esperado, lido) e o total.
+  Qualquer tecla interrompe entre as passadas.
+> ? b
+B  inicia o EhBASIC.   C  inicia o CP/M-68K.   T  jogo Tetris (Q sai).   I 
+  mostra informacoes da placa.
+Esses quatro tambem estao no menu de inicializacao (bootloader).
+> ? =
+= [expressao]  -  CALCULADORA HEXADECIMAL
+
+  Sem expressao, o monitor pergunta.
+  Numeros sem prefixo sao hexadecimais. Use # para decimal (#100),
+  % para binario (%1010) e 'A' para caractere.
+  Operadores: + - * / % << >> & | ^ ~ e parenteses.
+  Rotulos criados com o comando A tambem valem.
+
+     = 2000+40*2      = FF&0F      = #100+1      = 1<<10      = F80000-1
+
+  Mostra o resultado em hexadecimal, decimal, decimal com sinal, binario
+  e ASCII.
+> i
+
+PARAGON 50 - Monitor 68000 v2.0 (Tabajara Labs) - modulo estendido presente
+
+  ROM  Monitor $F80000   Tetris $F81C00   EhBASIC $F84000   CP/M-68K $F88000
+       Modulo v2 (ajuda, U A E R N O K X D P F M V S W = Y Z) em $F90000
+
+  RAM  $0000-$1FFF monitor (vetores, variaveis, pilha, depurador)
+       $2000-$FFFF livre para programas
+
+  Serial  console no canal A a 57600 bps; canal B a 9600 bps
+
+  Porta de entrada (IP) = 00
+> 

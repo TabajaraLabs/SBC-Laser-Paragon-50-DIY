@@ -1,0 +1,5 @@
+:RUN
+:TRIGger:SWEep AUTO
+#wait 1.5
+#png sck_estatico_v3
+#nivel 1

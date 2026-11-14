@@ -1,0 +1,11 @@
+:TIMebase:SCALe 1E-3
+:TIMebase:POSition 0
+:TRIGger:SWEep AUTO
+:CHANnel1:SCALe 1
+:CHANnel2:SCALe 1
+:RUN
+#wait 3
+:MEASure:VAVerage? CHANnel1
+:MEASure:VAVerage? CHANnel2
+#png banco7_v2
+:RUN

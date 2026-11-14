@@ -1,0 +1,10 @@
+:CHANnel1:SCALe 2
+:CHANnel1:OFFSET 5
+:TIMebase:SCALe 2
+:TRIGger:SWEep AUTO
+:RUN
+#wait 22
+#nivel 1
+#png a18_banco4_v1
+:TIMebase:SCALe 0.5
+:RUN

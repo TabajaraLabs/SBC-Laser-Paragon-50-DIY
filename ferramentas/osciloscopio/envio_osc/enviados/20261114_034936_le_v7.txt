@@ -1,0 +1,4 @@
+:TER?
+#png sck_i_v7
+:TRIGger:SWEep AUTO
+:RUN

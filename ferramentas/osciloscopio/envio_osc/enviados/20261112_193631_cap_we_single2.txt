@@ -1,0 +1,10 @@
+:TRIGger:SWEep NORMal
+:TRIGger:EDGE:SOURce CHANnel1
+:TRIGger:EDGE:SLOPe NEGative
+:TRIGger:EDGE:LEVel 1.5
+:TIMebase:SCALe 5E-7
+:SINGle
+#wait 10
+#png we_single
+#nivel 1
+#nivel 2

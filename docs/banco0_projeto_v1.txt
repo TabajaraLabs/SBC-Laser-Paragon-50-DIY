@@ -1,0 +1,35 @@
+PARAGON 50 - PROJETO DO BANCO 0 ("pre-bootloader" / banco de recuperacao)           v1 - 14/11/2026
+===========================================================================================================
+
+1. POR QUE O BANCO 0 DEVE MUDAR POUCO
+   Cada banco e um setor inteiro das duas Am29F040B (64 KB em cada chip = 128 KB). A flash so apaga por setor:
+   alterar 1 byte do banco 0 apaga e regrava os 128 KB. Uma queda de energia nesse intervalo (~10 s) deixa o
+   banco 0 em branco e a placa nao sobe mais (so com o gravador externo). Logo: o banco 0 so recebe o que e
+   estavel; tudo que muda com frequencia vive nos bancos 1 a 7.
+
+2. O QUE FICA NO BANCO 0 (cerca de 25 KB de 128 KB; o resto fica em branco = FF, reservado)
+   - Vetores e reset ($F80000/$F80900): inicializa RAM, UART e LCD; splash "PARAGON 50  68000 / Tabajara Labs".
+   - Monitor (nucleo) + modulo estendido ($F90000: U A E R N O K X D P F M V S W = Y Z Q J @).
+   - Menu de bancos (cabecalho AB, CRC32 de cada banco) e o gravador de flash (FLASH [banco], flash_v4 e fl4).
+   - Servico de LCD ($F80614: lcd_start, lcd_at, asterisco de atividade) usado por todos os bancos.
+   - Tetris (estavel e pequeno) e o programa de perifericos ($F8F000: SD, buzzer, LCD).
+   - [A FAZER] Recuperacao por SD, somente leitura: monta a FAT16, DIR, TYPE, LOAD, e grava um banco a partir
+     de um .fl4 que esteja no cartao. E o caminho de fuga caso um banco novo saia ruim.
+   - [A FAZER] [B]asic e [C]P/M passam a iniciar o banco "sistema" (banco 1) em vez de terem copia propria.
+
+3. O QUE NAO FICA NO BANCO 0
+   EhBASIC (com SDFS), CP/M-68K (com discos no SD), Forth e qualquer coisa nova: bancos 1 a 7, cada banco
+   uma imagem completa (monitor + aplicacao) com nome proprio no cabecalho (ex.: "CPM+SD teste").
+
+4. REGRAS DE GRAVACAO DO BANCO 0
+   a) A imagem nova e testada antes: emulador e depois num banco de teste (menu [A], iniciar o banco).
+   b) O .fl4 passa pela conferencia de CRC32 do gravador antes de apagar qualquer coisa.
+   c) A imagem anterior do banco 0 fica guardada no projeto (rom/Arquivo) para voltar atras.
+   d) Nada e digitado durante a gravacao; a alimentacao nao pode ser interrompida.
+
+5. ORDEM DE TRABALHO
+   1) Splash de LCD no reset (testado no banco 2)                                     <- em andamento
+   2) Nomes por conteudo no cabecalho dos bancos
+   3) Modulo de recuperacao por SD (somente leitura) e gravacao de .fl4 a partir do cartao
+   4) Menu: [B] e [C] iniciam o banco sistema; partida padrao continua sendo o monitor apos 5 s
+   5) Gravar o novo banco 0 (com conferencia) e arquivar o antigo

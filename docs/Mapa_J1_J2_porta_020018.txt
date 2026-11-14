@@ -1,0 +1,22 @@
+PARAGON 50 - SAIDAS DA PORTA $020018 (latch de 16 bits) NOS CONECTORES J1 E J2
+Medido com osciloscopio DSO-X 2002A em 2026-11-11, com programa contador (bit 0 = 108 kHz, cada bit seguinte na metade).
+Nivel logico: TTL/CMOS 0 a ~4,3 V (sem drivers), duty 50%.
+
+ Bit  Conector-pino  Frequencia medida
+  0   J1-28          108 kHz
+  1   J1-26          54,1 kHz
+  2   J1-24          27,06 kHz
+  3   J1-20          13,51 kHz
+  4   J1-18          6,757 kHz
+  5   J1-15          3,378 kHz
+  6   J1-14          1,689 kHz
+  7   J1-10          845 Hz
+  8   J2-47          422 Hz
+  9   J2-40          211 Hz
+ 10   J2-37          105 Hz
+ 11   J2-30          52 Hz
+ 12   J2-28          26 Hz
+ 13   J2-27          13 Hz
+ 14   J2-24          6 Hz
+ 15   J2-23          ~3 Hz
+Notas: J1-13 e J1-17 so mostraram ruido acoplado do J1-15 (nao conectados). Resto dos pinos de J1 e J2: sem sinal neste teste.

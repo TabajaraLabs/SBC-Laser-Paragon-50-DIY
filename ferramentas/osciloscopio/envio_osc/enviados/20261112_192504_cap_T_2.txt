@@ -1,0 +1,6 @@
+#wait 1
+#png durante_T2_a
+#nivel 1
+#nivel 2
+#wait 2
+#png durante_T2_b

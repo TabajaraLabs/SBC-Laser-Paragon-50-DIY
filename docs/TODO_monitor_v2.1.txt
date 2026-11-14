@@ -1,0 +1,52 @@
+PARAGON 50 - Monitor v2.1: lista de modificacoes (atualizada em 2026-11-12)
+
+FEITO NA ROM v2.1 (rom\ROM_V2.1_27C512, testada so em emulador; falta testar na placa)
+- Limpar a tela no reset (ESC [ 2 J ESC [ H) antes do menu.
+- Deteccao do tamanho da RAM no reset (blocos de 64 KB, anti-espelho, restaura o conteudo); RAMEND em $40C; I mostra.
+- Protecao de escrita do modulo estendido acompanha a RAM detectada ($2000 ate RAMEND).
+- Ajuda basica compactada para caber antes do Tetris.
+- CP/M-68K e EhBASIC usam a RAM detectada (marca 'RAM1' em $430 + RAMEND em $40C). Emulador, placa de 128 KB: TPA do CP/M $2F00-$1FFFF e BASIC 122366 bytes livres.
+- Comando Q (mapa de memoria por leitura) e teste do X com erro de endereco/barramento.
+- ATENCAO: RAM so em $0-$1FFFF; $20000-$3FFFF e E/S do laser, $60000-$7FFFF nao tem /DTACK. A sondagem da RAM so toca $0-$1FFFF.
+
+PEDIDAS PELO USUARIO
+1. Limpar a tela no reset: ao ligar/resetar, ANTES de imprimir o menu do monitor, enviar o comando de
+   limpeza de tela (ANSI/VT100: ESC [ 2 J  seguido de  ESC [ H = bytes 1B 5B 32 4A 1B 5B 48), para o
+   monitor sempre iniciar em tela limpa.
+2. Comando MONITOR no EhBASIC: extensao (junto dos "Extension commands") que volta ao prompt do monitor
+   sem precisar de reset. Hoje so o reset sai do BASIC (alternativa provisoria: CALL <main_loop>, que
+   deixa a pilha do BASIC para tras). Pedido em 2026-11-13; entra na ROM v2.4.
+3. CP/M-68K: a "warm boot" (apos PIP, DUMP etc.) reinicia o sistema inteiro: a BIOS (funcao 1 -> wboot_asm -> jmp cpm)
+   reentra em biosinit, que reimprime o banner e refaz a sondagem do disco RAM (~5-6 s de silencio). Corrigir na v2.4:
+   warm boot so recarregar CCP/BDOS, sem rodar biosinit (sem banner, sem espera). Observado em 2026-11-13.
+4. Comando FLASH no monitor (ROM v2.4): copia o gravador (programas/flash_v1.asm, ~1,6 KB) da ROM para a RAM ($2000) e executa;
+   sempre inicia em modo COMPARAR; para gravar, mostra um aviso e so prossegue se o usuario digitar PROSSIGA em maiusculas ("se voce REALMENTE quer atualizar a flash e sabe o que esta fazendo, digite PROSSIGA"; qualquer outra coisa cancela; pedido do usuario em 2026-11-13); com o registrador de banco ganha o parametro
+   "banco de destino" (banco 0 protegido por padrao). Manter tambem o flash_v1.s19 no PC como versao de resgate (via L).
+   Futuro: ler a imagem do cartao SD (FAT32) em vez da serial. Espaco livre atual na ROM: ~5,8 KB (maior faixa $F833F8-$F83FFF).
+
+CANDIDATAS (discutidas, ainda nao decididas)
+- (feito na v2.1: deteccao e protecao) Falta rever X/Z/F para o novo mapa depois de testar na placa.
+- Se o clock do 68000 subir: rever constantes de atraso do Tetris.
+
+DECIDIDO: serial continua em 57600 bps (115200 nao funciona com o cristal de 3,6864 MHz; 38400 funciona).
+
+5. (pedido 2026-11-13) Comando L (carga de S19) deve mostrar, ao terminar: quantidade de registros/blocos, endereco inicial E o tamanho em bytes (em hexadecimal). Ex.: "OK registros=0078 inicio=00002000 tamanho=00000774 bytes".
+
+6. (2026-11-14) CABECALHO DE BANCO (inspirado no MSX "AB") + MENU DE BOOT POR BANCO na ROM v2.4.
+   Cabecalho de 64 bytes em $F807C0-$F807FF (area livre apos os vetores; a ROM v2.3.1 usa o banco todo, entao o fim do banco nao serve; banco apagado = FF = sem assinatura). CRC32 cobre [inicio..$F807BF]+[$F80800..fim]:
+   +0 "AB" | +2 tipo (0000 = ROM completa: SP/PC dos vetores; 0001 = aplicativo: entra no endereco de partida)
+   +4 long inicio | +8 long fim | +12 long partida | +16 nome (16 ASCII) | +32 versao (8 ASCII) | +40 CRC32 inicio..fim | +44 reservado ($FF)
+   Menu varre os 8 bancos, lista os com "AB" (e marca CRC OK/ruim), seleciona e entra como bankboot_v1. RESET volta ao banco 0.
+   Cartuchos candidatos: Forth, CP/M com disco A: na flash (A.dsk = 4 bancos, leitura de setor em RAM), ROM de reserva v2.3.1.
+   Ferramenta: ferramentas/mkbanco_v2.py. Mapa sugerido: 0 boot+menu, 1 reserva v2.3.1, 2 teste, 3-6 A.dsk/apps, 7 Forth.
+
+7. (2026-11-14) ADIADOS por decisao do usuario: expansao de RAM (2 chips 512K disponiveis; caminhos: RAM contigua 1 MB em $100000 via CPLD/interposer, ou RAM em banco para disco RAM P:) e interposer. PRIORIDADE AGORA: cartao SD funcionando (driver programas/sd.asm so testado no emulador; ligacao J1 -> EXP2 da RepRapDiscount em docs/Ligacao_RRD_Smart_Controller_J1.txt).
+
+8. (2026-11-14) eForth (banco 3 = forth/eforth_bank_v1.bin, cabecalho AB tipo 1). Proximos passos: (a) menu de boot da ROM v2.4 listar o banco e dar boot (como bankboot_v1); (b) prelude com DO/LOOP/?DO/+LOOP/I/J, S", comandos de memoria e MONITOR; (c) acesso ao SD e a serial B; (d) salvar/carregar fontes Forth do SD (FAT32); (e) tirar o JMP de BYE do banco quando houver menu.
+
+ATUALIZACAO 14/11/2026 (noite): ROM v2.4 gerada (rom/ROM_V2.4_*), testada so em emulador, NAO gravada na placa.
+ - Item 5 (L mostra inicio/tamanho): FEITO.   - Item 6 (cabecalho AB banco 0 + menu [A] de bancos com CRC32 e boot): FEITO.
+ - Faltam na v2.4: item 2 (MONITOR no EhBASIC), item 3 (warm boot CP/M), item 4 (comando FLASH).
+ - Para gravar: flash_v2 com BANK=0, BCONF=$0BA0 e a imagem PARAGON512_F80000.bin (risco: se falhar, banco 0 fica sem monitor; manter 27C512/v2.3.1 de reserva).
+
+ATUALIZACAO 14/11/2026 (01:58): ROM v2.5 na placa. Itens 2 (MONITOR no EhBASIC), 3 (warm boot CP/M), 4 (comando FLASH), 5 (L) e 6 (menu de bancos) FEITOS e validados. Pendente: bancos 1-7 estao todos com a v2.5 (recolocar eForth no banco 3 com FLASH 3 + eforth_bank_v4.bin); texto do comando I ainda diz v2.2; usar sempre ROM so para Am29F040B.

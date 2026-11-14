@@ -1,0 +1,3 @@
+*IDN?
+:MEASure:FREQuency? CHANnel1
+#png tela_inicial

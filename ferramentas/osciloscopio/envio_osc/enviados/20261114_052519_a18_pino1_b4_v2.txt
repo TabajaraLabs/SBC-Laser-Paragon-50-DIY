@@ -1,0 +1,11 @@
+:CHANnel1:DISPlay ON
+:CHANnel1:PROBe 10
+:CHANnel1:SCALe 2
+:CHANnel1:OFFSET 5
+:CHANnel1:COUPling DC
+:TIMebase:SCALe 0.5
+:TRIGger:SWEep AUTO
+:RUN
+#wait 3
+#nivel 1
+#png a18_banco4_v2

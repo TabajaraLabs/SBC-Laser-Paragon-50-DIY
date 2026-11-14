@@ -1,0 +1,34 @@
+PARAGON 50  <->  RepRapDiscount Smart Controller (LCD 20x4 + encoder + buzzer + SD)
+Ordem dos pinos dos conectores EXP1/EXP2 de MEMORIA (padrao RAMPS). CONFIRMAR na serigrafia da placa antes de ligar.
+
+  EXP1                                  EXP2
+  1 BEEPER     2 BTN_ENC                1 MISO        2 SCK
+  3 LCD_EN     4 LCD_RS                 3 BTN_EN1     4 SD_CS
+  5 LCD_D4     6 LCD_D5                 5 BTN_EN2     6 MOSI
+  7 LCD_D6     8 LCD_D7                 7 SD_DETECT   8 KILL
+  9 GND       10 +5V                    9 GND        10 (nao usar)
+
+SAIDAS (latch $020018, escrita 16 bits; bit n)       FIO
+  J1-28  bit0  SCK            ->  EXP2-2
+  J1-26  bit1  MOSI           ->  EXP2-6
+  J1-24  bit2  SD_CS          ->  EXP2-4
+  J1-20  bit3  LCD_EN         ->  EXP1-3
+  J1-18  bit4  LCD_RS         ->  EXP1-4
+  J1-15  bit5  LCD_D4         ->  EXP1-5
+  J1-14  bit6  LCD_D5         ->  EXP1-6
+  J1-10  bit7  LCD_D6         ->  EXP1-7
+  J2-47  bit8  LCD_D7         ->  EXP1-8      (fio em J2)
+  J2-40  bit9  BEEPER         ->  EXP1-1      (fio em J2)
+
+ENTRADAS (aterrado = bit 1)
+  J1-7   B0 ($020028)  MISO       <-  EXP2-1
+  J1-31  B3            BTN_ENC    <-  EXP1-2
+  J1-33  B2            BTN_EN1    <-  EXP2-3
+  J1-35  B1            BTN_EN2    <-  EXP2-5
+  J1-27  B4            SD_DETECT  <-  EXP2-7   (opcional)
+
+TERRA E ALIMENTACAO
+  J1-9 (GND)  -> EXP1-9 e EXP2-9 ; J1-1/2/50 -> GND da fonte externa de 5 V
+  +5 V externo -> EXP1-10 (J1 nao tem VCC)
+  KILL (EXP2-8) e EXP2-10: sem ligacao.
+Livres: J1-23 (B6), J1-25 (B5), J1-36 (B7), J1-4 (A3).

@@ -1,0 +1,18 @@
+*IDN?
+:STOP
+:CHANnel1:DISPlay ON
+:CHANnel1:PROBe 10
+:CHANnel1:SCALe 2
+:CHANnel1:OFFSet 5
+:CHANnel1:COUPling DC
+:TIMebase:SCALe 0.0002
+:TIMebase:POSition 0.0008
+:TRIGger:MODE EDGE
+:TRIGger:EDGE:SOURce CHANnel1
+:TRIGger:EDGE:SLOPe POSitive
+:TRIGger:EDGE:LEVel 2
+:TRIGger:SWEep NORMal
+:SINGle
+#wait 1
+:TER?
+#png sck_armado_v1

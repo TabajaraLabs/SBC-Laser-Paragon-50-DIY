@@ -1,0 +1,3 @@
+:MEASure:VAVerage? CHANnel1
+:MEASure:VMAX? CHANnel1
+:MEASure:VMIN? CHANnel1

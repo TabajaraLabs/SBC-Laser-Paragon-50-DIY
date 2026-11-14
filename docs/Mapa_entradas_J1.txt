@@ -1,0 +1,16 @@
+PARAGON 50 - ENTRADAS DE J1 (medido em 2026-11-12, com entradas_bip, resistor de 330 ohms ao GND)
+Porta A = $020030, porta B = $020028. Pino aterrado => o bit lido sobe para 1 (74LS240 inversor, pull-up 4,7k).
+
+Pino   Bit   Observacao
+J1-4   A3    anotado na folha
+J1-7   B0    usado como MISO do SD
+J1-23  B6
+J1-25  B5
+J1-27  B4
+J1-29  --    sem resposta (riscado na folha)
+J1-31  B3
+J1-?   B7    numero do pino ilegivel na folha (a confirmar)
+J1-33  B2
+J1-35  B1
+
+Saidas vizinhas (latch $020018): J1-24 bit2 (CS do SD), J1-26 bit1 (MOSI), J1-28 bit0 (SCK).

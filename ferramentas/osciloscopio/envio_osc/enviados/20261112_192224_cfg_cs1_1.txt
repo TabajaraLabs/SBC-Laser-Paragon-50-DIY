@@ -1,0 +1,18 @@
+:CHANnel1:DISPlay ON
+:CHANnel2:DISPlay ON
+:CHANnel1:SCALe 1
+:CHANnel2:SCALe 1
+:CHANnel1:OFFSet 2.5
+:CHANnel2:OFFSet 2.5
+:TIMebase:SCALe 1E-6
+:TIMebase:POSition 0
+:TRIGger:MODE EDGE
+:TRIGger:EDGE:SOURce CHANnel1
+:TRIGger:EDGE:SLOPe NEGative
+:TRIGger:EDGE:LEVel 1.5
+:TRIGger:SWEep AUTO
+:RUN
+#wait 2
+#png repouso_y6_cs1
+#nivel 1
+#nivel 2

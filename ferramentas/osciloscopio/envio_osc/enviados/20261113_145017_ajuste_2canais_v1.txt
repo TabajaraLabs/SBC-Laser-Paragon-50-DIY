@@ -1,0 +1,6 @@
+:CHANnel1:DISPlay ON
+:CHANnel2:DISPlay ON
+:CHANnel1:SCALe 2
+:CHANnel2:SCALe 2
+:CHANnel1:OFFSet -3
+:CHANnel2:OFFSet 5

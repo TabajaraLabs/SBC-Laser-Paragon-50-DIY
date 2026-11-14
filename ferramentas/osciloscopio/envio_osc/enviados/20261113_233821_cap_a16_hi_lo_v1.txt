@@ -1,0 +1,13 @@
+:TIMebase:SCALe 1E-3
+:TIMebase:POSition 0
+:TRIGger:SWEep AUTO
+:CHANnel1:DISPlay ON
+:CHANnel2:DISPlay ON
+:CHANnel1:SCALe 1
+:CHANnel2:SCALe 1
+:RUN
+#wait 2
+:MEASure:VAVerage? CHANnel1
+:MEASure:VAVerage? CHANnel2
+#png a16_hi_lo_v1
+:RUN

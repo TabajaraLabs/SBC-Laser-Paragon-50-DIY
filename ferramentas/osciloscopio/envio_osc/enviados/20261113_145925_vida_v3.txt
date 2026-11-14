@@ -1,0 +1,9 @@
+:TRIGger:SWEep AUTO
+:RUN
+#wait 2
+:MEASure:VAVerage? CHANnel1
+:MEASure:VMAX? CHANnel1
+:MEASure:VMIN? CHANnel1
+:MEASure:VAVerage? CHANnel2
+:MEASure:VMAX? CHANnel2
+:MEASure:VMIN? CHANnel2

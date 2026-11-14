@@ -1,0 +1,4 @@
+:RUN
+:TRIGger:SWEep AUTO
+#wait 1
+#medir 1

@@ -1,0 +1,12 @@
+ATENCAO (13/11/2026): as pontes mudaram para Documents\Claude\pontes (ponte_serial.bat e ponte_osc.bat, v2). Veja Claude\pontes\LEIA-ME.txt. O texto abaixo e da v1; o funcionamento e as pastas deste projeto (serial.log, envio\, osc\) continuam iguais.
+
+PONTE SERIAL (COM9) - como usar
+1. Instalar uma vez:   py -3 -m pip install pyserial
+2. Fechar o RealTerm (a porta so abre em um programa por vez).
+3. Dar dois cliques em ponte.bat (ou: py -3 ferramentas\paragon_bridge.py --port COM9).
+4. A janela funciona como terminal: tudo que a placa envia aparece, e o que voce digitar vai para a placa.
+5. Tudo e gravado em serial.log (com hora). O Claude le este arquivo.
+6. Pasta envio\: arquivo .s19 = carregado (comando L); se o nome terminar em _run (ex.: teste_run.s19) tambem executa (G).
+   arquivo .txt = uma linha por comando do monitor; "#wait 60" aumenta o tempo de espera por comando.
+   Os arquivos processados vao para envio\enviados\.
+7. Ctrl+C encerra.

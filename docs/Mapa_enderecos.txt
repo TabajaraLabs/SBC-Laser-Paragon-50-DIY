@@ -1,0 +1,14 @@
+MAPA DE ENDERECOS DO PARAGON 50 - medido por leitura em 2026-11-10 (scan de 256 blocos de 64 KB)
+O decodificador usa so A17 e A18 na parte baixa; A16 e A19-A23 sao ignorados (tudo se repete de $80000 em $80000 ate $F7FFFF).
+Blocos de 128 KB (A18,A17):
+  00  $000000-$01FFFF  RAM de 64 KB ($0000-$FFFF), espelhada em $10000-$1FFFF
+  01  $020000-$03FFFF  I/O de 16 bits (firmware: $020000 entradas, $02000A/C DACs, $020010-16 8254, latches $020018/20, entradas $020028/30); espelho em $030000
+  10  $040000-$05FFFF  I/O de 8 bits (firmware: $040180, $04018A, $040194, $04019C); le $FF
+  11  $060000-$07FFFF  SEM DTACK: a CPU trava e o watchdog reinicia (livre para expansao; o dispositivo novo tem de gerar /DTACK)
+Topo $F80000-$FFFFFF (so quando A23-A19 = 11111; $F00000-$F7FFFF age como a parte baixa):
+  $F80000-$F9FFFF  ROM 64 KB (espelhada em $F90000)
+  $FA0000-$FBFFFF  68681 DUART (espelhado em $FB0000)
+  $FC0000-$FDFFFF  responde com DTACK mas sem dispositivo (barramento aberto: devolve $6100 = lixo do ultimo ciclo)
+  $FE0000-$FFFFFF  le $FF
+Notas: nao ha circuito de timeout de barramento (BERR): endereco sem DTACK = travamento + reset pelo watchdog.
+Ler $FA0000 com D consome caracteres do receptor (leitura do RHR).

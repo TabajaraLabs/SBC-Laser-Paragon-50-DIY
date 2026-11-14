@@ -1,0 +1,5 @@
+:TRIGger:SWEep NORMal
+:TRIGger:EDGE:SLOPe NEGative
+:TRIGger:EDGE:LEVel 2
+:SINGle
+#wait 1

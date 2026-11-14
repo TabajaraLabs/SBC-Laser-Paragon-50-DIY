@@ -1,0 +1,7 @@
+:TIMebase:SCALe 0.05
+:TRIGger:SWEep AUTO
+:CHANnel1:SCALe 2
+:CHANnel1:OFFSet 5
+:TIMebase:SCALe?
+#wait 2
+#png ajuste_lento

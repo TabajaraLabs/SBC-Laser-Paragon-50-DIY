@@ -1,0 +1,4 @@
+:TRIGger:SWEep AUTO
+:RUN
+#wait 1.5
+#nivel 1

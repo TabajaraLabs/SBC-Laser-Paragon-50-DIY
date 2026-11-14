@@ -1,0 +1,4 @@
+:TIMebase:SCALe 0.00001
+:TRIGger:SWEep AUTO
+#medir 1
+#png rt28

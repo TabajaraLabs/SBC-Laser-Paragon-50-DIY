@@ -1,0 +1,3 @@
+:TRIGger:SWEep NORMal
+:SINGle
+#wait 1

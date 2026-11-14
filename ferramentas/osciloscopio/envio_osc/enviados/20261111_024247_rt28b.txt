@@ -1,0 +1,3 @@
+:RUN
+#medir 1
+#png rt28b

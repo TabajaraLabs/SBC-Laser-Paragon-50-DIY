@@ -1,0 +1,2 @@
+#medir 1
+#png j2_p23

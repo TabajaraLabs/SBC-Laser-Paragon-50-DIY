@@ -1,0 +1,7 @@
+:TRIGger:SWEep AUTO
+:RUN
+:CHANnel1:SCALe 1
+:CHANnel1:OFFSet 2
+:TRIGger:EDGE:LEVel 1.5
+#wait 1.5
+#nivel 1

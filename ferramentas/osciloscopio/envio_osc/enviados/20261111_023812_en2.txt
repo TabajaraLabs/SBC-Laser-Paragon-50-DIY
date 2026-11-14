@@ -1,0 +1,7 @@
+:TIMebase:SCALe 0.00002
+:TRIGger:SWEep AUTO
+:CHANnel1:SCALe 1
+:CHANnel1:OFFSet 2.5
+#wait 1
+#medir 1
+#png enable_u48

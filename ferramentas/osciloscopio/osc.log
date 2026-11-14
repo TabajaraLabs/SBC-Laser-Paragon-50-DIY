@@ -1,0 +1,991 @@
+[00:32:37.612] ponte_osc: conectando a 192.168.0.30:5025 ...
+[00:32:37.969] conectado: AGILENT TECHNOLOGIES,DSO-X 2002A,MY51331246,02.50.2019022736
+[00:32:37.970] monitorando C:\Users\Alexandre\Documents\Claude\Paragon50\osc\envio_osc
+[00:34:47.369] [ponte] processando t1.txt
+[00:34:47.388] *IDN? -> AGILENT TECHNOLOGIES,DSO-X 2002A,MY51331246,02.50.2019022736
+[00:34:47.388] enviado: :MEASure:FREQuency? CHANnel1
+[00:34:47.485] ERRO em '#png tela_inicial': invalid literal for int() with base 10: b'.'
+[00:34:47.487] [ponte] fim de t1.txt
+[00:35:18.915] ponte_osc: conectando a 192.168.0.30:5025 ...
+[00:35:18.953] conectado: AGILENT TECHNOLOGIES,DSO-X 2002A,MY51331246,02.50.2019022736
+[00:35:18.954] monitorando C:\Users\Alexandre\Documents\Claude\Paragon50\osc\envio_osc
+[00:48:15.626] [ponte] processando m15.txt
+[00:48:15.687] CH1 FREQuency = 3.378E+03
+[00:48:15.744] CH1 VPP = 5.35E+00
+[00:48:15.802] CH1 VMAX = 4.30E+00
+[00:48:15.860] CH1 VMIN = -1.05E+00
+[00:48:15.927] CH1 VAVerage = 2.1045E+00
+[00:48:16.022] CH2 FREQuency = 9.9E+37
+[00:48:16.090] CH2 VPP = 1.6E-01
+[00:48:16.157] CH2 VMAX = 6E-02
+[00:48:16.223] CH2 VMIN = -1.0E-01
+[00:48:16.300] CH2 VAVerage = -1.44E-02
+[00:48:17.535] captura salva: capturas\j1_p15.png
+[00:48:17.536] [ponte] fim de m15.txt
+[00:50:02.860] [ponte] processando m17.txt
+[00:50:02.916] CH1 FREQuency = 3.378E+03
+[00:50:02.974] CH1 VPP = 1.77E+00
+[00:50:03.033] CH1 VMAX = 7.2E-01
+[00:50:03.089] CH1 VMIN = -1.09E+00
+[00:50:03.148] CH1 VAVerage = -4.87E-02
+[00:50:04.361] captura salva: capturas\j1_p17.png
+[00:50:04.363] [ponte] fim de m17.txt
+[00:53:24.774] [ponte] processando m10.txt
+[00:53:24.833] CH1 FREQuency = 8.4459E+02
+[00:53:24.891] CH1 VPP = 5.19E+00
+[00:53:24.943] CH1 VMAX = 4.26E+00
+[00:53:24.994] CH1 VMIN = -9.2E-01
+[00:53:25.056] CH1 VAVerage = 2.1040E+00
+[00:53:26.233] captura salva: capturas\j1_p10.png
+[00:53:26.235] [ponte] fim de m10.txt
+[00:54:00.240] [ponte] processando m14.txt
+[00:54:00.296] CH1 FREQuency = 1.6892E+03
+[00:54:00.350] CH1 VPP = 5.39E+00
+[00:54:00.401] CH1 VMAX = 4.50E+00
+[00:54:00.453] CH1 VMIN = -8.4E-01
+[00:54:00.513] CH1 VAVerage = 2.1182E+00
+[00:54:00.514] [ponte] fim de m14.txt
+[00:54:38.434] [ponte] processando m18.txt
+[00:54:38.487] CH1 FREQuency = 6.757E+03
+[00:54:38.539] CH1 VPP = 5.31E+00
+[00:54:38.590] CH1 VMAX = 4.46E+00
+[00:54:38.648] CH1 VMIN = -9.2E-01
+[00:54:38.713] CH1 VAVerage = 2.1280E+00
+[00:54:38.715] [ponte] fim de m18.txt
+[00:55:04.592] [ponte] processando m20.txt
+[00:55:04.642] CH1 FREQuency = 1.351E+04
+[00:55:04.701] CH1 VPP = 5.27E+00
+[00:55:04.752] CH1 VMAX = 4.34E+00
+[00:55:04.810] CH1 VMIN = -8.8E-01
+[00:55:04.877] CH1 VAVerage = 2.1133E+00
+[00:55:04.878] [ponte] fim de m20.txt
+[00:55:37.074] [ponte] processando m24.txt
+[00:55:37.124] CH1 FREQuency = 2.706E+04
+[00:55:37.183] CH1 VPP = 5.15E+00
+[00:55:37.234] CH1 VMAX = 4.30E+00
+[00:55:37.286] CH1 VMIN = -8.4E-01
+[00:55:37.347] CH1 VAVerage = 2.1073E+00
+[00:55:37.348] [ponte] fim de m24.txt
+[00:56:05.629] [ponte] processando m26.txt
+[00:56:05.682] CH1 FREQuency = 5.41E+04
+[00:56:05.745] CH1 VPP = 5.27E+00
+[00:56:05.797] CH1 VMAX = 4.50E+00
+[00:56:05.851] CH1 VMIN = -8.8E-01
+[00:56:05.921] CH1 VAVerage = 2.1048E+00
+[00:56:05.923] [ponte] fim de m26.txt
+[00:56:35.716] [ponte] processando m28.txt
+[00:56:35.777] CH1 FREQuency = 1.08E+05
+[00:56:35.839] CH1 VPP = 4.82E+00
+[00:56:35.904] CH1 VMAX = 4.14E+00
+[00:56:35.972] CH1 VMIN = -6.8E-01
+[00:56:36.048] CH1 VAVerage = 2.0312E+00
+[00:56:36.050] [ponte] fim de m28.txt
+[01:00:07.294] [ponte] processando j23.txt
+[01:00:07.450] CH1 FREQuency = 9.9E+37
+[01:00:07.582] CH1 VPP = 3.6E-01
+[01:00:07.799] CH1 VMAX = 4.58E+00
+[01:00:07.931] CH1 VMIN = -2.0E-01
+[01:00:08.091] CH1 VAVerage = 4.4015E+00
+[01:00:09.277] captura salva: capturas\j2_p23.png
+[01:00:09.279] [ponte] fim de j23.txt
+[01:01:26.613] [ponte] processando ajuste.txt
+[01:01:26.621] enviado: :TIMebase:SCALe 0.05
+[01:01:26.622] enviado: :TRIGger:SWEep AUTO
+[01:01:26.622] enviado: :CHANnel1:SCALe 2
+[01:01:26.623] enviado: :CHANnel1:OFFSet 5
+[01:01:26.852] :TIMebase:SCALe? -> 5.000E-02
+[01:01:30.028] captura salva: capturas\ajuste_lento.png
+[01:01:30.030] [ponte] fim de ajuste.txt
+[02:37:53.157] [ponte] processando en1.txt
+[02:37:53.159] [ponte] fim de en1.txt
+[02:38:10.609] [ponte] processando en2.txt
+[02:38:10.618] enviado: :TIMebase:SCALe 0.00002
+[02:38:10.618] enviado: :TRIGger:SWEep AUTO
+[02:38:10.619] enviado: :CHANnel1:SCALe 1
+[02:38:10.619] enviado: :CHANnel1:OFFSet 2.5
+[02:38:11.729] CH1 FREQuency = 9.9E+37
+[02:38:11.749] CH1 VPP = 2.4E-01
+[02:38:11.767] CH1 VMAX = 4.19E+00
+[02:38:11.783] CH1 VMIN = 3.95E+00
+[02:38:11.808] CH1 VAVerage = 4.0621E+00
+[02:38:12.962] captura salva: capturas\enable_u48.png
+[02:38:12.964] [ponte] fim de en2.txt
+[02:40:27.158] [ponte] processando rt28.txt
+[02:40:27.165] enviado: :TIMebase:SCALe 0.00001
+[02:40:27.165] enviado: :TRIGger:SWEep AUTO
+[02:40:27.382] CH1 FREQuency = 9.9E+37
+[02:40:27.398] CH1 VPP = 2.4E-01
+[02:40:27.415] CH1 VMAX = 4.19E+00
+[02:40:27.430] CH1 VMIN = 3.95E+00
+[02:40:27.464] CH1 VAVerage = 4.0620E+00
+[02:40:28.627] captura salva: capturas\rt28.png
+[02:40:28.629] [ponte] fim de rt28.txt
+[02:40:54.805] [ponte] processando run1.txt
+[02:40:54.813] enviado: :RUN
+[02:40:54.813] enviado: :TRIGger:SWEep AUTO
+[02:40:55.923] CH1 FREQuency = 1.6812E+05
+[02:40:56.040] CH1 VPP = 3.6E-01
+[02:40:56.156] CH1 VMAX = 4.19E+00
+[02:40:56.272] CH1 VMIN = 3.91E+00
+[02:40:56.397] CH1 VAVerage = 4.0679E+00
+[02:40:56.399] [ponte] fim de run1.txt
+[02:42:45.627] [ponte] processando rt28b.txt
+[02:42:45.635] enviado: :RUN
+[02:42:45.945] CH1 FREQuency = 2.163E+05
+[02:42:46.063] CH1 VPP = 4.82E+00
+[02:42:46.178] CH1 VMAX = 4.19E+00
+[02:42:46.295] CH1 VMIN = -5.6E-01
+[02:42:46.419] CH1 VAVerage = 3.4011E+00
+[02:42:47.643] captura salva: capturas\rt28b.png
+[02:42:47.645] [ponte] fim de rt28b.txt
+[02:44:51.611] [ponte] processando ph.txt
+[02:44:51.619] enviado: :RUN
+[02:44:51.620] enviado: :TIMebase:SCALe 0.00001
+[02:44:52.235] CH1 FREQuency = 2.162E+05
+[02:44:52.352] CH1 VPP = 5.11E+00
+[02:44:52.468] CH1 VMAX = 4.47E+00
+[02:44:52.584] CH1 VMIN = -6.4E-01
+[02:44:52.708] CH1 VAVerage = 3.4702E+00
+[02:44:55.012] CH1 FREQuency = 9.9E+37
+[02:44:55.129] CH1 VPP = 2.4E-01
+[02:44:55.246] CH1 VMAX = 4.23E+00
+[02:44:55.362] CH1 VMIN = 3.95E+00
+[02:44:55.486] CH1 VAVerage = 4.0629E+00
+[02:44:57.790] CH1 FREQuency = 9.9E+37
+[02:44:57.907] CH1 VPP = 2.8E-01
+[02:44:58.023] CH1 VMAX = 4.19E+00
+[02:44:58.139] CH1 VMIN = 3.95E+00
+[02:44:58.263] CH1 VAVerage = 4.0645E+00
+[02:45:00.567] CH1 FREQuency = 9.9E+37
+[02:45:00.684] CH1 VPP = 2.4E-01
+[02:45:00.801] CH1 VMAX = 4.19E+00
+[02:45:00.917] CH1 VMIN = 3.95E+00
+[02:45:01.042] CH1 VAVerage = 4.0684E+00
+[02:45:03.344] CH1 FREQuency = 9.9E+37
+[02:45:03.462] CH1 VPP = 2.8E-01
+[02:45:03.579] CH1 VMAX = 4.19E+00
+[02:45:03.695] CH1 VMIN = 3.95E+00
+[02:45:03.819] CH1 VAVerage = 4.0648E+00
+[02:45:03.820] [ponte] fim de ph.txt
+[03:02:00.791] [ponte] processando y0.txt
+[03:02:00.798] enviado: :RUN
+[03:02:00.799] enviado: :TIMebase:SCALe 0.00001
+[03:02:02.210] CH1  Vmax=1.3E-01  Vmin=-1.5E-01
+[03:02:05.220] CH1  Vmax=-1.9E-01  Vmin=-3.1E-01
+[03:02:08.231] CH1  Vmax=5E-02  Vmin=-1.1E-01
+[03:02:11.258] CH1  Vmax=4.23E+00  Vmin=3.87E+00
+[03:02:14.285] CH1  Vmax=4.15E+00  Vmin=-5.2E-01
+[03:02:17.312] CH1  Vmax=4.19E+00  Vmin=3.95E+00
+[03:02:20.323] CH1  Vmax=4.19E+00  Vmin=3.95E+00
+[03:02:23.334] CH1  Vmax=4.19E+00  Vmin=3.95E+00
+[03:02:26.136] [ponte] fim de y0.txt
+[03:02:44.192] [ponte] processando y0b.txt
+[03:02:44.201] enviado: :RUN
+[03:02:50.926] CH1  Vmax=4.19E+00  Vmin=3.95E+00
+[03:02:53.837] CH1  Vmax=4.19E+00  Vmin=3.95E+00
+[03:02:56.765] CH1  Vmax=4.19E+00  Vmin=3.91E+00
+[03:02:56.767] [ponte] fim de y0b.txt
+[19:19:54.540] ponte_osc: conectando a 192.168.0.30:5025 ...
+[19:19:54.646] conectado: AGILENT TECHNOLOGIES,DSO-X 2002A,MY51331246,02.50.2019022736
+[19:19:54.647] monitorando C:\Users\Alexandre\Documents\Claude\Paragon50\osc\envio_osc
+[19:19:54.647] [ponte] processando teste_idn.txt
+[19:19:54.671] *IDN? -> AGILENT TECHNOLOGIES,DSO-X 2002A,MY51331246,02.50.2019022736
+[19:19:54.673] [ponte] fim de teste_idn.txt
+[19:22:20.681] [ponte] processando cfg_cs1_1.txt
+[19:22:20.692] enviado: :CHANnel1:DISPlay ON
+[19:22:20.693] enviado: :CHANnel2:DISPlay ON
+[19:22:20.693] enviado: :CHANnel1:SCALe 1
+[19:22:20.694] enviado: :CHANnel2:SCALe 1
+[19:22:20.694] enviado: :CHANnel1:OFFSet 2.5
+[19:22:20.695] enviado: :CHANnel2:OFFSet 2.5
+[19:22:20.695] enviado: :TIMebase:SCALe 1E-6
+[19:22:20.696] enviado: :TIMebase:POSition 0
+[19:22:20.696] enviado: :TRIGger:MODE EDGE
+[19:22:20.697] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[19:22:20.697] enviado: :TRIGger:EDGE:SLOPe NEGative
+[19:22:20.698] enviado: :TRIGger:EDGE:LEVel 1.5
+[19:22:20.698] enviado: :TRIGger:SWEep AUTO
+[19:22:20.699] enviado: :RUN
+[19:22:24.050] captura salva: capturas\repouso_y6_cs1.png
+[19:22:24.268] CH1  Vmax=5E-02  Vmin=-1.1E-01
+[19:22:24.484] CH2  Vmax=4.39E+00  Vmin=3.91E+00
+[19:22:24.487] [ponte] fim de cfg_cs1_1.txt
+[19:23:43.957] [ponte] processando cap_T_1.txt
+[19:23:48.219] captura salva: capturas\durante_T_y6_cs1.png
+[19:23:48.309] CH1  Vmax=4.19E+00  Vmin=-1.9E-01
+[19:23:48.412] CH2  Vmax=4.47E+00  Vmin=-1.08E+00
+[19:23:52.639] captura salva: capturas\durante_T_y6_cs1b.png
+[19:23:52.641] [ponte] fim de cap_T_1.txt
+[19:24:58.564] [ponte] processando cap_T_2.txt
+[19:25:00.795] captura salva: capturas\durante_T2_a.png
+[19:25:00.897] CH1  Vmax=4.19E+00  Vmin=-2.3E-01
+[19:25:00.996] CH2  Vmax=4.43E+00  Vmin=-1.12E+00
+[19:25:04.216] captura salva: capturas\durante_T2_b.png
+[19:25:04.218] [ponte] fim de cap_T_2.txt
+[19:26:26.409] [ponte] processando cap_oe.txt
+[19:26:31.802] captura salva: capturas\oe_a.png
+[19:26:36.186] captura salva: capturas\oe_b.png
+[19:26:36.409] CH2  Vmax=3.99E+00  Vmin=-6.8E-01
+[19:26:36.410] [ponte] fim de cap_oe.txt
+[19:33:40.199] [ponte] processando cap_oe_single.txt
+[19:33:40.208] enviado: :TRIGger:SWEep NORMal
+[19:33:40.209] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[19:33:40.210] enviado: :TRIGger:EDGE:SLOPe NEGative
+[19:33:40.211] enviado: :TRIGger:EDGE:LEVel 1.5
+[19:33:40.212] enviado: :TIMebase:SCALe 5E-7
+[19:33:40.213] enviado: :SINGle
+[19:33:51.440] captura salva: capturas\oe_single.png
+[19:33:51.458] CH1  Vmax=4.11E+00  Vmin=-7E-02
+[19:33:51.479] CH2  Vmax=4.07E+00  Vmin=-8.4E-01
+[19:33:51.481] [ponte] fim de cap_oe_single.txt
+[19:35:16.964] [ponte] processando cap_we_single.txt
+[19:35:16.966] [ponte] fim de cap_we_single.txt
+[19:35:50.073] [ponte] processando cap_we_single2.txt
+[19:35:50.082] enviado: :TRIGger:SWEep NORMal
+[19:35:50.083] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[19:35:50.084] enviado: :TRIGger:EDGE:SLOPe NEGative
+[19:35:50.084] enviado: :TRIGger:EDGE:LEVel 1.5
+[19:35:50.085] enviado: :TIMebase:SCALe 5E-7
+[19:35:50.086] enviado: :SINGle
+[19:36:01.291] captura salva: capturas\we_single.png
+[19:36:16.299] ERRO em '#nivel 1': timed out
+[19:36:31.302] ERRO em '#nivel 2': timed out
+[19:36:31.304] [ponte] fim de cap_we_single2.txt
+[19:36:31.606] [ponte] processando cap_we_b.txt
+[19:36:46.621] ERRO em '#png we_single_b': timed out
+[19:37:01.634] ERRO em ':OPERegister:CONDition?': timed out
+[19:37:16.578] ERRO em ':TRIGger:SWEep?': timed out
+[19:37:16.580] [ponte] fim de cap_we_b.txt
+[19:37:58.416] ponte_osc: conectando a 192.168.0.30:5025 ...
+[19:37:58.452] conectado: AGILENT TECHNOLOGIES,DSO-X 2002A,MY51331246,02.50.2019022736
+[19:37:58.452] monitorando C:\Users\Alexandre\Documents\Claude\Paragon50\osc\envio_osc
+[19:38:22.227] [ponte] processando cap_we3.txt
+[19:38:22.239] enviado: :TRIGger:SWEep NORMal
+[19:38:22.241] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[19:38:22.242] enviado: :TRIGger:EDGE:SLOPe NEGative
+[19:38:22.243] enviado: :TRIGger:EDGE:LEVel 1.5
+[19:38:22.247] enviado: :TIMebase:SCALe 5E-7
+[19:38:22.248] enviado: :SINGle
+[19:38:36.250] enviado: :STOP
+[19:38:38.431] captura salva: capturas\we_single3.png
+[19:38:38.433] [ponte] fim de cap_we3.txt
+[19:40:04.522] [ponte] processando cfg2.txt
+[19:40:04.545] ERRO em '*IDN?': [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+[19:40:04.546] ERRO em ':CHANnel1:DISPlay ON': [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+[19:40:04.547] ERRO em ':CHANnel2:DISPlay ON': [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+[19:40:04.547] ERRO em ':CHANnel1:PROBe 10': [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+[19:40:04.547] ERRO em ':CHANnel2:PROBe 10': [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+[19:40:04.548] ERRO em ':CHANnel1:SCALe 1': [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+[19:40:04.548] ERRO em ':CHANnel2:SCALe 1': [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+[19:40:04.549] ERRO em ':CHANnel1:OFFSet 2.5': [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+[19:40:04.549] ERRO em ':CHANnel2:OFFSet 2.5': [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+[19:40:04.550] ERRO em ':TIMebase:SCALe 5E-7': [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+[19:40:04.550] ERRO em ':TRIGger:MODE EDGE': [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+[19:40:04.551] ERRO em ':TRIGger:EDGE:SOURce CHANnel1': [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+[19:40:04.551] ERRO em ':TRIGger:EDGE:SLOPe NEGative': [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+[19:40:04.551] ERRO em ':TRIGger:EDGE:LEVel 1.5': [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+[19:40:04.552] ERRO em ':TRIGger:SWEep AUTO': [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+[19:40:04.554] ERRO em ':RUN': [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+[19:40:06.556] ERRO em '#png repouso2': [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+[19:40:06.558] [ponte] fim de cfg2.txt
+[19:40:38.881] ponte_osc: conectando a 192.168.0.30:5025 ...
+[19:40:38.924] conectado: AGILENT TECHNOLOGIES,DSO-X 2002A,MY51331246,02.50.2019022736
+[19:40:38.925] monitorando C:\Users\Alexandre\Documents\Claude\Paragon50\osc\envio_osc
+[19:40:58.188] [ponte] processando cfg3.txt
+[19:41:40.436] *IDN? -> AGILENT TECHNOLOGIES,DSO-X 2002A,MY51331246,02.50.2019022736
+[19:41:40.437] enviado: :CHANnel1:DISPlay ON
+[19:41:40.437] enviado: :CHANnel2:DISPlay ON
+[19:41:40.437] enviado: :CHANnel1:PROBe 10
+[19:41:40.438] enviado: :CHANnel2:PROBe 10
+[19:41:40.438] enviado: :CHANnel1:SCALe 1
+[19:41:40.439] enviado: :CHANnel2:SCALe 1
+[19:41:40.439] enviado: :CHANnel1:OFFSet 2.5
+[19:41:40.440] enviado: :CHANnel2:OFFSet 2.5
+[19:41:40.440] enviado: :TIMebase:SCALe 5E-7
+[19:41:40.441] enviado: :TRIGger:MODE EDGE
+[19:41:40.441] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[19:41:40.442] enviado: :TRIGger:EDGE:SLOPe NEGative
+[19:41:40.442] enviado: :TRIGger:EDGE:LEVel 1.5
+[19:41:40.444] enviado: :TRIGger:SWEep AUTO
+[19:41:40.444] enviado: :RUN
+[19:41:43.783] captura salva: capturas\repouso2.png
+[19:41:43.785] [ponte] fim de cfg3.txt
+[19:43:00.537] [ponte] processando chk1.txt
+[19:43:00.769] CH1  Vmax=5E-02  Vmin=-1.1E-01
+[19:43:01.012] CH2  Vmax=4.31E+00  Vmin=-1.04E+00
+[19:43:02.282] captura salva: capturas\repouso3.png
+[19:43:02.284] [ponte] fim de chk1.txt
+[19:44:16.622] [ponte] processando chk2.txt
+[19:44:16.851] CH1  Vmax=4.23E+00  Vmin=3.46E+00
+[19:44:17.100] CH2  Vmax=4.59E+00  Vmin=-1.08E+00
+[19:44:17.102] [ponte] fim de chk2.txt
+[19:44:41.478] [ponte] processando chk3.txt
+[19:44:41.703] CH1  Vmax=4.23E+00  Vmin=3.42E+00
+[19:44:41.944] CH2  Vmax=4.35E+00  Vmin=-1.08E+00
+[19:44:41.946] [ponte] fim de chk3.txt
+[19:44:52.781] [ponte] processando cap_we4.txt
+[19:44:52.796] enviado: :TRIGger:SWEep NORMal
+[19:44:52.797] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[19:44:52.797] enviado: :TRIGger:EDGE:SLOPe NEGative
+[19:44:52.798] enviado: :TRIGger:EDGE:LEVel 1.5
+[19:44:52.798] enviado: :TIMebase:SCALe 5E-7
+[19:44:52.798] enviado: :SINGle
+[19:45:04.801] enviado: :STOP
+[19:45:07.020] captura salva: capturas\we4.png
+[19:45:07.022] [ponte] fim de cap_we4.txt
+[19:47:58.584] [ponte] processando cap_d1.txt
+[19:47:58.591] enviado: :TRIGger:SWEep NORMal
+[19:47:58.592] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[19:47:58.592] enviado: :TRIGger:EDGE:SLOPe NEGative
+[19:47:58.593] enviado: :TRIGger:EDGE:LEVel 1.5
+[19:47:58.594] enviado: :TIMebase:SCALe 5E-6
+[19:47:58.595] enviado: :SINGle
+[19:48:10.597] enviado: :STOP
+[19:48:12.806] captura salva: capturas\d1_a.png
+[19:48:12.807] [ponte] fim de cap_d1.txt
+[19:51:45.618] [ponte] processando cap_weleit.txt
+[19:51:45.626] enviado: :TRIGger:SWEep NORMal
+[19:51:45.627] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[19:51:45.628] enviado: :TRIGger:EDGE:SLOPe NEGative
+[19:51:45.628] enviado: :TRIGger:EDGE:LEVel 1.5
+[19:51:45.629] enviado: :TIMebase:SCALe 5E-7
+[19:51:45.629] enviado: :SINGle
+[19:51:57.631] enviado: :STOP
+[19:51:59.824] captura salva: capturas\we_leit.png
+[19:51:59.826] [ponte] fim de cap_weleit.txt
+[19:54:25.218] [ponte] processando cap_cs2.txt
+[19:54:25.229] enviado: :TRIGger:SWEep NORMal
+[19:54:25.230] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[19:54:25.230] enviado: :TRIGger:EDGE:SLOPe NEGative
+[19:54:25.231] enviado: :TRIGger:EDGE:LEVel 1.5
+[19:54:25.232] enviado: :TIMebase:SCALe 5E-7
+[19:54:25.232] enviado: :SINGle
+[19:54:37.233] enviado: :STOP
+[19:54:39.417] captura salva: capturas\cs2_leit.png
+[19:54:39.419] [ponte] fim de cap_cs2.txt
+[19:59:16.885] [ponte] processando cap_a12.txt
+[19:59:16.896] enviado: :TRIGger:SWEep NORMal
+[19:59:16.897] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[19:59:16.898] enviado: :TRIGger:EDGE:SLOPe NEGative
+[19:59:16.899] enviado: :TRIGger:EDGE:LEVel 1.5
+[19:59:16.899] enviado: :TIMebase:SCALe 5E-7
+[19:59:16.901] enviado: :SINGle
+[19:59:28.902] enviado: :STOP
+[19:59:31.077] captura salva: capturas\a12_leit.png
+[19:59:31.078] [ponte] fim de cap_a12.txt
+[20:06:20.602] [ponte] processando cap_we14.txt
+[20:06:20.611] enviado: :TRIGger:SWEep NORMal
+[20:06:20.612] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[20:06:20.613] enviado: :TRIGger:EDGE:SLOPe NEGative
+[20:06:20.614] enviado: :TRIGger:EDGE:LEVel 1.5
+[20:06:20.615] enviado: :TIMebase:SCALe 5E-7
+[20:06:20.616] enviado: :SINGle
+[20:06:32.617] enviado: :STOP
+[20:06:34.832] captura salva: capturas\we14.png
+[20:06:34.834] [ponte] fim de cap_we14.txt
+[20:07:44.349] [ponte] processando cap_cs14.txt
+[20:07:44.356] enviado: :TRIGger:SWEep NORMal
+[20:07:44.357] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[20:07:44.358] enviado: :TRIGger:EDGE:SLOPe NEGative
+[20:07:44.358] enviado: :TRIGger:EDGE:LEVel 1.5
+[20:07:44.359] enviado: :TIMebase:SCALe 5E-7
+[20:07:44.360] enviado: :SINGle
+[20:07:56.361] enviado: :STOP
+[20:07:58.582] captura salva: capturas\cs14.png
+[20:07:58.584] [ponte] fim de cap_cs14.txt
+[20:10:07.377] [ponte] processando cap_dtack.txt
+[20:10:07.385] enviado: :TRIGger:SWEep NORMal
+[20:10:07.386] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[20:10:07.387] enviado: :TRIGger:EDGE:SLOPe NEGative
+[20:10:07.387] enviado: :TRIGger:EDGE:LEVel 1.5
+[20:10:07.388] enviado: :TIMebase:SCALe 5E-7
+[20:10:07.388] enviado: :SINGle
+[20:10:19.391] enviado: :STOP
+[20:10:21.627] captura salva: capturas\dtack.png
+[20:10:21.629] [ponte] fim de cap_dtack.txt
+[20:12:12.366] [ponte] processando cap_d0.txt
+[20:12:12.373] enviado: :TRIGger:SWEep NORMal
+[20:12:12.374] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[20:12:12.374] enviado: :TRIGger:EDGE:SLOPe NEGative
+[20:12:12.375] enviado: :TRIGger:EDGE:LEVel 1.5
+[20:12:12.376] enviado: :TIMebase:SCALe 5E-7
+[20:12:12.376] enviado: :SINGle
+[20:12:24.377] enviado: :STOP
+[20:12:26.588] captura salva: capturas\d0.png
+[20:12:26.590] [ponte] fim de cap_d0.txt
+[20:15:14.800] [ponte] processando cap_u5.txt
+[20:15:14.807] enviado: :TRIGger:SWEep NORMal
+[20:15:14.808] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[20:15:14.811] enviado: :TRIGger:EDGE:SLOPe NEGative
+[20:15:14.812] enviado: :TRIGger:EDGE:LEVel 1.5
+[20:15:14.812] enviado: :TIMebase:SCALe 5E-7
+[20:15:14.813] enviado: :SINGle
+[20:15:26.814] enviado: :STOP
+[20:15:29.008] captura salva: capturas\u5p12.png
+[20:15:29.010] [ponte] fim de cap_u5.txt
+[14:43:14.052] ponte_osc: conectando a 192.168.0.30:5025 ...
+[14:43:14.136] conectado: AGILENT TECHNOLOGIES,DSO-X 2002A,MY51331246,02.50.2019022736
+[14:43:14.137] monitorando C:\Users\Alexandre\Documents\Claude\Paragon50\osc\envio_osc
+[14:46:30.383] [ponte] processando cap_dtack_rom_v1.txt
+[14:46:30.391] enviado: :CHANnel1:DISPlay ON
+[14:46:30.391] enviado: :CHANnel1:SCALe 1
+[14:46:30.392] enviado: :CHANnel1:OFFSet 2.5
+[14:46:30.392] enviado: :TRIGger:SWEep NORMal
+[14:46:30.393] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[14:46:30.393] enviado: :TRIGger:EDGE:SLOPe NEGative
+[14:46:30.394] enviado: :TRIGger:EDGE:LEVel 1.5
+[14:46:30.394] enviado: :TIMebase:SCALe 5E-7
+[14:46:30.394] enviado: :SINGle
+[14:46:34.396] enviado: :STOP
+[14:46:36.587] captura salva: capturas\dtack_rom_v1.png
+[14:46:36.589] [ponte] fim de cap_dtack_rom_v1.txt
+[14:46:58.866] [ponte] processando cap_dtack_rom_auto_v1.txt
+[14:46:58.874] enviado: :TRIGger:SWEep AUTO
+[14:46:58.875] enviado: :RUN
+[14:47:00.967] :MEASure:VMAX? CHANnel1 -> -3E-02
+[14:47:01.066] :MEASure:VMIN? CHANnel1 -> -3E-02
+[14:47:01.168] :MEASure:VAVerage? CHANnel1 -> 8.03E-02
+[14:47:01.271] :MEASure:FREQuency? CHANnel1 -> 9.9E+37
+[14:47:02.484] captura salva: capturas\dtack_rom_auto_v1.png
+[14:47:02.486] [ponte] fim de cap_dtack_rom_auto_v1.txt
+[14:48:58.969] [ponte] processando cap_dtack_rom_auto_v2.txt
+[14:48:58.977] enviado: :TRIGger:SWEep AUTO
+[14:48:58.977] enviado: :RUN
+[14:49:01.018] :MEASure:VMAX? CHANnel1 -> 4.39E+00
+[14:49:01.068] :MEASure:VMIN? CHANnel1 -> -1.28E+00
+[14:49:01.119] :MEASure:VAVerage? CHANnel1 -> 3.1330E+00
+[14:49:01.170] :MEASure:FREQuency? CHANnel1 -> 1.1422E+06
+[14:49:02.376] captura salva: capturas\dtack_rom_auto_v2.png
+[14:49:02.378] [ponte] fim de cap_dtack_rom_auto_v2.txt
+[14:49:59.572] [ponte] processando vida_v1.txt
+[14:49:59.595] enviado: :TRIGger:SWEep AUTO
+[14:49:59.596] enviado: :RUN
+[14:50:00.628] :MEASure:FREQuency? CHANnel1 -> 1.1435E+06
+[14:50:00.678] :MEASure:VMAX? CHANnel1 -> 4.35E+00
+[14:50:00.731] :MEASure:VMIN? CHANnel1 -> -1.28E+00
+[14:50:00.795] :MEASure:FREQuency? CHANnel2 -> 9.9E+37
+[14:50:00.864] :MEASure:VMAX? CHANnel2 -> -6.4E-01
+[14:50:00.911] :MEASure:VMIN? CHANnel2 -> -1.04E+00
+[14:50:00.913] [ponte] fim de vida_v1.txt
+[14:50:17.773] [ponte] processando ajuste_2canais_v1.txt
+[14:50:17.780] enviado: :CHANnel1:DISPlay ON
+[14:50:17.781] enviado: :CHANnel2:DISPlay ON
+[14:50:17.781] enviado: :CHANnel1:SCALe 2
+[14:50:17.782] enviado: :CHANnel2:SCALe 2
+[14:50:17.783] enviado: :CHANnel1:OFFSet -3
+[14:50:17.784] enviado: :CHANnel2:OFFSet 5
+[14:50:17.786] [ponte] fim de ajuste_2canais_v1.txt
+[14:51:41.757] [ponte] processando cap_dtack_romce_v1.txt
+[14:51:41.766] enviado: :TRIGger:SWEep AUTO
+[14:51:41.766] enviado: :RUN
+[14:51:42.800] :MEASure:FREQuency? CHANnel1 -> 8.89E+05
+[14:51:42.851] :MEASure:FREQuency? CHANnel2 -> 9.9E+37
+[14:51:42.900] :MEASure:VMAX? CHANnel2 -> 4.84E+00
+[14:51:42.950] :MEASure:VMIN? CHANnel2 -> -1.27E+00
+[14:51:42.951] enviado: :TRIGger:SWEep NORMal
+[14:51:42.952] enviado: :TRIGger:EDGE:SOURce CHANnel2
+[14:51:42.953] enviado: :TRIGger:EDGE:SLOPe NEGative
+[14:51:42.954] enviado: :TRIGger:EDGE:LEVel 1.5
+[14:51:42.954] enviado: :TIMebase:SCALe 2E-7
+[14:51:42.955] enviado: :TIMebase:POSition 4E-7
+[14:51:42.955] enviado: :SINGle
+[14:51:45.956] enviado: :STOP
+[14:51:48.144] captura salva: capturas\dtack_vs_romce_v1.png
+[14:51:48.146] [ponte] fim de cap_dtack_romce_v1.txt
+[14:58:49.194] [ponte] processando cap_u35p3_v1.txt
+[14:58:49.204] enviado: :TRIGger:SWEep AUTO
+[14:58:49.204] enviado: :RUN
+[14:58:50.297] :MEASure:FREQuency? CHANnel1 -> 9.9E+37
+[14:58:50.398] :MEASure:VMAX? CHANnel2 -> 1.0E-01
+[14:58:50.497] :MEASure:VMIN? CHANnel2 -> -1.5E-01
+[14:58:50.498] enviado: :TRIGger:SWEep NORMal
+[14:58:50.498] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[14:58:50.499] enviado: :TRIGger:EDGE:SLOPe NEGative
+[14:58:50.500] enviado: :TRIGger:EDGE:LEVel 1.5
+[14:58:50.501] enviado: :TIMebase:SCALe 5E-7
+[14:58:50.501] enviado: :TIMebase:POSition 1E-6
+[14:58:50.502] enviado: :SINGle
+[14:58:53.503] enviado: :STOP
+[14:58:55.664] captura salva: capturas\u35p3_v1.png
+[14:58:55.666] [ponte] fim de cap_u35p3_v1.txt
+[14:59:10.115] [ponte] processando vida_v2.txt
+[14:59:10.142] :MEASure:VAVerage? CHANnel1 -> 9.9E+37
+[14:59:10.146] :MEASure:VMAX? CHANnel1 -> 9.9E+37
+[14:59:10.149] :MEASure:VMIN? CHANnel1 -> 9.9E+37
+[14:59:10.151] [ponte] fim de vida_v2.txt
+[14:59:22.791] [ponte] processando vida_v3.txt
+[14:59:22.801] enviado: :TRIGger:SWEep AUTO
+[14:59:22.801] enviado: :RUN
+[14:59:24.893] :MEASure:VAVerage? CHANnel1 -> -7.1E-02
+[14:59:24.998] :MEASure:VMAX? CHANnel1 -> 6E-02
+[14:59:25.092] :MEASure:VMIN? CHANnel1 -> -1.9E-01
+[14:59:25.194] :MEASure:VAVerage? CHANnel2 -> 4.380E+00
+[14:59:25.300] :MEASure:VMAX? CHANnel2 -> 4.52E+00
+[14:59:25.393] :MEASure:VMIN? CHANnel2 -> 4.28E+00
+[14:59:25.395] [ponte] fim de vida_v3.txt
+[14:59:47.673] [ponte] processando vida_v4.txt
+[14:59:47.682] enviado: :TRIGger:SWEep AUTO
+[14:59:47.682] enviado: :RUN
+[14:59:48.776] :MEASure:FREQuency? CHANnel1 -> 9.9E+37
+[14:59:48.884] :MEASure:VMAX? CHANnel1 -> 6E-02
+[14:59:48.976] :MEASure:VMIN? CHANnel1 -> -1.9E-01
+[14:59:49.077] :MEASure:VAVerage? CHANnel2 -> 3.211E+00
+[14:59:49.081] [ponte] fim de vida_v4.txt
+[15:00:25.801] [ponte] processando cap_u35p3_v2.txt
+[15:00:25.813] enviado: :TRIGger:SWEep AUTO
+[15:00:25.814] enviado: :RUN
+[15:00:26.897] :MEASure:FREQuency? CHANnel1 -> 9.9E+37
+[15:00:26.997] :MEASure:VMAX? CHANnel1 -> 6E-02
+[15:00:27.097] :MEASure:VMIN? CHANnel1 -> -1.9E-01
+[15:00:27.200] :MEASure:VMAX? CHANnel2 -> 4.44E+00
+[15:00:27.298] :MEASure:VMIN? CHANnel2 -> -1.19E+00
+[15:00:27.298] enviado: :TRIGger:SWEep NORMal
+[15:00:27.299] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[15:00:27.300] enviado: :TRIGger:EDGE:SLOPe NEGative
+[15:00:27.301] enviado: :TRIGger:EDGE:LEVel 1.5
+[15:00:27.302] enviado: :TIMebase:SCALe 5E-7
+[15:00:27.302] enviado: :TIMebase:POSition 1E-6
+[15:00:27.303] enviado: :SINGle
+[15:00:30.304] enviado: :STOP
+[15:00:32.461] captura salva: capturas\u35p3_v2.png
+[15:00:32.463] [ponte] fim de cap_u35p3_v2.txt
+[15:01:26.346] [ponte] processando cap_u35p3_v3.txt
+[15:01:26.355] enviado: :TRIGger:SWEep AUTO
+[15:01:26.356] enviado: :RUN
+[15:01:27.389] :MEASure:FREQuency? CHANnel1 -> 1.143E+06
+[15:01:27.439] :MEASure:VMAX? CHANnel1 -> 4.32E+00
+[15:01:27.489] :MEASure:VMIN? CHANnel1 -> -1.15E+00
+[15:01:27.539] :MEASure:VMAX? CHANnel2 -> 4.44E+00
+[15:01:27.589] :MEASure:VMIN? CHANnel2 -> -1.27E+00
+[15:01:27.590] enviado: :TRIGger:SWEep NORMal
+[15:01:27.592] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[15:01:27.594] enviado: :TRIGger:EDGE:SLOPe NEGative
+[15:01:27.595] enviado: :TRIGger:EDGE:LEVel 1.5
+[15:01:27.596] enviado: :TIMebase:SCALe 5E-7
+[15:01:27.598] enviado: :TIMebase:POSition 1E-6
+[15:01:27.598] enviado: :SINGle
+[15:01:30.599] enviado: :STOP
+[15:01:32.811] captura salva: capturas\u35p3_v3.png
+[15:01:32.812] [ponte] fim de cap_u35p3_v3.txt
+[15:03:40.416] [ponte] processando cap_wrrom_v1.txt
+[15:03:40.427] enviado: :TRIGger:SWEep AUTO
+[15:03:40.427] enviado: :RUN
+[15:03:41.465] :MEASure:FREQuency? CHANnel1 -> 1.143E+06
+[15:03:41.515] :MEASure:VMAX? CHANnel1 -> 4.32E+00
+[15:03:41.581] :MEASure:VMIN? CHANnel1 -> -1.23E+00
+[15:03:41.632] :MEASure:VMAX? CHANnel2 -> 4.52E+00
+[15:03:41.681] :MEASure:VMIN? CHANnel2 -> -1.27E+00
+[15:03:41.682] enviado: :TRIGger:SWEep NORMal
+[15:03:41.683] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[15:03:41.684] enviado: :TRIGger:EDGE:SLOPe NEGative
+[15:03:41.685] enviado: :TRIGger:EDGE:LEVel 1.5
+[15:03:41.688] enviado: :TIMebase:SCALe 5E-7
+[15:03:41.688] enviado: :TIMebase:POSition 1E-6
+[15:03:41.689] enviado: :SINGle
+[15:03:44.690] enviado: :STOP
+[15:03:46.894] captura salva: capturas\wrrom_dtack_v1.png
+[15:03:46.895] [ponte] fim de cap_wrrom_v1.txt
+[15:05:03.596] [ponte] processando cap_wrrom_v2.txt
+[15:05:03.602] enviado: :TRIGger:SWEep AUTO
+[15:05:03.603] enviado: :RUN
+[15:05:04.648] :MEASure:FREQuency? CHANnel1 -> 1.143E+06
+[15:05:04.698] :MEASure:VMAX? CHANnel1 -> 4.32E+00
+[15:05:04.748] :MEASure:VMIN? CHANnel1 -> -1.15E+00
+[15:05:04.798] :MEASure:VMAX? CHANnel2 -> 4.44E+00
+[15:05:04.847] :MEASure:VMIN? CHANnel2 -> -1.27E+00
+[15:05:04.848] enviado: :TRIGger:SWEep NORMal
+[15:05:04.849] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[15:05:04.850] enviado: :TRIGger:EDGE:SLOPe NEGative
+[15:05:04.850] enviado: :TRIGger:EDGE:LEVel 1.5
+[15:05:04.851] enviado: :TIMebase:SCALe 5E-7
+[15:05:04.852] enviado: :TIMebase:POSition 1E-6
+[15:05:04.852] enviado: :SINGle
+[15:05:07.853] enviado: :STOP
+[15:05:10.047] captura salva: capturas\wrrom_dtack_v2.png
+[15:05:10.049] [ponte] fim de cap_wrrom_v2.txt
+[15:05:23.896] [ponte] processando volta_run_v1.txt
+[15:05:23.904] enviado: :TRIGger:SWEep AUTO
+[15:05:23.904] enviado: :RUN
+[15:05:23.906] [ponte] fim de volta_run_v1.txt
+[15:06:58.706] [ponte] processando volta_run_v2.txt
+[15:06:58.709] enviado: :TRIGger:SWEep AUTO
+[15:06:58.709] enviado: :RUN
+[15:06:58.712] [ponte] fim de volta_run_v2.txt
+[15:18:08.641] [ponte] processando cap_romoe_wr_v1.txt
+[15:18:08.651] enviado: :TRIGger:SWEep AUTO
+[15:18:08.652] enviado: :RUN
+[15:18:09.689] :MEASure:VMAX? CHANnel1 -> 4.08E+00
+[15:18:09.739] :MEASure:VMIN? CHANnel1 -> -7.5E-01
+[15:18:09.789] :MEASure:VAVerage? CHANnel1 -> 1.365E+00
+[15:18:09.839] :MEASure:VMAX? CHANnel2 -> 4.68E+00
+[15:18:09.888] :MEASure:VMIN? CHANnel2 -> -1.19E+00
+[15:18:09.938] :MEASure:FREQuency? CHANnel2 -> 9.9E+37
+[15:18:09.939] enviado: :TRIGger:SWEep NORMal
+[15:18:09.940] enviado: :TRIGger:EDGE:SOURce CHANnel2
+[15:18:09.942] enviado: :TRIGger:EDGE:SLOPe NEGative
+[15:18:09.943] enviado: :TRIGger:EDGE:LEVel 1.5
+[15:18:09.943] enviado: :TIMebase:SCALe 1E-6
+[15:18:09.945] enviado: :TIMebase:POSition 3E-6
+[15:18:09.945] enviado: :SINGle
+[15:18:13.946] enviado: :STOP
+[15:18:16.180] captura salva: capturas\romoe_wr_v1.png
+[15:18:16.180] enviado: :TRIGger:SWEep AUTO
+[15:18:16.182] enviado: :RUN
+[15:18:16.184] [ponte] fim de cap_romoe_wr_v1.txt
+[21:51:56.052] [ponte] processando idn_v1.txt
+[21:51:56.085] *IDN? -> AGILENT TECHNOLOGIES,DSO-X 2002A,MY51331246,02.50.2019022736
+[21:51:56.087] enviado: :RUN
+[21:51:56.090] [ponte] fim de idn_v1.txt
+[21:57:00.722] [ponte] processando cap_we_hl_v1.txt
+[21:57:00.741] enviado: :CHANnel1:DISPlay ON
+[21:57:00.742] enviado: :CHANnel2:DISPlay ON
+[21:57:00.742] enviado: :CHANnel1:SCALe 2
+[21:57:00.743] enviado: :CHANnel2:SCALe 2
+[21:57:00.744] enviado: :CHANnel1:OFFSet 0
+[21:57:00.745] enviado: :CHANnel2:OFFSet 0
+[21:57:00.745] enviado: :TRIGger:SWEep NORMal
+[21:57:00.746] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[21:57:00.749] enviado: :TRIGger:EDGE:SLOPe NEGative
+[21:57:00.750] enviado: :TRIGger:EDGE:LEVel 1.5
+[21:57:00.752] enviado: :TIMebase:SCALe 5E-7
+[21:57:00.753] enviado: :TIMebase:POSition 1E-6
+[21:57:00.754] enviado: :SINGle
+[21:57:12.755] enviado: :STOP
+[21:57:14.975] captura salva: capturas\we_hl_v1.png
+[21:57:14.985] :MEASure:VMAX? CHANnel1 -> 5.15E+00
+[21:57:14.996] :MEASure:VMIN? CHANnel1 -> -1.77E+00
+[21:57:15.007] :MEASure:VMAX? CHANnel2 -> 5.23E+00
+[21:57:15.018] :MEASure:VMIN? CHANnel2 -> -1.53E+00
+[21:57:15.028] :MEASure:NWIDth? CHANnel1 -> 1.96E-07
+[21:57:15.039] :MEASure:NWIDth? CHANnel2 -> 1.98E-07
+[21:57:15.041] enviado: :TRIGger:SWEep AUTO
+[21:57:15.042] enviado: :RUN
+[21:57:15.046] [ponte] fim de cap_we_hl_v1.txt
+[23:27:47.561] [ponte] processando cap_y2_v1.txt
+[23:27:47.575] enviado: :CHANnel1:DISPlay ON
+[23:27:47.576] enviado: :CHANnel2:DISPlay OFF
+[23:27:47.576] enviado: :CHANnel1:SCALe 2
+[23:27:47.577] enviado: :CHANnel1:OFFSet 0
+[23:27:47.578] enviado: :TRIGger:SWEep NORMal
+[23:27:47.579] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[23:27:47.580] enviado: :TRIGger:EDGE:SLOPe NEGative
+[23:27:47.581] enviado: :TRIGger:EDGE:LEVel 1.5
+[23:27:47.582] enviado: :TIMebase:SCALe 5E-7
+[23:27:47.582] enviado: :TIMebase:POSition 1E-6
+[23:27:47.583] enviado: :SINGle
+[23:27:59.584] enviado: :STOP
+[23:28:01.806] captura salva: capturas\y2_v1.png
+[23:28:01.817] :MEASure:VMAX? CHANnel1 -> 4.26E+00
+[23:28:01.827] :MEASure:VMIN? CHANnel1 -> -7.2E-01
+[23:28:01.840] :MEASure:NWIDth? CHANnel1 -> 6.805E-07
+[23:28:01.851] :MEASure:FREQuency? CHANnel1 -> 9.9E+37
+[23:28:01.852] enviado: :TRIGger:SWEep AUTO
+[23:28:01.852] enviado: :RUN
+[23:28:01.855] [ponte] fim de cap_y2_v1.txt
+[23:32:23.127] [ponte] processando cap_banco7_v1.txt
+[23:32:23.138] enviado: :CHANnel1:DISPlay ON
+[23:32:23.139] enviado: :CHANnel2:DISPlay ON
+[23:32:23.140] enviado: :CHANnel1:SCALe 1
+[23:32:23.141] enviado: :CHANnel2:SCALe 1
+[23:32:23.142] enviado: :CHANnel1:OFFSet 0
+[23:32:23.143] enviado: :CHANnel2:OFFSet 0
+[23:32:23.144] enviado: :TRIGger:SWEep AUTO
+[23:32:23.145] enviado: :TIMebase:SCALe 1
+[23:32:23.146] enviado: :TIMebase:POSition 0
+[23:32:23.146] enviado: :RUN
+[23:32:37.364] :MEASure:VAVerage? CHANnel1 -> 3.3602E+00
+[23:32:48.608] :MEASure:VAVerage? CHANnel2 -> 4.3239E+00
+[23:33:01.863] :MEASure:VAVerage? CHANnel1 -> 1.390E-01
+[23:33:13.157] :MEASure:VAVerage? CHANnel2 -> 4.3236E+00
+[23:33:14.384] captura salva: capturas\banco7_v1.png
+[23:33:34.651] :MEASure:VAVerage? CHANnel1 -> 1.388E-01
+[23:33:45.922] :MEASure:VAVerage? CHANnel2 -> 4.3235E+00
+[23:33:47.147] captura salva: capturas\banco0_v1.png
+[23:33:47.148] enviado: :RUN
+[23:33:47.150] [ponte] fim de cap_banco7_v1.txt
+[23:34:04.313] [ponte] processando cap_banco7_v2.txt
+[23:34:04.322] enviado: :TIMebase:SCALe 1E-3
+[23:34:04.322] enviado: :TIMebase:POSition 0
+[23:34:04.323] enviado: :TRIGger:SWEep AUTO
+[23:34:04.324] enviado: :CHANnel1:SCALe 1
+[23:34:04.324] enviado: :CHANnel2:SCALe 1
+[23:34:04.327] enviado: :RUN
+[23:34:07.503] :MEASure:VAVerage? CHANnel1 -> 4.4952E+00
+[23:34:07.682] :MEASure:VAVerage? CHANnel2 -> 1.620E-01
+[23:34:08.862] captura salva: capturas\banco7_v2.png
+[23:34:08.863] enviado: :RUN
+[23:34:08.865] [ponte] fim de cap_banco7_v2.txt
+[23:38:18.408] [ponte] processando cap_a16_hi_lo_v1.txt
+[23:38:18.419] enviado: :TIMebase:SCALe 1E-3
+[23:38:18.420] enviado: :TIMebase:POSition 0
+[23:38:18.420] enviado: :TRIGger:SWEep AUTO
+[23:38:18.426] enviado: :CHANnel1:DISPlay ON
+[23:38:18.427] enviado: :CHANnel2:DISPlay ON
+[23:38:18.427] enviado: :CHANnel1:SCALe 1
+[23:38:18.429] enviado: :CHANnel2:SCALe 1
+[23:38:18.430] enviado: :RUN
+[23:38:20.594] :MEASure:VAVerage? CHANnel1 -> 4.4341E+00
+[23:38:20.773] :MEASure:VAVerage? CHANnel2 -> 4.4425E+00
+[23:38:21.965] captura salva: capturas\a16_hi_lo_v1.png
+[23:38:21.965] enviado: :RUN
+[23:38:21.967] [ponte] fim de cap_a16_hi_lo_v1.txt
+[03:40:50.860] [ponte] processando sck_arma_v1.txt
+[03:40:50.931] *IDN? -> AGILENT TECHNOLOGIES,DSO-X 2002A,MY51331246,02.50.2019022736
+[03:40:50.949] enviado: :STOP
+[03:40:50.949] enviado: :CHANnel1:DISPlay ON
+[03:40:50.950] enviado: :CHANnel1:PROBe 10
+[03:40:50.950] enviado: :CHANnel1:SCALe 2
+[03:40:50.950] enviado: :CHANnel1:OFFSet 5
+[03:40:50.951] enviado: :CHANnel1:COUPling DC
+[03:40:50.951] enviado: :TIMebase:SCALe 0.0002
+[03:40:50.952] enviado: :TIMebase:POSition 0.0008
+[03:40:50.952] enviado: :TRIGger:MODE EDGE
+[03:40:50.952] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[03:40:50.953] enviado: :TRIGger:EDGE:SLOPe POSitive
+[03:40:50.953] enviado: :TRIGger:EDGE:LEVel 2
+[03:40:50.954] enviado: :TRIGger:SWEep NORMal
+[03:40:50.954] enviado: :SINGle
+[03:40:51.957] :TER? -> +1
+[03:40:53.170] captura salva: capturas\sck_armado_v1.png
+[03:40:53.174] [ponte] fim de sck_arma_v1.txt
+[03:43:47.089] [ponte] processando sck_arma_v2.txt
+[03:43:47.096] enviado: :SINGle
+[03:43:48.099] [ponte] fim de sck_arma_v2.txt
+[03:43:57.131] [ponte] processando sck_le_v2.txt
+[03:43:57.141] :TER? -> +1
+[03:43:58.340] captura salva: capturas\sck_i_v2.png
+[03:44:13.354] ERRO em '#medir 1': timed out
+[03:44:28.364] ERRO em '#nivel 1': timed out
+[03:44:28.365] enviado: :RUN
+[03:44:28.366] [ponte] fim de sck_le_v2.txt
+[03:44:28.667] [ponte] processando run_v3.txt
+[03:44:28.679] enviado: :RUN
+[03:44:28.679] enviado: :TRIGger:SWEep AUTO
+[03:44:45.184] ERRO em '#png sck_estatico_v3': timed out
+[03:45:00.192] ERRO em '#nivel 1': timed out
+[03:45:00.195] [ponte] fim de run_v3.txt
+[03:45:39.617] [ponte] processando nivel_v4.txt
+[03:45:39.627] *IDN? -> 9.9E+37
+[03:45:39.627] CH1  Vmax=4.36E+00  Vmin=#800029037�PNG
+[03:45:39.634] ERRO em '#png sck_run_v4': invalid literal for int() with base 10: b'\n'
+[03:45:39.635] [ponte] fim de nivel_v4.txt
+[03:46:12.732] [ponte] processando nivel_v5.txt
+[03:46:12.745] *IDN? ->    IHDR     �   ̶��    IDATx�	�]�u���f�j�@�J B̺b�!�b<c<�C"<���y���8�=��{_��N���(���c��8�8&�l�͠+�<�AB���Y�W�.�Ҟ�>��s�����㻮���U��ںwy������>�@ �  ��A���  @ ��!@��s @ � r&@��3P�A �   ,�@ �  �3�!�^���|O�����ꇄ���X�e&��r
+[03:46:13.750] CH1  Vmax=�y�7P�u��u�|5��n��N-Vh�d��4��ŦsF)C�jIm��j��Ic��d}ǬrȬ��n�  Vmin=mw��oЗ;;νػ����ډ:�4  @�NX:��G� ضkة��hñЎ�
+[03:46:14.751] ERRO em '#png sck_run_v5': invalid literal for int() with base 10: b'v'
+[03:46:14.752] [ponte] fim de nivel_v5.txt
+[03:48:42.483] ponte_osc: conectando a 192.168.0.30:5025 ...
+[03:48:42.545] conectado: AGILENT TECHNOLOGIES,DSO-X 2002A,MY51331246,02.50.2019022736
+[03:48:42.546] monitorando C:\Users\Alexandre\Documents\Claude\Paragon50\osc\envio_osc
+[03:49:04.505] [ponte] processando nivel_v6.txt
+[03:49:04.523] *IDN? -> AGILENT TECHNOLOGIES,DSO-X 2002A,MY51331246,02.50.2019022736
+[03:49:04.732] CH1  Vmax=1.8E-01  Vmin=-2.3E-01
+[03:49:05.950] captura salva: capturas\sck_run_v6.png
+[03:49:05.951] [ponte] fim de nivel_v6.txt
+[03:49:23.706] [ponte] processando arma_v7.txt
+[03:49:23.713] enviado: :TRIGger:SWEep NORMal
+[03:49:23.713] enviado: :SINGle
+[03:49:24.716] [ponte] fim de arma_v7.txt
+[03:49:35.548] [ponte] processando le_v7.txt
+[03:49:35.556] :TER? -> +0
+[03:49:36.768] captura salva: capturas\sck_i_v7.png
+[03:49:36.769] enviado: :TRIGger:SWEep AUTO
+[03:49:36.769] enviado: :RUN
+[03:49:36.771] [ponte] fim de le_v7.txt
+[03:57:11.745] [ponte] processando arma_v8.txt
+[03:57:11.747] enviado: :TRIGger:SWEep NORMal
+[03:57:11.747] enviado: :SINGle
+[03:57:12.749] [ponte] fim de arma_v8.txt
+[03:57:22.679] [ponte] processando le_v8.txt
+[03:57:22.694] :TER? -> +1
+[03:57:23.892] captura salva: capturas\sck_i_v8.png
+[03:57:23.893] enviado: :TRIGger:SWEep AUTO
+[03:57:23.894] enviado: :RUN
+[03:57:23.896] [ponte] fim de le_v8.txt
+[04:03:11.734] [ponte] processando h_estat_v9.txt
+[04:03:11.750] enviado: :TRIGger:SWEep AUTO
+[04:03:11.751] enviado: :RUN
+[04:03:11.751] enviado: :CHANnel1:SCALe 1
+[04:03:11.752] enviado: :CHANnel1:OFFSet 2
+[04:03:11.752] enviado: :TRIGger:EDGE:LEVel 1.5
+[04:03:13.477] CH1  Vmax=4.05E+00  Vmin=3.85E+00
+[04:03:13.478] [ponte] fim de h_estat_v9.txt
+[04:03:24.610] [ponte] processando h_arma_v9.txt
+[04:03:24.617] enviado: :TRIGger:SWEep NORMal
+[04:03:24.618] enviado: :TRIGger:EDGE:SLOPe NEGative
+[04:03:24.618] enviado: :TRIGger:EDGE:LEVel 2
+[04:03:24.618] enviado: :SINGle
+[04:03:25.620] [ponte] fim de h_arma_v9.txt
+[04:03:35.551] [ponte] processando h_le_v9.txt
+[04:03:35.561] :TER? -> +1
+[04:03:36.742] captura salva: capturas\furo1_i.png
+[04:03:36.743] enviado: :TRIGger:SWEep AUTO
+[04:03:36.743] enviado: :TRIGger:EDGE:SLOPe POSitive
+[04:03:36.744] enviado: :RUN
+[04:03:36.745] [ponte] fim de h_le_v9.txt
+[04:04:14.659] [ponte] processando h_estat_v10.txt
+[04:04:14.666] enviado: :TRIGger:SWEep AUTO
+[04:04:14.666] enviado: :RUN
+[04:04:16.379] CH1  Vmax=7E-02  Vmin=-1.7E-01
+[04:04:16.381] [ponte] fim de h_estat_v10.txt
+[04:04:22.702] [ponte] processando h_arma_v10.txt
+[04:04:22.709] enviado: :TRIGger:SWEep NORMal
+[04:04:22.710] enviado: :TRIGger:EDGE:SLOPe POSitive
+[04:04:22.710] enviado: :TRIGger:EDGE:LEVel 1.5
+[04:04:22.711] enviado: :SINGle
+[04:04:23.714] [ponte] fim de h_arma_v10.txt
+[04:04:33.648] [ponte] processando h_le_v10.txt
+[04:04:33.658] :TER? -> +1
+[04:04:34.836] captura salva: capturas\furo2_i.png
+[04:04:34.837] enviado: :TRIGger:SWEep AUTO
+[04:04:34.838] enviado: :RUN
+[04:04:34.839] [ponte] fim de h_le_v10.txt
+[04:06:12.030] [ponte] processando h_estat_v11.txt
+[04:06:12.032] enviado: :TRIGger:SWEep AUTO
+[04:06:12.032] enviado: :RUN
+[04:06:13.754] CH1  Vmax=4.05E+00  Vmin=3.85E+00
+[04:06:13.756] [ponte] fim de h_estat_v11.txt
+[04:06:20.075] [ponte] processando h_arma_v11.txt
+[04:06:20.077] enviado: :TRIGger:SWEep NORMal
+[04:06:20.077] enviado: :TRIGger:EDGE:SLOPe POSitive
+[04:06:20.078] enviado: :TRIGger:EDGE:LEVel 1.5
+[04:06:20.078] enviado: :SINGle
+[04:06:21.080] [ponte] fim de h_arma_v11.txt
+[04:06:31.012] [ponte] processando h_le_v11.txt
+[04:06:31.024] :TER? -> +1
+[04:06:31.025] enviado: :TRIGger:SWEep AUTO
+[04:06:31.025] enviado: :RUN
+[04:06:31.028] [ponte] fim de h_le_v11.txt
+[04:06:44.264] [ponte] processando h_arma_v12.txt
+[04:06:44.266] enviado: :TRIGger:SWEep NORMal
+[04:06:44.266] enviado: :TRIGger:EDGE:SLOPe NEGative
+[04:06:44.267] enviado: :TRIGger:EDGE:LEVel 2
+[04:06:44.267] enviado: :SINGle
+[04:06:45.270] [ponte] fim de h_arma_v12.txt
+[04:06:55.500] [ponte] processando h_le_v12.txt
+[04:06:55.509] :TER? -> +1
+[04:06:56.682] captura salva: capturas\furo3_i.png
+[04:06:56.682] enviado: :TRIGger:SWEep AUTO
+[04:06:56.683] enviado: :TRIGger:EDGE:SLOPe POSitive
+[04:06:56.683] enviado: :RUN
+[04:06:56.685] [ponte] fim de h_le_v12.txt
+[04:07:53.560] [ponte] processando h_estat_v13.txt
+[04:07:53.562] enviado: :TRIGger:SWEep AUTO
+[04:07:53.562] enviado: :RUN
+[04:07:55.277] CH1  Vmax=7E-02  Vmin=-1.3E-01
+[04:07:55.279] [ponte] fim de h_estat_v13.txt
+[04:08:17.549] [ponte] processando h_estat_v14.txt
+[04:08:17.551] enviado: :TRIGger:SWEep AUTO
+[04:08:17.552] enviado: :RUN
+[04:08:19.277] CH1  Vmax=4.45E+00  Vmin=4.21E+00
+[04:08:19.279] [ponte] fim de h_estat_v14.txt
+[04:08:45.163] [ponte] processando h_estat_v15.txt
+[04:08:45.165] enviado: :TRIGger:SWEep AUTO
+[04:08:45.165] enviado: :RUN
+[04:08:46.887] CH1  Vmax=1.5E-01  Vmin=-1.3E-01
+[04:08:46.889] [ponte] fim de h_estat_v15.txt
+[04:09:16.678] [ponte] processando h_estat_v16.txt
+[04:09:16.679] enviado: :TRIGger:SWEep AUTO
+[04:09:16.680] enviado: :RUN
+[04:09:18.398] CH1  Vmax=7E-02  Vmin=-1.7E-01
+[04:09:18.400] [ponte] fim de h_estat_v16.txt
+[04:48:33.004] [ponte] processando diag_reset_v1.txt
+[04:48:33.012] enviado: :CHANnel1:DISPlay ON
+[04:48:33.013] enviado: :CHANnel1:PROBe 10
+[04:48:33.013] enviado: :CHANnel1:SCALe 2
+[04:48:33.013] enviado: :CHANnel1:OFFSet 5
+[04:48:33.014] enviado: :CHANnel1:COUPling DC
+[04:48:33.014] enviado: :TIMebase:SCALe 0.5
+[04:48:33.015] enviado: :TIMebase:POSition 2
+[04:48:33.015] enviado: :TRIGger:SWEep AUTO
+[04:48:33.016] enviado: :TRIGger:EDGE:SOURce CHANnel1
+[04:48:33.016] enviado: :TRIGger:EDGE:LEVel 2
+[04:48:33.016] enviado: :RUN
+[04:48:49.219] CH1  Vmax=1.8E-01  Vmin=-2.3E-01
+[04:48:50.452] captura salva: capturas\diag_reset_v1.png
+[04:48:50.456] [ponte] fim de diag_reset_v1.txt
+[05:22:22.900] [ponte] processando a18_pino1_v1.txt
+[05:22:22.907] enviado: :CHANnel1:DISPlay ON
+[05:22:22.907] enviado: :CHANnel1:PROBe 10
+[05:22:22.908] enviado: :CHANnel1:SCALe 2
+[05:22:22.908] enviado: :CHANnel1:OFFSET 5
+[05:22:22.908] enviado: :CHANnel1:COUPling DC
+[05:22:22.909] enviado: :TIMebase:SCALe 0.5
+[05:22:22.909] enviado: :TRIGger:SWEep AUTO
+[05:22:22.909] enviado: :RUN
+[05:22:39.136] CH1  Vmax=4.68E+00  Vmin=4.04E+00
+[05:22:40.358] captura salva: capturas\a18_banco0_v1.png
+[05:22:40.359] [ponte] fim de a18_pino1_v1.txt
+[05:23:56.797] [ponte] processando a18_b4.txt
+[05:23:56.805] enviado: :CHANnel1:SCALe 2
+[05:23:56.806] enviado: :CHANnel1:OFFSET 5
+[05:23:56.806] enviado: :TIMebase:SCALe 2
+[05:23:56.807] enviado: :TRIGger:SWEep AUTO
+[05:23:56.807] enviado: :RUN
+[05:24:33.813] ERRO em '#nivel 1': timed out
+[05:24:39.039] ERRO em '#png a18_banco4_v1': invalid literal for int() with base 10: b'.'
+[05:24:39.040] enviado: :TIMebase:SCALe 0.5
+[05:24:39.041] enviado: :RUN
+[05:24:39.043] [ponte] fim de a18_b4.txt
+[05:25:16.359] [ponte] processando a18_pino1_b4_v2.txt
+[05:25:16.367] enviado: :CHANnel1:DISPlay ON
+[05:25:16.367] enviado: :CHANnel1:PROBe 10
+[05:25:16.367] enviado: :CHANnel1:SCALe 2
+[05:25:16.368] enviado: :CHANnel1:OFFSET 5
+[05:25:16.368] enviado: :CHANnel1:COUPling DC
+[05:25:16.369] enviado: :TIMebase:SCALe 0.5
+[05:25:16.369] enviado: :TRIGger:SWEep AUTO
+[05:25:16.369] enviado: :RUN
+[05:25:19.370] CH1  Vmax=4E-01  Vmin=#800022334�PNG
+[05:25:19.372] ERRO em '#png a18_banco4_v2': invalid literal for int() with base 10: b'\n'
+[05:25:19.374] [ponte] fim de a18_pino1_b4_v2.txt
+[05:32:24.268] ponte_osc: conectando a 192.168.0.30:5025 ...
+[05:32:24.288] conectado: AGILENT TECHNOLOGIES,DSO-X 2002A,MY51331246,02.50.2019022736
+[05:32:24.289] monitorando C:\Users\Alexandre\Documents\Claude\Paragon50\osc\envio_osc
+[05:33:23.579] [ponte] processando a18_varre_v1.txt
+[05:33:23.590] enviado: :CHANnel1:DISPlay ON
+[05:33:23.590] enviado: :CHANnel1:PROBe 10
+[05:33:23.591] enviado: :CHANnel1:SCALe 2
+[05:33:23.591] enviado: :CHANnel1:OFFSET 5
+[05:33:23.592] enviado: :TIMebase:SCALe 2
+[05:33:23.592] enviado: :TIMebase:POSition 0
+[05:33:23.593] enviado: :TRIGger:SWEep AUTO
+[05:33:23.593] enviado: :RUN
+[05:33:39.594] enviado: :STOP
+[05:33:41.832] captura salva: capturas\a18_varre_v1.png
+[05:33:41.832] enviado: :RUN
+[05:33:41.834] [ponte] fim de a18_varre_v1.txt
+[05:34:29.984] [ponte] processando a18_a16_varre_v2.txt
+[05:34:29.991] enviado: :CHANnel1:DISPlay ON
+[05:34:29.991] enviado: :CHANnel1:PROBe 10
+[05:34:29.992] enviado: :CHANnel1:SCALe 2
+[05:34:29.992] enviado: :CHANnel1:OFFSET 5
+[05:34:29.992] enviado: :CHANnel2:DISPlay ON
+[05:34:29.993] enviado: :CHANnel2:PROBe 10
+[05:34:29.993] enviado: :CHANnel2:SCALe 2
+[05:34:29.993] enviado: :CHANnel2:OFFSET -3
+[05:34:29.994] enviado: :TIMebase:SCALe 2
+[05:34:29.994] enviado: :TIMebase:POSition 0
+[05:34:29.994] enviado: :TRIGger:SWEep AUTO
+[05:34:29.995] enviado: :RUN
+[05:34:45.996] enviado: :STOP
+[05:34:48.231] captura salva: capturas\a18_a16_varre_v2.png
+[05:34:48.231] enviado: :RUN
+[05:34:48.233] [ponte] fim de a18_a16_varre_v2.txt
+[05:40:42.394] [ponte] processando a18_a16_varre_v3.txt
+[05:40:42.402] enviado: :CHANnel1:DISPlay ON
+[05:40:42.403] enviado: :CHANnel1:PROBe 10
+[05:40:42.403] enviado: :CHANnel1:SCALe 2
+[05:40:42.404] enviado: :CHANnel1:OFFSET 5
+[05:40:42.404] enviado: :CHANnel2:DISPlay ON
+[05:40:42.404] enviado: :CHANnel2:PROBe 10
+[05:40:42.405] enviado: :CHANnel2:SCALe 2
+[05:40:42.406] enviado: :CHANnel2:OFFSET -3
+[05:40:42.406] enviado: :TIMebase:SCALe 2
+[05:40:42.407] enviado: :TIMebase:POSition 0
+[05:40:42.408] enviado: :TRIGger:SWEep AUTO
+[05:40:42.408] enviado: :RUN
+[05:40:58.409] enviado: :STOP
+[05:41:00.640] captura salva: capturas\a18_a16_varre_v3.png
+[05:41:00.641] enviado: :RUN
+[05:41:00.644] [ponte] fim de a18_a16_varre_v3.txt

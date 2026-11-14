@@ -1,0 +1,18 @@
+*IDN?
+:CHANnel1:DISPlay ON
+:CHANnel2:DISPlay ON
+:CHANnel1:PROBe 10
+:CHANnel2:PROBe 10
+:CHANnel1:SCALe 1
+:CHANnel2:SCALe 1
+:CHANnel1:OFFSet 2.5
+:CHANnel2:OFFSet 2.5
+:TIMebase:SCALe 5E-7
+:TRIGger:MODE EDGE
+:TRIGger:EDGE:SOURce CHANnel1
+:TRIGger:EDGE:SLOPe NEGative
+:TRIGger:EDGE:LEVel 1.5
+:TRIGger:SWEep AUTO
+:RUN
+#wait 2
+#png repouso2

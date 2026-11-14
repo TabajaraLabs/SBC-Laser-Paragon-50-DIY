@@ -1,0 +1,12 @@
+TRACE DO /DTACK - PARAGON 50 - 13/11/2026 (bancada, pontes serial + osciloscopio)
+Sondas: CH1 = CPU pino 10 (/DTACK); CH2 = ROM_CE (U5 pino 8) e depois U35 pino 3.
+
+1. Origem: o pino 10 da CPU vem do U35 pino 6 (74LS11, saida 2Y, porta AND de 3 entradas: pinos 3, 4, 5).
+2. U35 pino 3 tem forma de onda IDENTICA ao /DTACK (mesmas bordas, pulso baixo ~230 ns, mesma rampa de subida). Pinos 4 e 5 ficam altos nos pulsos (nao medidos individualmente).
+3. Pulsos de /DTACK: um por ciclo de barramento, mesma largura; espacamento alterna ~875 ns e ~1125 ns (7 e 9 clocks de 8 MHz; media 1 us por ciclo).
+4. Leitura da ROM: ROM_CE fica baixo ~670 ns; o /DTACK cai ~460 ns apos o ROM_CE descer e sobe logo apos o ROM_CE subir.
+5. ESCRITA na regiao da ROM ($F80000): laço infinito e laço de 65536 escritas (MOVE.W D0,$F80000 + DBRA) terminam normalmente, sem excecao e sem travar ("Retornou ao monitor" em ~365 ms; ~5,6 us por iteracao). Logo o /DTACK NAO depende do R/W: a escrita na regiao da ROM recebe /DTACK.
+   Consequencia: o passo 2 da flash (WE# por porta OR com R/W, ROM_CE, /UDS, /LDS) nao precisa de nenhuma mudanca no gerador de /DTACK.
+6. Observacao: cada ciclo de barramento dura ~1 us (4 estados de espera), RAM e ROM iguais: o sistema roda a ~1/4 da velocidade possivel a 8 MHz. Ajustar o gerador de espera seria um ganho futuro de desempenho (nao medido alem disso).
+7. Licoes de bancada: linhas longas na serial perdem caracteres (usar P com no maximo 6 bytes por linha e conferir com D); teste de vida pela frequencia do /DTACK so prova que a CPU esta viva (o monitor parado no prompt da a mesma frequencia).
+Capturas: osc/capturas/dtack_rom_auto_v2.png, dtack_vs_romce_v1.png, u35p3_v3.png, wrrom_dtack_v2.png

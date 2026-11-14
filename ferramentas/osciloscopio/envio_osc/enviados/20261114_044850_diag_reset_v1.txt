@@ -1,0 +1,14 @@
+:CHANnel1:DISPlay ON
+:CHANnel1:PROBe 10
+:CHANnel1:SCALe 2
+:CHANnel1:OFFSet 5
+:CHANnel1:COUPling DC
+:TIMebase:SCALe 0.5
+:TIMebase:POSition 2
+:TRIGger:SWEep AUTO
+:TRIGger:EDGE:SOURce CHANnel1
+:TRIGger:EDGE:LEVel 2
+:RUN
+#wait 3
+#nivel 1
+#png diag_reset_v1

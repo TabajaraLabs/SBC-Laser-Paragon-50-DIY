@@ -1,0 +1,17 @@
+:TRIGger:SWEep AUTO
+:RUN
+#wait 1
+:MEASure:FREQuency? CHANnel1
+:MEASure:VMAX? CHANnel2
+:MEASure:VMIN? CHANnel2
+:TRIGger:SWEep NORMal
+:TRIGger:EDGE:SOURce CHANnel1
+:TRIGger:EDGE:SLOPe NEGative
+:TRIGger:EDGE:LEVel 1.5
+:TIMebase:SCALe 5E-7
+:TIMebase:POSition 1E-6
+:SINGle
+#wait 3
+:STOP
+#wait 1
+#png u35p3_v1

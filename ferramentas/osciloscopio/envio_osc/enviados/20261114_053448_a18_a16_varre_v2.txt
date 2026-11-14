@@ -1,0 +1,17 @@
+:CHANnel1:DISPlay ON
+:CHANnel1:PROBe 10
+:CHANnel1:SCALe 2
+:CHANnel1:OFFSET 5
+:CHANnel2:DISPlay ON
+:CHANnel2:PROBe 10
+:CHANnel2:SCALe 2
+:CHANnel2:OFFSET -3
+:TIMebase:SCALe 2
+:TIMebase:POSition 0
+:TRIGger:SWEep AUTO
+:RUN
+#wait 16
+:STOP
+#wait 1
+#png a18_a16_varre_v2
+:RUN

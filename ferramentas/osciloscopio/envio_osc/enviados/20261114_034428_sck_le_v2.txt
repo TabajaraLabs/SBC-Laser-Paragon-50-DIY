@@ -1,0 +1,5 @@
+:TER?
+#png sck_i_v2
+#medir 1
+#nivel 1
+:RUN

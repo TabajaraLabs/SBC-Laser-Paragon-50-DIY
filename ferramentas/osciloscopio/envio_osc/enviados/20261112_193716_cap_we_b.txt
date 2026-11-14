@@ -1,0 +1,3 @@
+#png we_single_b
+:OPERegister:CONDition?
+:TRIGger:SWEep?

@@ -1,0 +1,12 @@
+# Para abrir as imagens A.DSK/B.DSK do CP/M-68K do PARAGON 50 no PC com cpmtools:
+# acrescente ao diskdefs (ou use  cpmls -f paragon50 -F -d A.DSK  com este bloco em ~/diskdefs):
+diskdef paragon50
+  seclen 128
+  tracks 128
+  sectrk 32
+  blocksize 2048
+  maxdir 256
+  skew 1
+  boottrk 0
+  os 2.2
+end
