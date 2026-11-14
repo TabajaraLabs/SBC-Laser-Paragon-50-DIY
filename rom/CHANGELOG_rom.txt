@@ -1,0 +1,51 @@
+2026-11-12  v2.2: RAM2 $040000-$05FFFF (sonda), versao nova do monitor/ext. Ver ROM_V2.2_27C512/LEIA-ME.
+2026-11-12  v2.2d DIAG: RAM2 liberada a forca + linha DIAG no I (so depuracao).
+2026-11-12  v2.3: CP/M-68K com disco RAM P: (124 KB na RAM2). BIOS cabe na ROM com 0 byte de folga. Ver ROM_V2.3_27C512/LEIA-ME.
+perif v2 (13/11): STROBE no ACMD41 e no tom; mensagem de SD ausente informa que B A K L continuam; testado no emulador com e sem cartao. perif_v2.asm/.bin/.s19
+
+2026-11-13  ROM_V2.3_SST39SF040: imagens 512 KB (HI/LO, 8 copias da imagem v2.3 de 64 KB) para as flash SST39SF040 do passo 1. Guia: docs/Paragon50_Guia_ROM_Flash_39SF040_v1.pdf
+2026-11-13  ROM_V2.3_AM29F040B: mesmas imagens, nomes para a Am29F040B-90 (escolha do usuario). Guia v2: docs/Paragon50_Guia_ROM_Flash_Am29F040B_v2.pdf (v1 SST39SF040 mantido).
+
+2026-11-13  ROM v2.3.1: CP/M-68K remontado com base $F88000 (v2.3 tinha base $8000: o comando C da placa real dava EXCECAO vetor=0B PC=00020000). So muda o chip LO (CRC32 LO 908E26D5; HI inalterado DF01811B; total A12186CF). Pastas ROM_V2.3.1_27C512 e ROM_V2.3.1_AM29F040B. ROM v2.3 mantida.
+2026-11-13  Organizacao: em rom/ ficam so a ROM atual (V2.3.1) e a anterior (V2.3); versoes mais antigas e fontes antigos movidos para rom/Arquivo/. Regra: a cada nova ROM, mover a que ficou duas versoes atras para Arquivo.
+2026-11-13  ROM_V2.3_SST39SF040 (chip nao usado) movida para Arquivo/.
+2026-11-13  ROM v2.3.1 regravada na propria placa pelo flash_v1 (sem retirar chips). CRC32 total A12186CF confere.
+
+2026-11-14  ROM v2.4 (testada so em emulador): base v2.3.1; so mudam $F80000-$F81BFF (monitor), modulo novo bancos_v1 em $F833F8-$F8393D e cabecalho AB do banco 0 em $F807C0 (PARAGON 50 / 2.4 / tipo ROM).
+  - Menu de reset ganhou [A]plicativos: le o cabecalho AB dos 8 bancos, lista nome/versao/tipo/fim, verifica CRC32 e inicia o banco escolhido (tipo 0 = SP/PC dos vetores; tipo 1 = partida do cabecalho, SP=$1F00). RESET volta ao banco 0.
+  - Comando L agora mostra: OK registros=XXXX entrada=XXXXXXXX inicio=XXXXXXXX tamanho=XXXXXXXX bytes (campos novos depois de 'entrada=' para nao quebrar a ponte serial).
+  - Pendentes para v2.4+: comando MONITOR no EhBASIC, warm boot do CP/M sem biosinit, comando FLASH no monitor.
+
+2026-11-14  ROM v2.5 (monitor com FLASH [banco], EhBASIC com MONITOR, CP/M com warm boot rapido). Pasta ROM_V2.5_*; fonte em fonte_v2.5. Testada no emulador. V2.3.1 movida para Arquivo.
+2026-11-14  INCIDENTE na gravacao do banco 0 com v2.5 pela ponte: o flash_v2 voltou ao monitor v2.4 num endereco que no v2.5 esta deslocado (+6 bytes por causa do jsr FLCHK), re-executou sozinho e apagou o banco 0 de novo; o resgate pela serial deixou o bloco 0 (vetores) com lixo. Banco 0 sem vetores validos: placa nao boota ate regravar os chips. Resgate: rom/RESGATE_Am29F040B (v2.4 + bancos 2 e 3). Correcao: programas/flash_v3 (banco 0 termina em JMP $F80900); o comando FLASH do v2.5+ ja usa retorno em RAM.
+
+2026-11-14  ROM v2.5 gravada nos chips pelo programador externo (todos os 8 bancos com a v2.5) e VALIDADA NA PLACA: menu [A] lista os bancos; L mostra inicio/tamanho (ponte continua reconhecendo); FLASH x -> mensagem de uso; FLASH 5 (comparar) com a imagem v2.5 -> 0 diferencas e volta ao prompt; MONITOR no EhBASIC volta ao prompt do monitor; CP/M: ^C (warm boot) sem banner e sem espera.
+  A partir de agora so se gera ROM para Am29F040B (pedido do usuario: nao gerar mais 27C512). Nota: o comando I do modulo estendido ainda diz "v2.2" (texto do modulo em $F90000).
+
+2026-11-14  ROM v2.5.1 (so Am29F040B; pasta ROM_V2.5.1_AM29F040B, fonte_v2.5.1): v2.5 + modulo estendido recompilado com a versao correta (I e ? dizem v2.5.1) e o alinhamento da linha "A [endereco | -]" do ?. Header do banco 0 = 2.5.1. O modulo estendido agora ocupa os 64 KB inteiros ($F90000-$F9FFFF): nao ha mais folga nele.
+  Gravada no banco 0 NA PLACA pelo comando FLASH 0 + PROSSIGA da propria ROM v2.5 (0 diferencas; reiniciou sozinha na v2.5.1). eForth v4 regravado no banco 3 com FLASH 3 e validado (menu A, CRC OK). ROM v2.4 movida para Arquivo.
+
+ROM v2.6 (14/11/2026) - Am29F040B (CRC32 do bloco de 128 KB: EB42BECC; HI FF8C95B9, LO 7E751B9C)
+  - Buzzer (ativo, bit 9 do latch $020018): o reset agora poe o latch em $0004 (buzzer calado, CS do SD alto).
+  - Comando BEEP [n]: bipa n x 10 ms (decimal; padrao 10 = 100 ms; maximo 500 = 5 s). Reconhecido antes do 'B' (BASIC).
+  - Avisos sonoros: 1 bipe ao mostrar o menu de boot; 2 bipes em comando invalido, erro do L e excecao.
+  - Ajuda '?' do modulo estendido ganhou a linha BEEP; versao v2.6 nos textos.
+  - Constante de tempo BPLOOP=7500 iteracoes de DBRA por 10 ms: ESTIMADA (a calibrar com BEEP 100 no osciloscopio, J2-40).
+  - Testado no emulador: boot, BEEP, erro, excecao, FLASH (comparar/gravar), BASIC MONITOR, CP/M DIR. Ainda nao gravada na placa.
+  - Fonte em fonte_v2.6. ROMs 27C512 descontinuadas (so Am29F040B). v2.5 movida para Arquivo.
+
+== v2.6.1 (14/Nov/2026) - GRAVADA NA PLACA (banco 0 e bancos 1 e 5 de teste) ==
+- Corrigido o strobe do monitor (salva d7 inteiro): o CRC32 do menu de bancos nunca funcionou no hardware (so lia 1 bloco de 4 KB).
+- Incluido tudo do v2.6: BEEP [n], bipes de aviso, buzzer no latch $020018 bit 9.
+- Gravada com o flash_v4 (ferramentas/flash_v4): CRC32 conferido na RAM antes de apagar; banco 0 reinicia pelo reset da ROM nova.
+- Verificado no hardware: menu [A] -> banco 1 -> "CRC OK".
+- INCIDENTE do v2.6 (banco 0 morto) esclarecido: o fio do A18 estava no pino 11 (3Q/) do 74LS175 em vez do 10, logo banco logico N = fisico N XOR 4 (o boot era o banco fisico 4); alem disso a imagem gravada tinha um byte 0D extra no inicio. Fio corrigido em 14/Nov; confirmado no scope (A18 baixo em 0-3, alto em 4-7) e pelo menu (teste no banco 5).
+
+== v3.0 (14/Nov/2026) - BANCO 0 "BOOT+MONITOR" (pre-bootloader) - GRAVADO NA PLACA (banco 0) ==
+- Banco 0 passa a ser so o pre-bootloader: monitor v2.8, Tetris, menu de bancos (bancos_v3), recuperacao pelo cartao SD, gravador v5c, servico de LCD, splash no reset.
+- BASIC e CP/M-68K NAO ficam mais no banco 0: as teclas [B] e [C] iniciam o banco 1 (copiam os vetores do banco 1 para a RAM e saltam para $F84000 / $F88000). Banco 1 sem sistema -> mensagem e volta ao menu.
+- Tecla [R]: shell FAT16 (fatsh_v5, so leitura) em $F84000: I D T L S, e F banco arquivo = grava o banco 1-7 a partir de um arquivo de 128 KB no cartao (exige cabecalho AB com CRC32 correto e PROSSIGA).
+- Gravador v5c (flash_v5c): origem serial, COPIAR de outro banco (P 3024/3026) ou imagem ja na RAM vinda do cartao (origem 8); banco de retorno configuravel (P 3028/302A). Comando do monitor: FLASH destino [origem].
+- Gravado com o gravador via serial, CRC32 $93CA52A7; antes: banco 0 v2.6.1 conferido igual ao arquivo (0 diferencas) e arquivado em ROM_V2.6.1_AM29F040B. Testado antes como v3.0t4 no banco 4 ([A], [C], [B], [R] ok).
+- Constante RCBANK (banco de retorno das rotinas de troca de banco): 0 no banco 0; 4 na versao de teste v3.0t4.
+- Fonte em fonte_v3.0. Versoes anteriores a v2.6.1 movidas para Arquivo.
