@@ -56,3 +56,11 @@ ROM v2.6 (14/11/2026) - Am29F040B (CRC32 do bloco de 128 KB: EB42BECC; HI FF8C95
 - Modulo estendido v2.7: Q e I descrevem o layout atual (bancos); lista de ajuda traz ADC/ADL/DAC/RTC; handler do '@' removido.
 - Testado no emulador (t_per.py, t_fat8.py) com modelos do AD7875, DACs e DS1302 (presente e ausente). Gravado no banco 4 com o flash_v5d: CRC32 da imagem $FB7EBA92, 0 diferencas. AINDA NAO iniciado na placa (precisa de RESET): comandos, shell com W e F sem teste em hardware.
 - Fonte em rom/fonte_v3.1t.
+
+== v3.1t5 a v3.1t8 (15/Nov/2026) - TESTES no BANCO 4; a v3.0 continua no banco 0 ==
+- t5: DS1302 com pinos no J2 (descartada: o modulo real e I2C).
+- t6: RELOGIO I2C (DS1307, tambem serve DS3231) em $68, bit-bang pelas saidas de coletor aberto 74LS06: SCL = J1-30 ($020020 bit 10), SDA = J1-48 ($020020 bit 7), leitura do SDA em J1-23 (porta B bit 6). Comandos RTC, RTC SET aa mm dd hh mm ss, RTC TESTE (varredura I2C $08-$77), RTC RAW. Validado na placa: RESPONDE em $68, hora acertada e contando.
+- t7: relogio no LCD (linha 4, "dd/mm/aa  hh:mm") atualizado pelo laco ocioso do monitor (getline com linha vazia, so depois de silencio): gancho idle_hook no monitor v2.9 chamando PER1+10 (per_tick). Comando RELOGIO [ON|OFF|CAL]. Padrao LIGADO.
+- t8: tempos calibrados na placa com RELOGIO CAL (100000 voltas = 24,0 s, 0,24 ms por volta): primeira leitura ~2 s apos o silencio, depois a cada ~5 s; so le o registrador de minutos e so redesenha quando o minuto muda.
+- Gravacao feita pelo caminho novo: FLASH 4 + PROSSIGA + #sendbin (sem os P). CRC32 da imagem t8 $70113963, 0 diferencas.
+- Erro pego no emulador antes da placa: buffer de texto estatico no modulo PER1 caia na flash (agora em RAM $1720). Fonte em rom/fonte_v3.1t8.
