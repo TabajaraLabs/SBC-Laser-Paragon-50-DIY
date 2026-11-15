@@ -1,0 +1,18 @@
+PARAGON 50 - lista de pequenos bugs e ajustes (15/Nov/2026)  [peneirar com uso e tempo; nada urgente]
+
+SOFTWARE
+ 1. Ajuda "? SISTEMA" (modulo estendido) lista B, C e T mas nao o Forth (F). Atualizar o texto (o modulo esta com os 64 KB cheios: trocar texto de mesmo tamanho).
+ 2. Ajuda geral (? e ? RTC) nao lista RELOGIO, BASIC, CPM e FORTH; "(ADC ADL DAC RTC)" nas linhas do modulo estendido.
+ 3. Banner do SD diz "FATSH v8" (e a shell e v9, F arquivo banco).
+ 4. CP/M sem cartao: "Disk select error on drive A" (esperado sem SD; testar com cartao).
+ 5. BASIC: testar FILES/LOAD/SAVE com o driver SDFS embutido (banco 7) e o comando MONITOR (agora volta ao banco 1).
+ 6. Forth (tecla F / comando FORTH, banco 5): ainda nao testado na placa.
+ 7. Opcao "banco 0 ou M = menu principal" no menu [A] reinicia a placa (espera 5 s de novo).
+ 8. Beep disparou sozinho uma vez (15/Nov ~03:30); resetar corrigiu. Reproduzir/observar.
+ 9. Versao: imagem do banco 1 mostra v3.4 no monitor e 3.4j no cabecalho; stub v3.2s.
+
+HARDWARE / PROJETO
+10. RTC: trocar a CR2032, RTC SET, repetir teste de retencao com a placa desligada.
+11. LCD no PCF8574 (libera 5 pinos do J1 e o J2-47) + modulo SD no J1 + buzzer em bit livre do J1 (hoje J2-40).
+12. Gabinete: janela do LCD, furo do knob, saidas traseiras, fixacao da tampa, ventilacao (gabinete v2 em /gabinete).
+13. Pendencias antigas: ordem dos bits do 74LS273 (continuidade J1->U45, J2->U39), REF OUT/U30 pino 4/U23 pino 21, AGND-GND, resistor 680 ohm, loopback DAC->ADC, portas $040194/$04019C sem pino achado, calibrar ADL.

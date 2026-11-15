@@ -81,3 +81,6 @@ ROM v2.6 (14/11/2026) - Am29F040B (CRC32 do bloco de 128 KB: EB42BECC; HI FF8C95
 == v3.3j (banco 1) + v3.3a (banco 7, BASIC+CP/M+SD) (15/Nov/2026) - GRAVADOS ==
 - Banco 7 = imagem BASIC+CP/M nova: o driver SDFS vai embutido ($F90000, 8854 bytes) e o menu do banco 1 (B) o copia para a RAM $50000 antes de iniciar o BASIC; o MONITOR do BASIC (restart) agora reinicia pelo banco 1 (monitor novo).
 - Banco 1 v3.3j: bk_drv (+36) no modulo de bancos. Fontes em rom/fonte_v3.3.
+
+== v3.4j (banco 1) (15/Nov/2026) - GRAVADO ==
+- Comandos BASIC, CPM e FORTH no prompt do monitor (modulo PER1 per_v10); versao 3.4 uniforme nos textos do monitor e do modulo estendido (ext_v34). CRC32 do .fl4 $9B2CDF88.
