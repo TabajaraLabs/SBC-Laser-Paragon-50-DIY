@@ -87,7 +87,7 @@ J2 = {2: ('AGND', 'AGND (retorno do par 1)', 'medido', ''), 4: ('AGND', 'AGND (r
       30: (*lat(11), 'medido', ''), 37: (*lat(10), 'medido', 'CE do DS1302 (provisorio)'), 40: (*lat(9), 'medido', 'buzzer'),
       47: (*lat(8), 'medido', 'LCD D7')}
 J1.update({p: ('nao conectado (confirmado)', '', 'medido', 'testado 15/Nov: sem resposta') for p in [3, 5, 6, 8, 16, 19, 21, 22, 36, 37, 39, 41, 42, 43, 44, 45, 46, 47, 49]})
-J2.update({p: ('Entrada porta A b%d ($020030)' % b, '74LS240 U44/U37 (pino ?)', 'medido', 'testado 15/Nov') for p, b in {39: 0, 42: 1, 41: 2, 43: 4, 45: 5, 46: 6, 48: 7, 29: 8, 32: 9, 31: 10, 34: 11, 33: 12, 35: 13, 36: 14, 38: 15}.items()})
+J2.update({p: ('Entrada porta A b%d ($020030)' % b, '74LS240 U44/U37 (pino ?)', 'medido', 'testado 15/Nov') for p, b in {39: 0, 42: 1, 41: 2, 43: 4, 45: 5, 46: 6, 48: 7, 29: 8, 32: 9, 31: 10, 34: 11, 33: 12, 35: 14, 36: 13, 38: 15}.items()})
 J2.update({p: ('sem resposta como entrada', '', 'medido', 'testado 15/Nov: sem resposta') for p in (25, 26, 44)})
 COLS = [('Pino', 26), ('Funcao / sinal', 150), ('E/S', 28), ('Pino do integrado', 120), ('Obs.', 112), ('ANOTAR: CI + pino', 99)]
 def conn_page(name, data, n, extra):
