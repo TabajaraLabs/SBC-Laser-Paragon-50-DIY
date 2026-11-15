@@ -43,6 +43,8 @@ LSTAT       equ $F833FE         ; v2.4: imprime inicio/tamanho do L
 LATCH       equ $020018         ; v2.6: latch de saidas (bit2 = CS do SD, bit9 = buzzer)
 FLCHK       equ $F83404
 BKAUTO      equ $F833F8+18       ; v3.2: autoload
+BKSYS       equ $F833F8+24
+BKBOOT      equ $F833F8+30
 AUTOIMG     equ {{AUTOIMG}}      ; 0 = stub do banco 0 (menu R + autoload); 1 = imagem normal (monitor direto)
 SDREC       equ $F84000          ; v2.8: leitor FAT16 do cartao SD + gravador de bancos (rotina; volta com RTS)         ; v2.5: reconhece o comando FLASH (so volta se a linha nao for FLASH)
 RPMAX       equ 2              ; blocos de 64 KB sondados: so $0-$1FFFF ($20000+ e E/S do laser: NUNCA gravar)
@@ -254,9 +256,38 @@ rm_ser: lea     m_ub(pc),a1             ; U: grava um banco pela serial (monta "
         jsr     FLCHK                   ; nao volta se reconhecer
         bra     reset
         ELSE
-        lea     m_banner(pc),a1
+        lea     m_menu1(pc),a1
         bsr     puts
-        bra     main_loop
+        moveq   #15,d7                  ; ~5 s; sem tecla -> monitor
+im_o:   move.w  #$FFFF,d6
+im_i:   btst    #0,DUART_SRA
+        bne     im_key
+        dbra    d6,im_i
+        bsr     strobe
+        dbra    d7,im_o
+        bra     rm_mon
+im_key: move.b  DUART_RHRA,d0
+        bsr     upper
+        cmpi.b  #'B',d0
+        beq     im_b
+        cmpi.b  #'C',d0
+        beq     im_c
+        cmpi.b  #'F',d0
+        beq     im_f
+        cmpi.b  #'A',d0
+        beq     rm_ban
+        cmpi.b  #'T',d0
+        beq     rm_tet
+        cmpi.b  #'R',d0
+        beq     rm_rec
+        bra     rm_mon
+im_b:   move.l  #$F84000,d0
+im_s:   moveq   #7,d1
+        jmp     BKSYS
+im_c:   move.l  #$F88000,d0
+        bra     im_s
+im_f:   moveq   #5,d0
+        jmp     BKBOOT
         ENDC
 rm_mon: lea     m_banner(pc),a1
         bsr     puts
@@ -1315,7 +1346,8 @@ h2_x:   moveq   #-1,d0
 ; ==========================================================================
 ; m_cls = ESC [ 2 J  ESC [ H : limpa a tela e leva o cursor ao canto
 m_cls:    dc.b 27,91,50,74,27,91,72,0
-m_banner: dc.b 13,10,"Digite ? para ajuda.",13,10,0
+m_banner: dc.b 13,10,"Monitor Paragon 50 - Tabajara Labs 2026",13,10,"Digite ? para ajuda.",13,10,0
+;;STUBTXT
 m_menu:   dc.b 13,10,13,10
           dc.b "SBC Paragon 50 - 2026 Tabajara Labs  (stub de boot, banco 0)",13,10
           dc.b "Aperte R para entrar no menu de recuperacao",13,10
@@ -1324,6 +1356,13 @@ m_rec:    dc.b 13,10,"== Menu de recuperacao (banco 0) ==  57600 bps",13,10
           dc.b " [M] monitor   [A] bancos da flash   [S] cartao SD   [U] gravar banco pela serial",13,10
           dc.b " [N] autoload agora   [T] tetris",13,10,"> ",0
 m_ub:     dc.b 13,10,"Banco de destino (1-7): ",0
+;;FIMSTUBTXT
+;;IMGTXT
+m_menu1:  dc.b 13,10,13,10
+          dc.b "Monitor Paragon 50 - Tabajara Labs 2026  (imagem do banco 1)",13,10
+          dc.b "   [B]asic   [C]P/M 68K   [F]orth   [T]etris   [A]plicativos   [R] cartao SD   [M]onitor",13,10
+          dc.b "Ou aguarde 5 segundos para entrar no Monitor",13,10,0
+;;FIMIMGTXT
 m_same:   dc.b "IGUAIS",13,10,0
 m_diff:   dc.b "DIFERENCAS: ",0
 m_none:   dc.b "nao encontrado",13,10,0

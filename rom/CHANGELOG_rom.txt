@@ -71,3 +71,9 @@ ROM v2.6 (14/11/2026) - Am29F040B (CRC32 do bloco de 128 KB: EB42BECC; HI FF8C95
 - Gravador: banco 0 so grava com PROSSIGA0 (PROSSIGA sozinho vira so comparar).
 - Banco 1 = imagem normal (AUTOIMG=1, RCBANK=1): monitor direto + PER1 (RTC, ADC, DAC, RELOGIO). Teclas B/C e bk_sys removidas: BASIC/CP/M precisam ir para outro banco (menu A).
 - Help do RTC corrigido; ? RELOGIO novo (per_v9). Testes: t_stub.py (autoload, pulo de banco vazio/CRC ruim, R, protecao do banco 0, U).
+
+== v3.2s (stub, banco 0) + v3.3i (imagem, banco 1) (15/Nov/2026) - GRAVADOS NA PLACA ==
+- Banco 0 = stub v3.2s (CRC32 do .fl4 $0AEAE0F3), gravado com FLASH 0 + PROSSIGA pelo gravador antigo (v3.0). Boot: 5 s para R (recuperacao), senao autoload do primeiro banco valido 1..7 (vazio/CRC ruim = pula). Gravador novo: banco 0 so com PROSSIGA0.
+- Ordem origem->destino: FLASH origem destino (FLASH n = serial -> destino n); F arquivo banco no shell do cartao SD (fatsh_v9).
+- Banco 1 = imagem v3.3i ($2624776D): menu B/C/F/T/A/R/M com 5 s para o monitor; B e C iniciam a imagem antiga CPM+SD no banco 7 (copia do antigo banco 1, feita com FLASH 7 1); F inicia o eForth do banco 5. Frase "Monitor Paragon 50 - Tabajara Labs 2026" antes do "Digite ? para ajuda".
+- Fontes: rom/fonte_v3.3 (stub = monitor_v30+bancos_v5+build_rom32.py; imagem = monitor_v31+bancos_v6+build_rom33.py; per_v9 = RTC/RELOGIO).

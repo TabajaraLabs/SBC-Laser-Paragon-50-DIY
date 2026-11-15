@@ -26,7 +26,7 @@ print('monitor ate $%X (limite $F81C00)'%(0xF80000+len(mon))); assert len(mon)<=
 fl=open('flash_v5d.bin','rb').read(); FLIMG=0xF86400; FLLEN=len(fl); assert 0x2000+FLLEN<=0x3000
 # --- shell do cartao SD em $F84000
 pre="RCBANK equ %d\nSHORG equ $F84000\nFLIMG equ $%X\nFLLEN equ %d\n"%(RCB,FLIMG,FLLEN)
-sh=m68kasm_v3.Asm(); sh.assemble(pre+open('fatsh_v8.asm').read()); sa,simg=sh.segs[0]; assert sa==0xF84000 and len(simg)<=FLIMG-0xF84000, len(simg)
+sh=m68kasm_v3.Asm(); sh.assemble(pre+open('fatsh_v9.asm').read()); sa,simg=sh.segs[0]; assert sa==0xF84000 and len(simg)<=FLIMG-0xF84000, len(simg)
 print('shell SD $F84000-$%X (%d bytes)'%(sa+len(simg)-1,len(simg)))
 # --- modulo bancos_v3
 pre="RCBANK equ %d\nFL_LEN1 equ %d\nFL_IMG1 equ $%X\n"%(RCB,FLLEN,FLIMG)

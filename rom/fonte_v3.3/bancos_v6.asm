@@ -38,6 +38,8 @@ CHUNK   equ $1000
         jmp lstat                        ; +6
         jmp flchk                        ; +12 ($F83404)
         jmp bk_auto                      ; +18: autoload (banco 1,2,...,7 = primeiro valido)
+        jmp bk_sys                       ; +24: d0.l = entrada, d1.w = banco: inicia BASIC/CP/M (imagem antiga) sem passar pelo menu
+        jmp bk_boot                      ; +30: d0.w = banco: inicia o banco (verifica CRC)
 
 ; ---- LSTAT: " inicio=XXXXXXXX tamanho=XXXXXXXX bytes" -----------------------
 lstat:  movem.l d0/a1,-(sp)
@@ -192,6 +194,50 @@ bm_k0:  andi.b  #$DF,d0                  ; maiuscula
         beq     bm_rst
         bra     bm_k
 bm_rst: jmp     RESETV
+
+; ---- bk_sys: d0.l = entrada ($F84000 BASIC, $F88000 CP/M), d1.w = banco (imagem antiga tipo ROM). Nao volta.
+bk_sys: move.w  #$2700,sr
+        movea.l #$1F00,sp
+        move.l  d0,d5
+        move.w  d1,d6
+        lea     rc_ini(pc),a0
+        lea     RAMRT,a1
+        move.w  #(rc_fim-rc_ini)/2-1,d1
+sy_i:   move.w  (a0)+,(a1)+
+        dbra    d1,sy_i
+        move.w  d6,d0
+        movea.l #0,a1
+        movea.l #$F80000,a0
+        move.w  #1024,d1
+        bsr     bcopy
+        move.w  d6,d0
+        move.l  #$1F00,d1
+        movea.l d5,a0
+        jmp     RC_BOOT
+
+; ---- bk_boot: d0.w = banco -> CRC + partida (mesmo caminho do menu A)
+bk_boot: move.w  d0,d4
+        clr.w   AUTOF
+        move.w  #$2700,sr
+        movea.l #$1F00,sp
+        lea     rc_ini(pc),a0
+        lea     RAMRT,a1
+        move.w  #(rc_fim-rc_ini)/2-1,d1
+bb_i:   move.w  (a0)+,(a1)+
+        dbra    d1,bb_i
+        moveq   #0,d2
+bb_r:   move.w  d2,d0
+        lea     $F807C0,a0
+        move.l  d2,d3
+        lsl.w   #6,d3
+        lea     HDRS,a1
+        adda.w  d3,a1
+        moveq   #64,d1
+        bsr     bcopy
+        addq.w  #1,d2
+        cmpi.w  #8,d2
+        blo     bb_r
+        bra     bm_sel
 
 ; ---- v5: autoload = primeiro banco 1..7 com cabecalho AB valido e CRC32 correto
 au_go:  lea     s_aut(pc),a1
@@ -389,16 +435,17 @@ fl_s2:  cmpi.b  #' ',(a1)                ; v3: FLASH destino origem  -> copia o 
         bra     fl_s2
 fl_b:   tst.b   (a1)
         beq     fl_go
-        jsr     GETHEX
+        jsr     GETHEX                   ; v5: FLASH origem destino  (d4 = origem, d0 = destino)
         tst.w   d1
         beq     fl_bad
         cmpi.l  #7,d0
         bhi     fl_bad
-        tst.w   d0
-        beq     fl_bad
+        tst.w   d4
+        beq     fl_bad                   ; origem 0 = serial: nao e banco
         cmp.w   d4,d0
         beq     fl_bad
-        move.w  d0,d5
+        move.w  d4,d5                    ; d5 = origem
+        move.w  d0,d4                    ; d4 = destino
 fl_go:  move.w  #$2700,sr
         movea.l #$1F00,sp
         lea     s_fl1(pc),a1
@@ -481,7 +528,7 @@ s_fl2:  dc.b "Normalmente isto so COMPARA. Se voce REALMENTE quer atualizar a fl
         dc.b "digite PROSSIGA (em maiusculas); qualquer outra coisa = so comparar: ",0
 s_flw:  dc.b 13,10,"Modo GRAVAR (apaga e grava o banco). Se a origem for a serial, envie agora a imagem de 128 KB (#sendbin arquivo 256).",13,10,0
 s_flc:  dc.b 13,10,"Modo COMPARAR (a flash nao e alterada). Se a origem for a serial, envie agora a imagem de 128 KB (#sendbin arquivo 256).",13,10,0
-s_flbad: dc.b 13,10,"?? uso: FLASH [destino 0-7] [origem 1-7]  (padrao destino 1, imagem pela serial; com origem, COPIA um banco no outro)",13,10,0
+s_flbad: dc.b 13,10,"?? uso: FLASH [destino 0-7]  (imagem pela serial)   ou   FLASH origem destino  (COPIA o banco origem 1-7 no destino 0-7)",13,10,0
 
 s_tit:  dc.b 13,10,"Bancos da flash (cabecalho AB em $F807C0):",13,10
         dc.b "  N  NOME             VERSAO   TIPO  FIM",13,10,0
