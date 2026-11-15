@@ -1,0 +1,178 @@
+PARAGON 50 - MANUAL DO BANCO 0 "BOOT+MONITOR" v3.1t8 (Tabajara Labs) - 15/Nov/2026
+=====================================================================================
+
+NOVIDADES DA v3.1t8 (15/Nov/2026, imagem de TESTE no banco 4):
+  * RELOGIO I2C (DS1307; serve tambem DS3231) soldado na placa: comandos RTC, RTC SET, RTC TESTE, RTC RAW - item 6.3;
+  * hora na linha 4 do LCD ("dd/mm/aa  hh:mm"), atualizada so com o monitor ocioso no prompt: comando RELOGIO [ON|OFF|CAL] - item 6.3;
+  * monitor v2.9: gancho idle_hook no getline (linha vazia); gravacao de flash pelo comando FLASH n + PROSSIGA + #sendbin (item 3.1), validada na placa;
+  * o relogio DS1302 das versoes t4 a t5 foi abandonado (o modulo real e I2C).
+
+NOVIDADES DA v3.1 (imagem de TESTE; a v3.0 continua sendo a ROM gravada no banco 0 ate o teste na placa):
+  * comandos novos ADC, ADL, DAC (A/D e D/A do laser) e RTC/RELOGIO (relogio I2C DS1307, na placa) - item 6;
+  * shell do cartao SD com gravacao: W (grava RAM em arquivo), K (apaga), C (muda de pasta) alem de F - item 4;
+  * mapa Q e comando I corrigidos para o layout dos bancos; modulo de perifericos em $F88000;
+  * gravador de flash v5d (aceita o banco 0 como origem) agora em $F86400.
+
+Este manual cobre o que mudou desde o MONITOR_V2_MANUAL.txt (v2.0): o banco 0 virou o
+pre-bootloader, BASIC e CP/M foram para o banco 1, e agora ha recuperacao pelo cartao SD.
+Os comandos de memoria e depuracao do monitor (D P E F M V S W U A R N O K X = Y Z Q J G L T I ?)
+continuam como no manual v2.0 e na ajuda do proprio monitor (digite ?  ou  ? comando).
+
+1. COMO A PLACA INICIA
+----------------------
+O 68000 sempre inicia no BANCO 0 da flash (registrador de banco 74LS175 zerado pelo RESET).
+Ordem do reset: copia vetores para a RAM, detecta a RAM, inicializa a serial (57600 bps), limpa e
+escreve o LCD ("PARAGON 50 68000" / "Tabajara Labs"), um bipe, mostra o menu e espera 5 segundos:
+
+   [B]asic        (banco 1)     inicia o EhBASIC 1.10 que esta no banco 1
+   [C]P/M 68K     (banco 1)     inicia o CP/M-68K que esta no banco 1 (usa o cartao SD)
+   [A]plicativos  (bancos)      lista os 8 bancos e inicia o escolhido (verifica o CRC32 antes)
+   [R]ecuperacao  (cartao SD)   shell FAT16 para ler o cartao e gravar bancos (veja o item 4)
+   [M]onitor                    monitor 68000 (tambem e o que acontece se nenhuma tecla for apertada)
+   [T]etris
+
+Se o banco 1 nao tiver o sistema (sem cabecalho "AB" de ROM completa) as teclas B e C avisam e
+voltam ao menu: use [R] para regravar o banco 1 a partir do cartao.
+
+Para voltar de qualquer banco ao banco 0 aperte RESET.
+
+2. OS BANCOS DA FLASH
+---------------------
+Duas Am29F040B (HI e LO) formam 8 bancos de 128 KB visiveis em $F80000-$F9FFFF. O banco ativo e
+escolhido escrevendo em $FC0000 (74LS175). O RESET volta ao banco 0. Quem troca de banco tem de rodar
+da RAM, porque a troca muda toda a janela de ROM.
+
+Cada banco comeca com a tabela de vetores e tem, em $F807C0, um cabecalho de 64 bytes (big-endian):
+   +0 'AB' | +2 tipo (0 = ROM completa, 1 = aplicativo) | +4 inicio | +8 fim | +12 partida |
+   +16 nome[16] | +32 versao[8] | +40 CRC32 | +44..+63 = $FF
+O CRC32 (igual ao zlib) cobre [inicio..$F807BF] + [$F80800..fim], pulando so o cabecalho.
+Ferramenta de montagem: mkbanco_v2.py. Arquivo de gravacao serial: mkfl4.py (.fl4 = imagem + rodape de 256 bytes).
+
+Mapa atual (14/Nov/2026):
+   0 BOOT+MONITOR 3.0 | 1 CPM+SD teste 2.8t3 (sistema: BASIC e CP/M) | 2 TESTE LCD 2.9t |
+   3 copia do banco 0 (BOOT+MONITOR 3.0) | 4 BOOT+MONITOR 3.0t4 (versao de teste) | 5 EFORTH 1.1+P2 |
+   6 e 7 PARAGON 50 2.5.1 (antigos)
+
+Conteudo do banco 0 (v3.0):
+   v3.1: $F80000 monitor 2.8 | $F81C00 Tetris | $F833F8 modulo de bancos (menu A, FLASH, bk_sys; v4 chama o PER1) |
+   $F84000 shell do cartao SD (fatsh_v8) | $F86400 gravador de flash v5d | $F87EE0 splash do LCD |
+   $F80614 servico de LCD | $F88000 modulo de perifericos PER1 (ADC ADL DAC RTC RELOGIO) |
+   $F90000 modulo estendido v2.7 (U A E R N O K X ...)
+   v3.0 (gravada): shell fatsh_v5 e gravador v5c em $F86000, sem PER1.
+
+3. GRAVAR BANCOS DE FLASH
+-------------------------
+O gravador RODA SO NA RAM ($2000-$2FE8, variaveis em $3000), recebe ou le a imagem inteira para
+$40000-$5FFFF (RAM2), confere o CRC32 e SO ENTAO apaga e grava. Erro de transferencia = nada e apagado.
+
+3.1 Comando do monitor:
+      FLASH [destino] [origem]
+   destino 1-7 (padrao 1; o banco 0 so por pedido explicito). Sem origem a imagem vem pela serial
+   (#sendbin arquivo.fl4 256 na ponte do PC). Com origem (1-7) o gravador COPIA aquele banco no destino.
+   O monitor pergunta: digite PROSSIGA (em maiusculas) para GRAVAR; qualquer outra coisa so COMPARA.
+   Exemplo validado na placa (15/Nov/2026, v3.1t8 no banco 4): FLASH 4 + PROSSIGA + #sendbin ROM_v3.1t8_b4.fl4 256 (ponte em modo #raw).
+   Os P 3000... do item 3.2 ficam como plano B; com o FLASH n nao sao necessarios.
+
+3.2 Variaveis do gravador (para uso com G 2000 apos carregar flash_v5d.s19):
+      P 3000 00 01 + P 3002 A5 5A   modo GRAVAR (senao e so COMPARAR)
+      P 301C 00 0n                  banco de destino
+      P 301E 0B A0                  confirmacao para gravar o banco 0
+      P 3024 00 0n + P 3026 C0 DE   COPIAR do banco n (n=$10 significa banco 0); n=8 = imagem ja em $40000 (cartao)
+      P 3028 00 0n + P 302A C0 DE   banco para onde voltar ao terminar (o banco em que o monitor esta rodando)
+   CUIDADO: estas posicoes de RAM nao sao zeradas no RESET. Zere P 3024/3026/302A antes de gravar pela serial,
+   senao um comando de copia anterior ainda vale (ja aconteceu: copiou o banco 1 para o 4).
+
+3.3 Regras para gravar o banco 0:
+   a) validar a imagem no emulador e em um banco de teste; b) arquivar a imagem antiga; c) conferir o CRC32;
+   d) nada digitado durante a gravacao; e) energia estavel (nobreak). Depois de gravar o banco 0 o gravador
+   reinicia pelo reset da ROM nova.
+
+4. RECUPERACAO PELO CARTAO SD (tecla R, ou G F84000 no monitor)
+----------------------------------------------------------------
+Shell FAT16 (v3.0: so leitura; v3.1: leitura e escrita; FAT16, setor 0 como boot sector ou MBR; nomes 8.3 e longos, caminho com /):
+      I                   reinicia o cartao e monta o FAT16        D [pasta]   lista
+      T arquivo           mostra um arquivo de texto               S           espaco usado/livre
+      L arquivo endHex    carrega o arquivo na RAM                 Q           sai
+      F banco arquivo     grava o banco 1-7 com um arquivo de EXATAMENTE 131072 bytes
+   Somente na v3.1:
+      W arq endHex lenHex  grava lenHex bytes da RAM a partir de endHex no arquivo (cria ou substitui; nome 8.3, pasta atual)
+      K arq               apaga o arquivo       C pasta   muda a pasta atual (C / volta a raiz)
+   O shell usa a RAM $3800-$4DFF (variaveis e buffers); o gravador usa $2000-$3030 e $040000-$05FFFF.
+   O comando F le o arquivo para $40000, pede PROSSIGA, e o gravador exige cabecalho "AB" e CRC32 do
+   cabecalho corretos antes de apagar. O banco 0 nao pode ser gravado por aqui.
+   Dica: com a ponte, envie a palavra PROSSIGA em modo #raw e depois de a pergunta aparecer (a leitura de
+   128 KB leva ~12 s).
+
+5. CP/M-68K E BASIC NO CARTAO
+-----------------------------
+   * Discos CP/M: arquivos \CPM\A.DSK .. D.DSK (512 KB cada, imagem crua, sem cabecalho; 128 trilhas x 32
+     setores de 128 bytes; bloco de 2 KB, 256 entradas de diretorio, sem skew). P: = disco RAM de 124 KB.
+     Definicao para cpmtools: docs/diskdefs_paragon50.txt. Um asterisco no LCD (linha 2, coluna 20) mostra acesso ao cartao.
+   * EhBASIC: LOAD "arq" SAVE "arq" FILES KILL "arq" CHDIR "pasta".
+
+6. PERIFERICOS DO LASER: A/D, D/A, RELOGIO E TESTE DE E/S (v3.1)
+------------------------------------------------------------------
+Comandos do monitor (modulo PER1, $F88000), digitados com letras maiusculas ou minusculas. Ajuda: ? ADC   ? DAC   ? RTC
+Levantamento do firmware original (como o laser comanda o A/D e os D/A): Firmware_original_AD_DA_v1.txt.
+
+6.1 A/D AD7875 (12 bits)
+      ADC            le uma vez cada um dos 8 canais: valor bruto $000-$FFF, decimal e mV supondo 0-5 V (a confirmar na bancada)
+      ADC 2          le so o canal 2
+      ADL 2 600 100  registra 600 amostras do canal 2 a cada ~100 ms (numeros decimais), em texto CSV na RAM2 ($040000):
+                       amostra;canal;bruto;mV     (ate 6000 amostras; qualquer tecla aborta)
+                     Ao fim o monitor diz como gravar no cartao SD (shell SD, comando W):
+                       G F84000            (abre o shell do cartao; I monta, depois:)
+                       W ADL.CSV 40000 <tamanho em hexa que o ADL mostrou>        e   Q  para sair
+   Como funciona (copiado do firmware do laser): canal -> $020020 bits 14-12 (bit 15 ligado), pulso em OP3 do DUART
+   ($FA001C = 08 e $FA001E = 08), leitura de palavra em $020000 (and $FFF); IP4 do DUART ($FA001B bit 4) = A/D pronto.
+   Ao terminar $020020 volta a 0. Os demais pinos OP do DUART NAO sao tocados. O tempo entre amostras e aproximado
+   (laco de espera sem calibracao: medir com osciloscopio e ajustar a constante udelay(180) em per_v1.c).
+
+6.2 D/A de 12 bits
+      DAC            mostra os ultimos valores gravados (os DACs nao podem ser lidos de volta)
+      DAC A 800      codigo $800 (hexa) no DAC A ($02000A)       DAC C ...   idem no DAC C ($02000C)
+      DAC A M 2500   2500 mV no DAC A (escala do firmware: 5000 mV = $FFF);  DAC C: escala 125000 unidades
+   CUIDADO: as saidas vao ao conector/placa de potencia do laser. Teste so com a placa fora do aparelho.
+
+6.3 Relogio I2C (DS1307 / DS3231, endereco $68) e hora no LCD - VALIDADO NA PLACA em 15/Nov/2026
+      RTC                    data e hora         RTC SET 26 11 15 12 30 00   (aa mm dd hh mm ss, decimal; calcula o dia da semana)
+      RTC TESTE              mostra o nivel da linha SDA em repouso e varre o barramento I2C ($08-$77), mostrando quem responde ($68 = relogio)
+      RTC RAW                despeja os registradores $00-$12 do chip
+      RELOGIO [ON|OFF|CAL]   liga/desliga a hora no LCD (padrao: LIGADO a cada reset); CAL mede o tempo do laco de espera
+   Ligacao (soldada na placa): o I2C e feito por software com as saidas de COLETOR ABERTO 74LS06 do latch $020020 (bit = 1 puxa a linha para BAIXO):
+      SCL  = J1-30  ($020020 bit 10)
+      SDA  = J1-48  ($020020 bit 7) E, emendado no mesmo fio, J1-23 (porta B bit 6, $020028; o 74LS240 inverte) = leitura do SDA
+      +5 V = J7-19 (o J1/J2 nao tem VCC)   GND = J1-9.   Os pull-ups de 4,7 kohm para +5 V estao no proprio modulo.
+   O DS1307 sai de fabrica PARADO (bit CH = 1 nos segundos): RTC mostra AVISO ate o primeiro RTC SET, que liga o oscilador.
+   O latch $020020 tambem escolhe o canal do A/D (bits 12-15): o relogio sempre devolve o latch a 0 ao terminar.
+   HORA NO LCD (linha 4, coluna 1, 20 caracteres): "dd/mm/aa  hh:mm". O monitor (getline com a linha vazia) chama o PER1+10 (per_tick) a cada
+   volta do laco de espera; a rotina so age depois de ~2 s de silencio total na serial e depois a cada ~5 s, le so o registrador de minutos
+   (1 byte, ~1 ms) e so redesenha quando o minuto muda. NUNCA roda durante transferencia de dados, leitura/gravacao do SD, A/D ou flash, porque
+   so existe dentro da espera por uma linha. Medido na placa com RELOGIO CAL: 100000 voltas = 24,0 s (0,24 ms por volta; constantes RL_FIRST
+   = 8000 e RL_EVERY = 20000 em per_v6.c). Variaveis em RAM: $1710 (contador), $1714 (valor inicial), $1720-$1737 (texto), PV[3] (liga/desliga).
+   Nota: a serial NAO e bufferizada por software (FIFO de 3 bytes do 68681); por isso a espera por silencio e a atualizacao de minuto em minuto.
+
+6.4 Teste de E/S (J1, J2, J7)
+Programa em RAM: carregue programas/iotest_v1.s19 com L e execute G 2000.
+      1  saidas $020018 bit a bit (mostra o pino J1/J2 de cada bit)
+      2  saidas $020020 bit a bit (bits 0-7 INVERTIDOS pelo 74LS06; pinos ainda a mapear)
+      I  monitora todas as entradas ($020000, $020028, $020030, $040180, $04018A, $040194, $04019C),
+         um BEL e uma linha a cada bit que muda (aterre o pino por 330 ohms: o bit sobe para 1)
+      R  le todas as entradas uma vez        Q  sai (restaura $020018=0004, $020020=0000)
+   Nunca acessa $060000-$07FFFF (sem /DTACK: a CPU travaria).
+
+7. SERVICOS FIXOS DO MONITOR (para programas)
+---------------------------------------------
+   $F80800 PUTC (d0.b)   $F80806 GETC   $F8080C PUTS (a1)   $F80812 HEXB   $F80818 HEXW   $F8081E HEXL
+   $F80824 CRLF          $F8082A STROBE (alimenta o watchdog)   $F80830 GETHEX   $F80836 GETLINE (BUF $0500)
+   $F8083C RESTART (volta ao prompt)   $F80900 RESET
+   LCD ($F80614): +0 lcd_start()  +4 lcd_at(linha,coluna,texto)  +8 lcd_hold()
+   Modulo de bancos ($F833F8): +0 menu  +6 estatistica do L  +12 FLASH  +18 bk_sys(d0 = entrada no banco 1)
+
+8. PENDENCIAS CONHECIDAS
+------------------------
+   * (v3.1t8) conferir a retencao da hora com a placa desligada (pilha do DS1307); calibrar o intervalo das amostras do ADL com o osciloscopio.
+   * (v3.1t8) a hora no LCD so aparece no prompt do monitor; BASIC e CP/M nao a chamam (futuro: comando TIME ou chamada de BIOS).
+   * (v3.1) Q e I descrevem o layout atual. O tempo das amostras do ADL ainda nao foi calibrado.
+   * (v3.1) o gravador v5d aceita o banco 0 como origem (P 3024 00 10 e P 3026 C0 DE); o comando FLASH ainda nao tem a opcao.
+   * Discos CP/M so de A a D.
