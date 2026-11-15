@@ -64,3 +64,10 @@ ROM v2.6 (14/11/2026) - Am29F040B (CRC32 do bloco de 128 KB: EB42BECC; HI FF8C95
 - t8: tempos calibrados na placa com RELOGIO CAL (100000 voltas = 24,0 s, 0,24 ms por volta): primeira leitura ~2 s apos o silencio, depois a cada ~5 s; so le o registrador de minutos e so redesenha quando o minuto muda.
 - Gravacao feita pelo caminho novo: FLASH 4 + PROSSIGA + #sendbin (sem os P). CRC32 da imagem t8 $70113963, 0 diferencas.
 - Erro pego no emulador antes da placa: buffer de texto estatico no modulo PER1 caia na flash (agora em RAM $1720). Fonte em rom/fonte_v3.1t8.
+
+== v3.2 (15/Nov/2026) - STUB DO BANCO 0 + IMAGEM DO BANCO 1 (so emulador; NADA gravado na placa) ==
+- Banco 0 = stub de boot (monitor_v30 AUTOIMG=0, bancos_v5): mostra "SBC Paragon 50 - 2026 Tabajara Labs", espera 5 s pela tecla R; sem tecla faz AUTOLOAD: primeiro banco 1..7 com cabecalho AB valido e CRC32 correto (vazio ou CRC ruim = pula para o proximo); nenhum valido = lista de bancos.
+- Tecla R = menu de recuperacao: [M] monitor [A] bancos [S] cartao SD [U] gravar banco pela serial (monta FLASH n) [N] autoload [T] tetris.
+- Gravador: banco 0 so grava com PROSSIGA0 (PROSSIGA sozinho vira so comparar).
+- Banco 1 = imagem normal (AUTOIMG=1, RCBANK=1): monitor direto + PER1 (RTC, ADC, DAC, RELOGIO). Teclas B/C e bk_sys removidas: BASIC/CP/M precisam ir para outro banco (menu A).
+- Help do RTC corrigido; ? RELOGIO novo (per_v9). Testes: t_stub.py (autoload, pulo de banco vazio/CRC ruim, R, protecao do banco 0, U).
