@@ -77,3 +77,7 @@ ROM v2.6 (14/11/2026) - Am29F040B (CRC32 do bloco de 128 KB: EB42BECC; HI FF8C95
 - Ordem origem->destino: FLASH origem destino (FLASH n = serial -> destino n); F arquivo banco no shell do cartao SD (fatsh_v9).
 - Banco 1 = imagem v3.3i ($2624776D): menu B/C/F/T/A/R/M com 5 s para o monitor; B e C iniciam a imagem antiga CPM+SD no banco 7 (copia do antigo banco 1, feita com FLASH 7 1); F inicia o eForth do banco 5. Frase "Monitor Paragon 50 - Tabajara Labs 2026" antes do "Digite ? para ajuda".
 - Fontes: rom/fonte_v3.3 (stub = monitor_v30+bancos_v5+build_rom32.py; imagem = monitor_v31+bancos_v6+build_rom33.py; per_v9 = RTC/RELOGIO).
+
+== v3.3j (banco 1) + v3.3a (banco 7, BASIC+CP/M+SD) (15/Nov/2026) - GRAVADOS ==
+- Banco 7 = imagem BASIC+CP/M nova: o driver SDFS vai embutido ($F90000, 8854 bytes) e o menu do banco 1 (B) o copia para a RAM $50000 antes de iniciar o BASIC; o MONITOR do BASIC (restart) agora reinicia pelo banco 1 (monitor novo).
+- Banco 1 v3.3j: bk_drv (+36) no modulo de bancos. Fontes em rom/fonte_v3.3.

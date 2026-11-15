@@ -45,6 +45,7 @@ FLCHK       equ $F83404
 BKAUTO      equ $F833F8+18       ; v3.2: autoload
 BKSYS       equ $F833F8+24
 BKBOOT      equ $F833F8+30
+BKDRV       equ $F833F8+36
 AUTOIMG     equ {{AUTOIMG}}      ; 0 = stub do banco 0 (menu R + autoload); 1 = imagem normal (monitor direto)
 SDREC       equ $F84000          ; v2.8: leitor FAT16 do cartao SD + gravador de bancos (rotina; volta com RTS)         ; v2.5: reconhece o comando FLASH (so volta se a linha nao for FLASH)
 RPMAX       equ 2              ; blocos de 64 KB sondados: so $0-$1FFFF ($20000+ e E/S do laser: NUNCA gravar)
@@ -281,7 +282,8 @@ im_key: move.b  DUART_RHRA,d0
         cmpi.b  #'R',d0
         beq     rm_rec
         bra     rm_mon
-im_b:   move.l  #$F84000,d0
+im_b:   jsr     BKDRV                   ; driver SDFS do banco 7 -> RAM $50000
+        move.l  #$F84000,d0
 im_s:   moveq   #7,d1
         jmp     BKSYS
 im_c:   move.l  #$F88000,d0

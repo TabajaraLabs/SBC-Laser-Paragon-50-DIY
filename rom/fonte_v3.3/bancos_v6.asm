@@ -29,6 +29,7 @@ HDRS    equ $2100          ; 8 cabecalhos x 64 bytes ($2100-$22FF)
 CRCT    equ $2300          ; tabela CRC32 (1 KB)
 CHK     equ $2700          ; buffer de 4 KB para verificar o CRC
 SCR     equ $26F0          ; rascunho (SP de ROM completa)
+DRVLEN  equ 8854
 AUTOF   equ $20F0          ; v5: 1 = autoload em andamento
 HDR_OFF equ $7C0
 CHUNK   equ $1000
@@ -40,6 +41,7 @@ CHUNK   equ $1000
         jmp bk_auto                      ; +18: autoload (banco 1,2,...,7 = primeiro valido)
         jmp bk_sys                       ; +24: d0.l = entrada, d1.w = banco: inicia BASIC/CP/M (imagem antiga) sem passar pelo menu
         jmp bk_boot                      ; +30: d0.w = banco: inicia o banco (verifica CRC)
+        jmp bk_drv                       ; +36: copia o driver SDFS (banco 7, $F90000) para a RAM $50000
 
 ; ---- LSTAT: " inicio=XXXXXXXX tamanho=XXXXXXXX bytes" -----------------------
 lstat:  movem.l d0/a1,-(sp)
@@ -214,6 +216,20 @@ sy_i:   move.w  (a0)+,(a1)+
         move.l  #$1F00,d1
         movea.l d5,a0
         jmp     RC_BOOT
+
+; ---- bk_drv: copia o driver SDFS do banco 7 ($F90000) para $50000 se tiver a marca 'SDFS'. Preserva registradores.
+bk_drv:
+        lea     rc_ini(pc),a0
+        lea     RAMRT,a1
+        move.w  #(rc_fim-rc_ini)/2-1,d1
+dr_i:   move.w  (a0)+,(a1)+
+        dbra    d1,dr_i
+        moveq   #7,d0
+        lea     $F90000,a0
+        lea     $50000,a1
+        move.w  #DRVLEN,d1
+        bsr     bcopy
+        rts
 
 ; ---- bk_boot: d0.w = banco -> CRC + partida (mesmo caminho do menu A)
 bk_boot: move.w  d0,d4
