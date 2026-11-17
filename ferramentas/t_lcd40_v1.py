@@ -59,7 +59,7 @@ for addr7,label in ((0x27,'LCD em $27'),(0x3F,'sem LCD em $27')):
     c=Bus(addr7)
     a=M.Asm(); a.assemble(open('../programas/lcd40_stubs_v1.asm').read())
     for st,b in a.segs: c.mem[st:st+len(b)]=b
-    a=M.Asm(); d=a.assemble(open('../programas/lcd40_teste_v1.asm').read())
+    a=M.Asm(); d=a.assemble(open('../programas/'+__import__('os').environ.get('ASMF','lcd40_teste_v1.asm')).read())
     c.mem[0x2000:0x2000+len(d)]=d
     c.pc=0x2000; c.a[7]=0x7000; c.sr=0x2700
     c.rx=[]
