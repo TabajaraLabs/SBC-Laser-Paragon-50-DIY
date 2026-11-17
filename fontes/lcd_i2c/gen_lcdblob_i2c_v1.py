@@ -10,7 +10,8 @@ import sys, json
 sys.path.insert(0,'/home/claude/sbc-laser-paragon-50-diy/ferramentas')
 import m68kasm_v3
 ORG=int(sys.argv[1],16) if len(sys.argv)>1 else 0xF87400     # corpo; as 3 entradas ficam em $F80614 (bra.w) so se ENT for dado
-ENT=int(sys.argv[4],16) if len(sys.argv)>4 else (0xF80614 if ORG==0xF87400 else None)
+ENT=int(sys.argv[4],16) if len(sys.argv)>4 and sys.argv[4]!='-' else (0xF80614 if ORG==0xF87400 else None)
+TRAMP=len(sys.argv)>5 and sys.argv[5]=='tramp'   # entradas por jmp absoluto (corpo longe, fora do alcance do bra.w) + jmp em $F80766/$F80782 (ACTV/ACTV_OFF do blob antigo, usados pelo CP/M)
 CTRL=int(sys.argv[2]) if len(sys.argv)>2 else 2
 OUT=sys.argv[3] if len(sys.argv)>3 else 'lcd_i2c_blob_v1.bin'
 if CTRL==2:
@@ -42,6 +43,13 @@ ltab:   dc.b    $80,$C0,$94,$D4
     inits="""        move.w  #4,EM
         bsr     init1
 """
+if ENT and TRAMP:
+    ENTTXT=('        org $%X\n        bra.w   e0\n        bra.w   e1\n        bra.w   e2\ne0:     jmp     i_start\ne1:     jmp     i_at\ne2:     jmp     i_hold\n'
+            '        org $F80766\n        jmp     actv\n        org $F80782\n        jmp     actv_off\n')%ENT
+elif ENT:
+    ENTTXT='        org $%X\n        bra.w   i_start\n        bra.w   i_at\n        bra.w   i_hold\n'%ENT
+else:
+    ENTTXT=''
 src="""IOL20   equ $020020
 PORTB   equ $020028
 STROBE  equ $F8082A
@@ -210,11 +218,13 @@ st_w:   moveq   #1,d0
 st_b:   bsr     lcd_chr
         movem.l (sp)+,d0-d6/a1
 st_x:   rts
-""" % (('        org $%X\n        bra.w   i_start\n        bra.w   i_at\n        bra.w   i_hold\n'%ENT) if ENT else '', ORG, '' if ENT else '        bra.w   i_start\n        bra.w   i_at\n        bra.w   i_hold\n', inits, goto)
+""" % (ENTTXT, ORG, '' if ENT else '        bra.w   i_start\n        bra.w   i_at\n        bra.w   i_hold\n', inits, goto)
 m=m68kasm_v3.Asm(); m.assemble(src)
 for a,b in m.segs: print('segmento $%X: %d bytes'%(a,len(b)))
 a,b=m.segs[-1]; b=bytes(b); assert a==ORG, hex(a)
+json.dump([(a_,bytes(b_).hex()) for a_,b_ in m.segs],open(OUT.replace('.bin','_segs.json'),'w'))
 print('lcd i2c corpo %d bytes (area livre $F873E8-$F87EE0 = 2784), CTRL=%d, ORG=$%X'%(len(b),CTRL,ORG))
 open(OUT,'wb').write(b)
 if ENT: open(OUT.replace('.bin','_ent.bin'),'wb').write(bytes(m.segs[0][1]))
+print('segmentos:',[('$%X'%a_,len(b_)) for a_,b_ in m.segs])
 json.dump(m.sym,open(OUT.replace('.bin','_sym.json'),'w'))

@@ -90,3 +90,7 @@ ROM v2.6 (14/11/2026) - Am29F040B (CRC32 do bloco de 128 KB: EB42BECC; HI FF8C95
 - Splash (splash_v2) com texto para 40 colunas. Build: rom/fonte_v3.6/build_rom37.py 3.6a ... MONITOR 1 1. CRC32 do .fl4 $947F3DEB, gravado com FLASH 4 + PROSSIGA (0 diferencas). Iniciado pelo menu de bancos (G F833F8, tecla 4).
 - Pendente: CP/M/BASIC (banco 7) ainda usa o servico paralelo antigo; relogio da linha 4 (RTC desligado no momento) a validar no LCD I2C.
 - v3.6a tambem GRAVADA NO BANCO 1 (17/Nov/2026, 12:10): CRC32 $947F3DEB, 0 diferencas (.fl4 do banco 1 em ROM_V3.6a_IMAGEM_b1). Banco 4 mantem a mesma imagem. rom/ guarda so a v3.6a (atual) e a v3.5a (anterior); o resto foi para rom/arquivo.
+
+== v3.6a banco 7 (BASIC+CP/M+SD) - 17/Nov/2026 - GRAVADO (bancos 6 e 7) ==
+- LCD I2C (PCF8574 40x4) tambem no BASIC e no CP/M: driver SDFS (sdfs_v5, gerado de sdfs_v4 por gen_sdfs_v5.py) com rotinas de LCD I2C proprias; CP/M usa o servico de LCD em $F80614 (bra.w -> jmp) com corpo em $F93000 e jmp nos enderecos antigos ACTV/ACTV_OFF ($F80766/$F80782), entao o CP/M NAO precisou ser recompilado. Build: rom/fonte_v3.6/build_apps_v2.py. CRC32 do .fl4 $934432D6.
+- Emulador (t_b7lcd.py): CP/M lcd_at/actv/hold e driver SDFS com LCD em $27, em $3F e sem LCD. Placa: BASIC inicia e FILES lista o cartao (volume PARAGON_50). Versao anterior do banco 7 (v3.3a) guardada em rom/arquivo.
